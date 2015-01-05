@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/global.css" rel="stylesheet">
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <br>
+            <div class="row clearfix">
+                <div class="col-md-2 column">
+                    <input type="text" class="form-control" placeholder="角色名称">
+                </div>
+                <div class="col-md-1 column" style="padding-left: 0px">
+                    <button type="button" class="btn btn-default">搜索</button>
+                </div>
+                <div class="col-md-7 column">
+                </div>
+                <div class="col-md-2 column">
+                    <button type="button" class="btn btn-primary">添加新角色</button>
+                </div>
+            </div>
+            <br>
+            <div style="border:1px solid #D3D3D3">
+                <table class="table table-hover">
+                    <thead style="background-color:#DCDCDC">
+                        <tr>
+                            <th style="width:">名称</th>
+                            <th style="width:">描述</th>
+                            <th style="width:">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                话务员
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <a href="#">编辑</a>
+                                <a href="#">删除</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                内置角色
+                            </td>
+                            <td>
+                                内置角色
+                            </td>
+                            <td>
+                                <a href="#">编辑</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    填写角色信息
+                </div>
+                <div class="panel-body">
+                    <div class="row clearfix">
+                        <div class="col-md-3 column" style="text-align: right;padding-top:8px">
+                            <font color="red">*</font><b>角色名称：</b>
+                        </div>
+                        <div class="col-md-3 column" style="padding-left: 0px">
+                            <input type="text" class="form-control" placeholder="填写角色名称">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row clearfix">
+                        <div class="col-md-3 column" style="text-align: right;padding-top:8px">
+                            <font color="red">*</font><b>角色权限：</b>
+                        </div>
+                        <div class="col-md-7 column">
+                            <div class="row clearfix">
+                                <div class="col-md-1 column" style="padding-right: 0px;padding-left: 0px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 订单
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 column" style="padding-right: 0px;padding-left: 0px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 时效
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 column" style="padding-right: 0px;padding-left: 0px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 调度
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 column" style="padding-right: 0px;padding-left: 0px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 派单
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 column" style="padding-right: 0px;padding-left: 0px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 司机
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 司机删除
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 column" style="padding-right: 0px;padding-left: 0px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 客户
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 column" style="padding-right: 0px;padding-left: 0px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 统计
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 column" style="padding-right: 0px;padding-left: 0px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 公司
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 用户管理
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-3 column">
+                            
+                        </div>
+                        <div class="col-md-7 column">
+                            <div class="row clearfix">
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 70px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 工作车
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 地区收费
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 column" style="padding-right: 0px;padding-left: 0px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> APP
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 column" style="padding-right: 0px;padding-left: 0px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 通知
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 短信记录
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 短信模板
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 角色设置
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 版本设置
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                       <div class="col-md-3 column">
+                           
+                       </div> 
+                       <div class="col-md-7 column">
+                           <div class="row clearfix">
+                               <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 提成设置
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 反馈意见
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 系统配置
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 强制销单
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 强制收回
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 客户充值
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 司机充值
+                                        </label>
+                                    </div>
+                                </div>
+                           </div>
+                       </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-3 column">
+                            
+                        </div>
+                        <div class="col-md-7 column">
+                            <div class="row clearfix">
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 修改订单金额
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 财务查看
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 财务添加
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 财务审核
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0px;width: 80px">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 财务删除
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 column" style="padding-right: 0px;padding-left: 0pxx">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 微信
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-3 column" style="text-align: right;padding-top:8px">
+                            <font color="red">*</font><b>描述：</b>
+                        </div>
+                        <div class="col-md-3 column" style="padding-left: 0px">
+                            <textarea rows="3" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row clearfix">
+                        <div class="col-md-3 column">
+                           
+                        </div>
+                        <div class="col-md-3 column" style="padding-left: 0px">
+                            <button type="button" class="btn btn-primary">保存</button>
+                            <button type="button" class="btn btn-default">返回</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
