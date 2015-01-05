@@ -107,10 +107,10 @@ public class SendOrderController {
 	 * @return
 	 */
 	@RequestMapping(value = "/drivers", method = RequestMethod.GET, params = "coordinate")
-	public ModelAndView getAvailableDriven(@RequestParam("coordinate") Coordinate c, @ModelAttribute PageControl p) {
+	public ModelAndView getAvailableDriven(@RequestParam("coordinate") String c, @ModelAttribute PageControl p) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/sendOrder/pages/availableDriverList");
-		mav.addObject("driverList", this.driverLocationService.getDriverLocationInfosByPosition(c, p));
+		mav.addObject("driverList", this.driverLocationService.getDriverLocationInfosByPosition(new Coordinate(c), p));
 		return mav;
 	}
 

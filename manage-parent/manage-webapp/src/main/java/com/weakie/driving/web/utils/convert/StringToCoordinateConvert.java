@@ -6,6 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 
 import com.weakie.driving.model.Coordinate;
 
+@Deprecated
 public class StringToCoordinateConvert implements Converter<String, Coordinate> {
 
 	/**

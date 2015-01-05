@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-cn">
 <head>
@@ -8,8 +8,8 @@
 <title>派单-代价管理系统</title>
 </head>
 <body>
-	<br>
 	<div class="container">
+		<c:set var="nav" value="3" />
 		<%@ include file="../include/navigator.jsp"%>
 		<div class="row clearfix">
 			<div class="col-md-9 column">
@@ -53,8 +53,8 @@
 							</div>
 							<div id="222" class="panel-body">
 								<ul class="list-group">
-									<li class="list-group-item"><font size="1"> <label class="checkbox-inline" style="padding-left: 0px"> <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="${order.orderID }" checked>
-												<fmt:formatDate value="${order.aptmtTime }"  type="both" pattern="HH:mm"/>${order.aptmtPlace }
+									<li class="list-group-item"><font size="1"> <label class="checkbox-inline" style="padding-left: 0px"> <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="${order.orderID }"
+												checked> <fmt:formatDate value="${order.aptmtTime }" type="both" pattern="HH:mm" />${order.aptmtPlace }
 										</label>
 									</font></li>
 								</ul>

@@ -7,8 +7,8 @@
 <title>派单-代价管理系统</title>
 </head>
 <body>
-	<br>
 	<div class="container">
+		<c:set var="nav" value="3" />
 		<%@ include file="../include/navigator.jsp"%>
 		<div class="row clearfix">
 			<div class="col-md-9 column">
@@ -34,7 +34,7 @@
 					<div class="panel-body">
 						<input type="text" class="form-control" placeholder="输入司机姓名、手机号、工号即可进行搜索"> <br>
 						<div id="111">
-						<!-- 可选司机 -->
+							<!-- 可选司机 -->
 						</div>
 						<hr>
 						<div class="panel panel-default">

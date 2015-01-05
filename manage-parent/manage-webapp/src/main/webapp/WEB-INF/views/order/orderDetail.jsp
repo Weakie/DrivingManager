@@ -8,6 +8,8 @@
 </head>
 <body>
 	<div class="container">
+		<c:set var="nav" value="1"/>
+		<%@ include file="../include/navigator.jsp"%>
 		<div style="height: 200px;">
 			<div style="padding-left: 15px">
 				<ul class="breadcrumb">
