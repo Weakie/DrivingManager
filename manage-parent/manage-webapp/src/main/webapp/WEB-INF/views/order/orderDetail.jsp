@@ -72,7 +72,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>创建时间：</td>
+							<td>创建时间：${order.createTime }</td>
 						</tr>
 						<tr>
 							<td>订单类型：</td>
