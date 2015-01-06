@@ -1,20 +1,22 @@
 package com.weakie.driving.model.orders;
 
-public class Customer {
+public class OrderDriver {
 
 	private String id;
 	private String name;
 	private String telephone;
+	private String company;
 	
 	
-	public Customer() {
+	public OrderDriver() {
 		super();
 	}
-	public Customer(String id, String name, String telephone) {
+	public OrderDriver(String id, String name, String telephone, String company) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.telephone = telephone;
+		this.company = company;
 	}
 	public String getId() {
 		return id;
@@ -34,9 +36,15 @@ public class Customer {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", telephone=" + telephone + "]";
+		return "Driver [id=" + id + ", name=" + name + ", telephone=" + telephone + ", company=" + company + "]";
 	}
 	
 	

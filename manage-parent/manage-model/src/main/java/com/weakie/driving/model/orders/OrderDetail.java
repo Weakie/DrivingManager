@@ -4,6 +4,11 @@ import java.util.Date;
 
 import com.weakie.driving.model.Coordinate;
 
+/**
+ * 订单详细信息
+ * @author weakie,lin
+ *
+ */
 public class OrderDetail {
 
 	private String orderID;
@@ -13,7 +18,7 @@ public class OrderDetail {
 	private Date aptmtTime;
 	private String aptmtPlace;
 
-	private Customer customer;
+	private OrderCustomer customer;
 	private Coordinate aptmtCoordt;
 
 	private String comment;
@@ -21,7 +26,7 @@ public class OrderDetail {
 	private Date createTime;	// 09订单创建时间
 	private Date dispatchedTime;// 10订单创建时间
 	
-	private Driver driver;
+	private OrderDriver driver;
 	private Date acceptTime;	// 15接单时间
 	private Date arrivedTime;	// 16到达时间
 	
@@ -43,7 +48,7 @@ public class OrderDetail {
 	private String reimburseNotes;	//报销说明
 	private Date reimburseTime;
 	private String payMethod;
-	private String orderStatus;
+	private OrderStatus orderStatus;
 	private Date destroyedTime;	//32 销单时间
 	
 	
@@ -51,11 +56,11 @@ public class OrderDetail {
 		super();
 	}
 	public OrderDetail(String orderID, String orderType, String orderSource, Date aptmtTime, String aptmtPlace,
-			Customer customer, Coordinate aptmtCoordt, String comment, Date createTime, Date dispatchedTime,
-			Driver driver, Date acceptTime, Date arrivedTime, Date departTime, String destination, String predictInfo,
+			OrderCustomer customer, Coordinate aptmtCoordt, String comment, Date createTime, Date dispatchedTime,
+			OrderDriver driver, Date acceptTime, Date arrivedTime, Date departTime, String destination, String predictInfo,
 			Date payedTime, int shouldPay, int actualPay, String carNumber, int waitingTime, int drivingTime,
 			int midWaitTime, float driverMileage, int reimburse, String reimburseNotes, Date reimburseTime,
-			String payMethod, String orderStatus, Date destroyedTime) {
+			String payMethod, OrderStatus orderStatus, Date destroyedTime) {
 		super();
 		this.orderID = orderID;
 		this.orderType = orderType;
@@ -118,10 +123,10 @@ public class OrderDetail {
 	public void setAptmtPlace(String aptmtPlace) {
 		this.aptmtPlace = aptmtPlace;
 	}
-	public Customer getCustomer() {
+	public OrderCustomer getCustomer() {
 		return customer;
 	}
-	public void setCustomer(Customer customer) {
+	public void setCustomer(OrderCustomer customer) {
 		this.customer = customer;
 	}
 	public Coordinate getAptmtCoordt() {
@@ -148,10 +153,10 @@ public class OrderDetail {
 	public void setDispatchedTime(Date dispatchedTime) {
 		this.dispatchedTime = dispatchedTime;
 	}
-	public Driver getDriver() {
+	public OrderDriver getDriver() {
 		return driver;
 	}
-	public void setDriver(Driver driver) {
+	public void setDriver(OrderDriver driver) {
 		this.driver = driver;
 	}
 	public Date getAcceptTime() {
@@ -256,10 +261,10 @@ public class OrderDetail {
 	public void setPayMethod(String payMethod) {
 		this.payMethod = payMethod;
 	}
-	public String getOrderStatus() {
+	public OrderStatus getOrderStatus() {
 		return orderStatus;
 	}
-	public void setOrderStatus(String orderStatus) {
+	public void setOrderStatus(OrderStatus orderStatus) {
 		this.orderStatus = orderStatus;
 	}
 	public Date getDestroyedTime() {

@@ -30,13 +30,13 @@ public class OrderListController {
 
 	@RequestMapping(method = RequestMethod.GET, params = { "!type", "!q" })
 	public String orderIndex() {
-		return "/order/orderIndex";
+		return "/orders/orderIndex";
 	}
 
 	@RequestMapping(method = RequestMethod.GET, params = "type=new")
 	public ModelAndView getNewOrders(@ModelAttribute("pc") PageControl p) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/order/pages/newOrderList");
+		mav.setViewName("/orders/pages/newOrderList");
 		mav.addObject("orderList", this.orderListService.getNewOrders(p));
 		return mav;
 	}
@@ -44,7 +44,7 @@ public class OrderListController {
 	@RequestMapping(method = RequestMethod.GET, params = "type=dispatched")
 	public ModelAndView getDispatchedOrders(@ModelAttribute("pc") PageControl p) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/order/pages/dispatchedOrderList");
+		mav.setViewName("/orders/pages/dispatchedOrderList");
 		mav.addObject("orderList", this.orderListService.getDispatchedOrders(p));
 		return mav;
 	}
@@ -52,7 +52,7 @@ public class OrderListController {
 	@RequestMapping(method = RequestMethod.GET, params = "type=accepted")
 	public ModelAndView getAcceptedOrders(@ModelAttribute("pc") PageControl p) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/order/pages/acceptedOrderList");
+		mav.setViewName("/orders/pages/acceptedOrderList");
 		mav.addObject("orderList", this.orderListService.getAcceptedOrders(p));
 		return mav;
 	}
@@ -61,7 +61,7 @@ public class OrderListController {
 	public ModelAndView getDrivingOrders(@ModelAttribute("pc") PageControl p) {
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/order/pages/drivingOrderList");
+		mav.setViewName("/orders/pages/drivingOrderList");
 		mav.addObject("orderList", this.orderListService.getDrivingOrders(p));
 		return mav;
 	}
@@ -69,7 +69,7 @@ public class OrderListController {
 	@RequestMapping(method = RequestMethod.GET, params = "type=destroyed")
 	public ModelAndView getDestroyedOrders(@ModelAttribute("pc") PageControl p) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/order/pages/destroyedOrderList");
+		mav.setViewName("/orders/pages/destroyedOrderList");
 		mav.addObject("orderList", this.orderListService.getDestroyedOrders(p));
 		return mav;
 	}
@@ -77,7 +77,7 @@ public class OrderListController {
 	@RequestMapping(method = RequestMethod.GET, params = "type=payed")
 	public ModelAndView getPayedOrders(@ModelAttribute("pc") PageControl p) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/order/pages/payedOrderList");
+		mav.setViewName("/orders/pages/payedOrderList");
 		mav.addObject("orderList", this.orderListService.getPayedOrders(p));
 		return mav;
 	}
@@ -85,7 +85,7 @@ public class OrderListController {
 	@RequestMapping(method = RequestMethod.GET, params = "type=reported")
 	public ModelAndView getReportedOrders(@ModelAttribute("pc") PageControl p) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/order/pages/reportedOrderList");
+		mav.setViewName("/orders/pages/reportedOrderList");
 		mav.addObject("orderList", this.orderListService.getReportedOrder(p));
 		return mav;
 	}

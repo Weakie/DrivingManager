@@ -1,11 +1,15 @@
-package com.weakie.driving.model.orders.type;
+package com.weakie.driving.model.orders;
 
 import java.util.Date;
 
-import com.weakie.driving.model.orders.OrderCustomer;
-import com.weakie.driving.model.orders.OrderDriver;
+import com.weakie.driving.model.Coordinate;
 
-public class DispatchedOrder {
+/**
+ * 订单简单信息
+ * @author weakie,lin
+ *
+ */
+public class OrderProfile {
 	private String orderID;
 	private String orderType;
 	private String orderSource;
@@ -13,26 +17,13 @@ public class DispatchedOrder {
 	private Date aptmtTime;
 	private String aptmtPlace;
 	
-	private OrderCustomer customer;	
-	private String comment;
+	private OrderCustomer customer;
+	private Coordinate aptmtCoordt;
 	
-	private OrderDriver driver;
+	private OrderStatus orderStatus;
 
-	public DispatchedOrder() {
+	public OrderProfile() {
 		super();
-	}
-
-	public DispatchedOrder(String orderID, String orderType, String orderSource, Date aptmtTime, String aptmtPlace,
-			OrderCustomer customer, String comment, OrderDriver driver) {
-		super();
-		this.orderID = orderID;
-		this.orderType = orderType;
-		this.orderSource = orderSource;
-		this.aptmtTime = aptmtTime;
-		this.aptmtPlace = aptmtPlace;
-		this.customer = customer;
-		this.comment = comment;
-		this.driver = driver;
 	}
 
 	public String getOrderID() {
@@ -83,20 +74,27 @@ public class DispatchedOrder {
 		this.customer = customer;
 	}
 
-	public String getComment() {
-		return comment;
+	public Coordinate getAptmtCoordt() {
+		return aptmtCoordt;
 	}
 
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setAptmtCoordt(Coordinate aptmtCoordt) {
+		this.aptmtCoordt = aptmtCoordt;
 	}
 
-	public OrderDriver getDriver() {
-		return driver;
+	public OrderStatus getOrderStatus() {
+		return orderStatus;
 	}
 
-	public void setDriver(OrderDriver driver) {
-		this.driver = driver;
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderProfile [orderID=" + orderID + ", orderType=" + orderType + ", orderSource=" + orderSource
+				+ ", aptmtTime=" + aptmtTime + ", aptmtPlace=" + aptmtPlace + ", customer=" + customer
+				+ ", aptmtCoordt=" + aptmtCoordt + ", orderStatus=" + orderStatus + "]";
 	}
 	
 	

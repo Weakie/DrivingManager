@@ -3,7 +3,7 @@ package com.weakie.driving.model.orders.type;
 import java.util.Date;
 
 import com.weakie.driving.model.Coordinate;
-import com.weakie.driving.model.orders.Customer;
+import com.weakie.driving.model.orders.OrderCustomer;
 
 public class NewOrder {
 
@@ -14,7 +14,7 @@ public class NewOrder {
 	private Date aptmtTime;
 	private String aptmtPlace;
 	
-	private Customer customer;
+	private OrderCustomer customer;
 	private Coordinate aptmtCoordt;
 	
 	private String comment;
@@ -24,7 +24,7 @@ public class NewOrder {
 	}
 	
 	public NewOrder(String orderID, String orderType, String orderSource, Date aptmtTime, String aptmtPlace,
-			Customer customer, Coordinate aptmtCoordt, String comment) {
+			OrderCustomer customer, Coordinate aptmtCoordt, String comment) {
 		super();
 		this.orderID = orderID;
 		this.orderType = orderType;
@@ -76,11 +76,11 @@ public class NewOrder {
 		this.aptmtPlace = aptmtPlace;
 	}
 
-	public Customer getCustomer() {
+	public OrderCustomer getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(OrderCustomer customer) {
 		this.customer = customer;
 	}
 
@@ -110,7 +110,7 @@ public class NewOrder {
 		private Date aptmtTime;
 		private String aptmtPlace;
 		
-		private Customer customer;
+		private OrderCustomer customer;
 		private Coordinate aptmtCoordt;
 		private String comment;
 		
@@ -143,7 +143,7 @@ public class NewOrder {
 			return this;
 		}
 		
-		public Builder customer(Customer customer){
+		public Builder customer(OrderCustomer customer){
 			this.customer = customer;
 			return this;
 		}

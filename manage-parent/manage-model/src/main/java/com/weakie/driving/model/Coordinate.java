@@ -2,6 +2,7 @@ package com.weakie.driving.model;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.weakie.driving.utils.LogUtil;
 
 public class Coordinate {
 
@@ -13,12 +14,14 @@ public class Coordinate {
 		super();
 	}
 	public Coordinate(String s) {
-		if(StringUtils.isNotEmpty(s)){
-			String body = StringUtils.substringBetween(s, "(", ")");
-			String[] numbers = StringUtils.split(body, ',');
-			lat = NumberUtils.toDouble(numbers[0]);
-			lng = NumberUtils.toDouble(numbers[1]);
+		LogUtil.debug("Invoke coordinate(String s): "+s);
+		if(StringUtils.isEmpty(s)){
+			return;
 		}
+		String body = StringUtils.substringBetween(s, "(", ")");
+		String[] numbers = StringUtils.split(body, ',');
+		lat = NumberUtils.toDouble(numbers[0]);
+		lng = NumberUtils.toDouble(numbers[1]);
 	}
 	
 	public Coordinate(double lat, double lng) {

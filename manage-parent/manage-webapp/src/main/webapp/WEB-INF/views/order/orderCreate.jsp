@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -35,29 +34,8 @@
 					<img src="../img/map.jpg" width="100%" height="500px">
 				</div>
 				<br>
-				<div>
-					<table class="table" style="border: 1px solid #D3D3D3">
-						<thead>
-							<tr>
-								<th style="width: 15%">状态</th>
-								<th style="width: 20%">单号</th>
-								<th style="width: 10%">类型</th>
-								<th style="width: 10%">来源</th>
-								<th style="width: 15%">预约时间</th>
-								<th style="width: 30%">预约地点</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><span class="label label-info">新订单</span></td>
-								<td><font color="#1E90FF">***08280003</font></td>
-								<td>人工</td>
-								<td></td>
-								<td>12:24</td>
-								<td>昆明新都昌商业广场</td>
-							</tr>
-						</tbody>
-					</table>
+				<div id="xxx">
+					<!-- 发送ajax请求 -->
 				</div>
 			</div>
 			<div class="col-md-0 column"></div>
@@ -94,9 +72,9 @@
 					</div>
 					<br>
 					<div class="row clearfix">
-						<div class="col-md-4 column">
+						<div class="col-md-5 column">
 							<div class="input-group">
-								<span class="input-group-addon">人数</span> <input type="text" name="aptmtPeople" value="1" class="form-control" placeholder="代驾人数">
+								<span class="input-group-addon">人数</span> <input type="Number" name="aptmtPeople" value="1" class="form-control" placeholder="代驾人数">
 							</div>
 						</div>
 					</div>
@@ -141,7 +119,7 @@
 						</label>
 					</div>
 					<div>
-						<label><font font-weight=400>订单备注：</font></label>
+						<label><font font-weight="400">订单备注：</font></label>
 					</div>
 					<div>
 						<textarea rows="3" name="comment" class="form-control"></textarea>
@@ -152,28 +130,8 @@
 						<button type="button" class="btn btn-primary">创建并派单</button>
 					</div>
 					<br>
-					<div>
-						<table class="table table-bordered">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>司机姓名</th>
-									<th>距离(公里)</th>
-									<th>本日代驾</th>
-									<th>本月代驾</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><label> <input type="checkbox">
-									</label></td>
-									<td>冯志恒</td>
-									<td>25.09</td>
-									<td>0次</td>
-									<td>0次</td>
-								</tr>
-							</tbody>
-						</table>
+					<div id="xxx">
+						<!-- AJAX司机列表 -->
 					</div>
 				</form>
 			</div>

@@ -1,0 +1,12 @@
+package org.weakie.driving.utils;
+
+public class LogUtil {
+
+	public static void debug(String s){
+		System.out.println(s);
+	}
+	
+	public static void info(String s){
+		System.out.println(s);
+	}
+}

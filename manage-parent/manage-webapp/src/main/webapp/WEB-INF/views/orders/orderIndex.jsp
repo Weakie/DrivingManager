@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-cn">
 <head>
 <%@ include file="../include/resource_link.jsp"%>
@@ -23,7 +22,7 @@
 					<p>距离下次刷新还有： 秒</p>
 				</div>
 				<div class="col-md-2 column">
-					<a class="btn btn-primary" href="<c:url value="/orders"/>" role="button" data-toggle="tab">刷新</a> <a class="btn btn-primary" href="#panel-16700" role="button" data-toggle="tab">添加新订单</a>
+					<a class="btn btn-primary" href="<c:url value="/orders"/>" role="button" data-toggle="tab">刷新</a> <a class="btn btn-primary" href="<c:url value="/order"/>" role="button" data-toggle="tab">添加新订单</a>
 				</div>
 			</div>
 			<br>

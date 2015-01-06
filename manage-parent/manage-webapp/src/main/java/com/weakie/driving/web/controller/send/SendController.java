@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.weakie.driving.utils.LogUtil;
 
 import com.weakie.driving.model.Coordinate;
 import com.weakie.driving.model.driver.DriverLocationInfo;
 import com.weakie.driving.model.driver.DriverStatus;
 import com.weakie.driving.service.driver.DriverLocationService;
-import com.weakie.driving.service.order.OrderDetailService;
+import com.weakie.driving.service.order.OrderService;
 import com.weakie.driving.service.order.OrderListService;
 import com.weakie.driving.utils.PageControl;
 
@@ -27,22 +28,20 @@ import com.weakie.driving.utils.PageControl;
  */
 @Controller
 @RequestMapping("/send")
-public class SendOrderController {
+public class SendController {
 
-	private OrderListService orderService;
-	private OrderDetailService orderDetailService;
+	private OrderService orderService;
+	private OrderListService orderListService;
 	private DriverLocationService driverLocationService;
 
 	@Autowired
-	public void setOrderService(OrderListService orderService) {
+	public void setOrderService(OrderService orderService) {
 		this.orderService = orderService;
 	}
-
 	@Autowired
-	public void setOrderDetailService(OrderDetailService orderDetailService) {
-		this.orderDetailService = orderDetailService;
+	public void setOrderListService(OrderListService orderListService) {
+		this.orderListService = orderListService;
 	}
-
 	@Autowired
 	public void setDriverLocationService(DriverLocationService driverLocationService) {
 		this.driverLocationService = driverLocationService;
@@ -65,7 +64,7 @@ public class SendOrderController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, params = "orderID")
 	public String orderIndexWithSelected(@RequestParam("orderID") String orderID, ModelMap modelMap){
-		modelMap.addAttribute("order", this.orderDetailService.getOrderDetailByOrderID(orderID));
+		modelMap.addAttribute("order", this.orderService.getOrderProfileByOrderID(orderID));
 		return "/sendOrder/sendIndexWithSelected";
 	}
 
@@ -79,7 +78,7 @@ public class SendOrderController {
 	public ModelAndView getUnSendOrders(@ModelAttribute("pc") PageControl p) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/sendOrder/pages/unsendOrderList");
-		mav.addObject("orderList", this.orderService.getNewOrders(p));
+		mav.addObject("orderList", this.orderListService.getNewOrders(p));
 		return mav;
 	}
 
@@ -107,10 +106,11 @@ public class SendOrderController {
 	 * @return
 	 */
 	@RequestMapping(value = "/drivers", method = RequestMethod.GET, params = "coordinate")
-	public ModelAndView getAvailableDriven(@RequestParam("coordinate") String c, @ModelAttribute PageControl p) {
+	public ModelAndView getAvailableDriven(@RequestParam("coordinate") Coordinate c, @ModelAttribute PageControl p) {
+		LogUtil.debug("Invoke SendOrderControl.getAvailableDriven():"+c);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/sendOrder/pages/availableDriverList");
-		mav.addObject("driverList", this.driverLocationService.getDriverLocationInfosByPosition(new Coordinate(c), p));
+		mav.addObject("driverList", this.driverLocationService.getDriverLocationInfosByPosition(c, p));
 		return mav;
 	}
 

@@ -3,8 +3,6 @@ package com.weakie.driving.model.orders;
 import java.util.Arrays;
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.weakie.driving.model.Coordinate;
 
 /**
@@ -17,7 +15,6 @@ public class OrderCreating {
 	private String customerID;
 	private String aptmtPlace;
 	private Coordinate aptmtCoordt;
-	@DateTimeFormat(pattern="yyyy/MM/dd HH:mm")
 	private Date aptmtTime;
 	private int aptmtPeople = 1;
 	private String orderSource;
@@ -108,7 +105,5 @@ public class OrderCreating {
 				+ orderSource + ", isAuto=" + auto + ", comment=" + comment + ", drivers=" + Arrays.toString(drivers)
 				+ "]";
 	}
-	
-	
 	
 }
