@@ -3,6 +3,8 @@ package com.weakie.driving.model.orders;
 import java.util.Date;
 
 import com.weakie.driving.model.Coordinate;
+import com.weakie.driving.model.Customer;
+import com.weakie.driving.model.Driver;
 
 /**
  * 订单详细信息
@@ -18,7 +20,7 @@ public class OrderDetail {
 	private Date aptmtTime;
 	private String aptmtPlace;//代驾地点
 
-	private OrderCustomer customer;
+	private Customer customer;
 	private Coordinate aptmtCoordt;
 
 	private String comment;
@@ -26,7 +28,7 @@ public class OrderDetail {
 	private Date createTime;	// 09订单创建时间
 	private Date dispatchedTime;// 10订单创建时间
 	
-	private OrderDriver driver;
+	private Driver driver;
 	private Date acceptTime;	// 15接单时间
 	private Date arrivedTime;	// 16到达时间
 	
@@ -56,8 +58,8 @@ public class OrderDetail {
 		super();
 	}
 	public OrderDetail(String orderID, String orderType, String orderSource, Date aptmtTime, String aptmtPlace,
-			OrderCustomer customer, Coordinate aptmtCoordt, String comment, Date createTime, Date dispatchedTime,
-			OrderDriver driver, Date acceptTime, Date arrivedTime, Date departTime, String destination, String predictInfo,
+			Customer customer, Coordinate aptmtCoordt, String comment, Date createTime, Date dispatchedTime,
+			Driver driver, Date acceptTime, Date arrivedTime, Date departTime, String destination, String predictInfo,
 			Date payedTime, int shouldPay, int actualPay, String carNumber, int waitingTime, int drivingTime,
 			int midWaitTime, float driverMileage, int reimburse, String reimburseNotes, Date reimburseTime,
 			String payMethod, OrderStatus orderStatus, Date destroyedTime) {
@@ -123,10 +125,10 @@ public class OrderDetail {
 	public void setAptmtPlace(String aptmtPlace) {
 		this.aptmtPlace = aptmtPlace;
 	}
-	public OrderCustomer getCustomer() {
+	public Customer getCustomer() {
 		return customer;
 	}
-	public void setCustomer(OrderCustomer customer) {
+	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 	public Coordinate getAptmtCoordt() {
@@ -153,10 +155,10 @@ public class OrderDetail {
 	public void setDispatchedTime(Date dispatchedTime) {
 		this.dispatchedTime = dispatchedTime;
 	}
-	public OrderDriver getDriver() {
+	public Driver getDriver() {
 		return driver;
 	}
-	public void setDriver(OrderDriver driver) {
+	public void setDriver(Driver driver) {
 		this.driver = driver;
 	}
 	public Date getAcceptTime() {

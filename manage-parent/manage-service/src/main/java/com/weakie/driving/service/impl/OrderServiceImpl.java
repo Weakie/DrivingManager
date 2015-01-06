@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.stereotype.Service;
 
 import com.weakie.driving.model.Coordinate;
-import com.weakie.driving.model.orders.OrderCustomer;
+import com.weakie.driving.model.Customer;
 import com.weakie.driving.model.orders.OrderDetail;
 import com.weakie.driving.model.orders.OrderProfile;
 import com.weakie.driving.model.orders.OrderStatus;
@@ -27,7 +27,7 @@ public class OrderServiceImpl implements OrderService {
 		p.setOrderSource("客户下单");
 		p.setOrderType("一键下单");
 		p.setOrderStatus(OrderStatus.NEW);
-		p.setCustomer(new OrderCustomer("111","222","221213121"));
+		p.setCustomer(new Customer("111","222","221213121"));
 		p.setAptmtTime(new Date());
 		p.setAptmtPlace("上海市");
 		p.setAptmtCoordt(new Coordinate(123,344));

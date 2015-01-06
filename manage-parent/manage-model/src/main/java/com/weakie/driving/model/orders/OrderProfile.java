@@ -3,6 +3,7 @@ package com.weakie.driving.model.orders;
 import java.util.Date;
 
 import com.weakie.driving.model.Coordinate;
+import com.weakie.driving.model.Customer;
 
 /**
  * 订单简单信息
@@ -17,7 +18,7 @@ public class OrderProfile {
 	private Date aptmtTime;
 	private String aptmtPlace;
 	
-	private OrderCustomer customer;
+	private Customer customer;
 	private Coordinate aptmtCoordt;
 	
 	private OrderStatus orderStatus;
@@ -66,11 +67,11 @@ public class OrderProfile {
 		this.aptmtPlace = aptmtPlace;
 	}
 
-	public OrderCustomer getCustomer() {
+	public Customer getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(OrderCustomer customer) {
+	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 

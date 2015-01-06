@@ -2,16 +2,16 @@ package com.weakie.driving.model.orders.type;
 
 import java.util.Date;
 
-import com.weakie.driving.model.orders.OrderCustomer;
-import com.weakie.driving.model.orders.OrderDriver;
+import com.weakie.driving.model.Customer;
+import com.weakie.driving.model.Driver;
 
 public class PayedOrder {
 
 	private String orderID;
 	private String orderType;
 	
-	private OrderCustomer customer;
-	private OrderDriver driver;
+	private Customer customer;
+	private Driver driver;
 	
 	private String destination;	//18 目的地
 	private Date payedTime;		//20 结算时间
@@ -22,7 +22,7 @@ public class PayedOrder {
 	public PayedOrder() {
 		super();
 	}
-	public PayedOrder(String orderID, String orderType, OrderCustomer customer, OrderDriver driver, String destination,
+	public PayedOrder(String orderID, String orderType, Customer customer, Driver driver, String destination,
 			Date payedTime, int shouldPay, int actualPay, String carNumber) {
 		super();
 		this.orderID = orderID;
@@ -47,16 +47,16 @@ public class PayedOrder {
 	public void setOrderType(String orderType) {
 		this.orderType = orderType;
 	}
-	public OrderCustomer getCustomer() {
+	public Customer getCustomer() {
 		return customer;
 	}
-	public void setCustomer(OrderCustomer customer) {
+	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	public OrderDriver getDriver() {
+	public Driver getDriver() {
 		return driver;
 	}
-	public void setDriver(OrderDriver driver) {
+	public void setDriver(Driver driver) {
 		this.driver = driver;
 	}
 	public String getDestination() {

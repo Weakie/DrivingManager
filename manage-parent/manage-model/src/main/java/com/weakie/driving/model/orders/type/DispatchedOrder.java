@@ -2,8 +2,8 @@ package com.weakie.driving.model.orders.type;
 
 import java.util.Date;
 
-import com.weakie.driving.model.orders.OrderCustomer;
-import com.weakie.driving.model.orders.OrderDriver;
+import com.weakie.driving.model.Customer;
+import com.weakie.driving.model.Driver;
 
 public class DispatchedOrder {
 	private String orderID;
@@ -13,17 +13,17 @@ public class DispatchedOrder {
 	private Date aptmtTime;
 	private String aptmtPlace;
 	
-	private OrderCustomer customer;	
+	private Customer customer;	
 	private String comment;
 	
-	private OrderDriver driver;
+	private Driver driver;
 
 	public DispatchedOrder() {
 		super();
 	}
 
 	public DispatchedOrder(String orderID, String orderType, String orderSource, Date aptmtTime, String aptmtPlace,
-			OrderCustomer customer, String comment, OrderDriver driver) {
+			Customer customer, String comment, Driver driver) {
 		super();
 		this.orderID = orderID;
 		this.orderType = orderType;
@@ -75,11 +75,11 @@ public class DispatchedOrder {
 		this.aptmtPlace = aptmtPlace;
 	}
 
-	public OrderCustomer getCustomer() {
+	public Customer getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(OrderCustomer customer) {
+	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 
@@ -91,11 +91,11 @@ public class DispatchedOrder {
 		this.comment = comment;
 	}
 
-	public OrderDriver getDriver() {
+	public Driver getDriver() {
 		return driver;
 	}
 
-	public void setDriver(OrderDriver driver) {
+	public void setDriver(Driver driver) {
 		this.driver = driver;
 	}
 	

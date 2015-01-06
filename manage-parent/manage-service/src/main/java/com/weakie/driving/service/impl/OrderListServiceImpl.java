@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.weakie.driving.model.Coordinate;
-import com.weakie.driving.model.orders.OrderCustomer;
-import com.weakie.driving.model.orders.OrderDriver;
+import com.weakie.driving.model.Customer;
+import com.weakie.driving.model.Driver;
 import com.weakie.driving.model.orders.type.AcceptedOrder;
 import com.weakie.driving.model.orders.type.DestroyedOrder;
 import com.weakie.driving.model.orders.type.DispatchedOrder;
@@ -22,12 +22,12 @@ import com.weakie.driving.utils.PageControl;
 @Service
 public class OrderListServiceImpl implements OrderListService {
 
-	private OrderCustomer Customer = new OrderCustomer("", "haha", "1231");
-	private OrderDriver driver = new OrderDriver("haha","王","1281203483","一米");
+	private Customer Customer = new Customer("", "haha", "1231");
+	private Driver driver = new Driver("haha","王","1281203483","一米");
 	
 	@Override
 	public List<NewOrder> getNewOrders(PageControl pageControl) {
-		NewOrder order = new NewOrder.Builder("09001920290").customer(new OrderCustomer("", "haha", "1231"))
+		NewOrder order = new NewOrder.Builder("09001920290").customer(new Customer("", "haha", "1231"))
 				.orderSource("一键下单").orderType("一键下单").aptmtPlace("shanghai").aptmtTime(new Date())
 				.aptmtCoordt(new Coordinate(100, 200)).build();
 		List<NewOrder> orderList = new ArrayList<NewOrder>();

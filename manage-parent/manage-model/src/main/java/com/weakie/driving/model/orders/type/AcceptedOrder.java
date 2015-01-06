@@ -2,8 +2,8 @@ package com.weakie.driving.model.orders.type;
 
 import java.util.Date;
 
-import com.weakie.driving.model.orders.OrderCustomer;
-import com.weakie.driving.model.orders.OrderDriver;
+import com.weakie.driving.model.Customer;
+import com.weakie.driving.model.Driver;
 
 /**
  * 已接单
@@ -18,10 +18,10 @@ public class AcceptedOrder {
 	private Date aptmtTime;
 	private String aptmtPlace;
 	
-	private OrderCustomer customer;	
+	private Customer customer;	
 	private String comment;
 	
-	private OrderDriver driver;
+	private Driver driver;
 	private Date acceptTime;//接单时间
 	
 	
@@ -29,7 +29,7 @@ public class AcceptedOrder {
 		super();
 	}
 	public AcceptedOrder(String orderID, String orderType, String orderSource, Date aptmtTime, String aptmtPlace,
-			OrderCustomer customer, String comment, OrderDriver driver, Date acceptTime) {
+			Customer customer, String comment, Driver driver, Date acceptTime) {
 		super();
 		this.orderID = orderID;
 		this.orderType = orderType;
@@ -71,10 +71,10 @@ public class AcceptedOrder {
 	public void setAptmtPlace(String aptmtPlace) {
 		this.aptmtPlace = aptmtPlace;
 	}
-	public OrderCustomer getCustomer() {
+	public Customer getCustomer() {
 		return customer;
 	}
-	public void setCustomer(OrderCustomer customer) {
+	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 	public String getComment() {
@@ -83,10 +83,10 @@ public class AcceptedOrder {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public OrderDriver getDriver() {
+	public Driver getDriver() {
 		return driver;
 	}
-	public void setDriver(OrderDriver driver) {
+	public void setDriver(Driver driver) {
 		this.driver = driver;
 	}
 	public Date getAcceptTime() {
