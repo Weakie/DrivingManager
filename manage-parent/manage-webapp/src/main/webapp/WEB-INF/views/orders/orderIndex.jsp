@@ -22,7 +22,7 @@
 					<p>距离下次刷新还有： 秒</p>
 				</div>
 				<div class="col-md-2 column">
-					<a class="btn btn-primary" href="<c:url value="/orders"/>" role="button" data-toggle="tab">刷新</a> <a class="btn btn-primary" href="<c:url value="/order"/>" role="button" data-toggle="tab">添加新订单</a>
+					<a class="btn btn-primary" href="<c:url value="/orders"/>" role="button" >刷新</a> <a class="btn btn-primary" href="<c:url value="/order"/>" role="button">添加新订单</a>
 				</div>
 			</div>
 			<br>

@@ -76,28 +76,28 @@
 							<td>创建时间：${order.createTime }</td>
 						</tr>
 						<tr>
-							<td>订单类型：</td>
+							<td>订单类型：${order.orderType }</td>
 						</tr>
 						<tr>
-							<td>订单来源：</td>
+							<td>订单来源：${order.orderSource }</td>
 						</tr>
 						<tr>
-							<td>代驾地点：</td>
+							<td>代驾地点：${order.aptmtPlace }</td>
 						</tr>
 						<tr>
-							<td>预约时间：</td>
+							<td>预约时间：${order.aptmtTime }</td>
 						</tr>
 						<tr>
-							<td>客户姓名：</td>
+							<td>客户姓名：${order.customer.name }</td>
 						</tr>
 						<tr>
-							<td>客户手机：</td>
+							<td>客户手机：${order.customer.telephone }</td>
 						</tr>
 						<tr>
-							<td>当前状态：</td>
+							<td>当前状态：${order.orderStatus }</td>
 						</tr>
 						<tr>
-							<td>订单备注：</td>
+							<td>订单备注：${order.comment }</td>
 						</tr>
 					</tbody>
 				</table>
@@ -113,25 +113,25 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>等待时间：</td>
+							<td>等待时间：${order.waitingTime }</td>
 						</tr>
 						<tr>
-							<td>代驾耗时：</td>
+							<td>代驾耗时：${order.drivingTime }</td>
 						</tr>
 						<tr>
-							<td>行驶公里：</td>
+							<td>行驶公里：${order.driverMileage }</td>
 						</tr>
 						<tr>
-							<td>应收金额：</td>
+							<td>应收金额：${order.shouldPay }</td>
 						</tr>
 						<tr>
-							<td>实收金额：</td>
+							<td>实收金额：${actualPay }</td>
 						</tr>
 						<tr>
-							<td>报销金额：</td>
+							<td>报销金额：${reimburse }</td>
 						</tr>
 						<tr>
-							<td>付款方式：</td>
+							<td>付款方式：${order.payMethod }</td>
 						</tr>
 					</tbody>
 				</table>

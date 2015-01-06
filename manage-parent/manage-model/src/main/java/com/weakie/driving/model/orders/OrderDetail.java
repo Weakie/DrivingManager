@@ -16,7 +16,7 @@ public class OrderDetail {
 	private String orderSource;
 
 	private Date aptmtTime;
-	private String aptmtPlace;
+	private String aptmtPlace;//代驾地点
 
 	private OrderCustomer customer;
 	private Coordinate aptmtCoordt;
