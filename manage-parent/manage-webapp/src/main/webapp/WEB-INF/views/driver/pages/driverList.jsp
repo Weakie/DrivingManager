@@ -19,18 +19,25 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>易米</td>
-			<td>易米</td>
-			<td>easymi</td>
-			<td>13956437890</td>
-			<td><font color="#DAA520"><b>0</b></font></td>
-			<td>兼职</td>
-			<td><font color="#008000"><b>空闲</b></font></td>
-			<td>2.1.2</td>
-			<td>易米</td>
-			<td>09/01 18:50</td>
-			<td><a href="#">编辑</a> <a href="#">删除</a> <a href="#">冻结</a> <a href="#">改密码</a> <a href="#">充值</a> <a href="#">消费历史</a> <a href="#">解绑</a> <a href="#">强制下线</a></td>
-		</tr>
+		<c:forEach items="${driverList }" var="driver">
+			<tr>
+				<td>${driver.nickName }</td>
+				<td>${driver.realName }</td>
+				<td>${driver.driverID }</td>
+				<td>${driver.telephone }</td>
+				<td><font color="#DAA520"><b><fmt:formatNumber value="${driver.balance }" type="currency" /></b></font></td>
+				<td>${driver.typeString }</td>
+				<td><font color="#008000"><b>${driver.stateString }</b></font></td>
+				<td>${driver.version }</td>
+				<td>${driver.companyName }</td>
+				<td><fmt:formatDate value="${driver.registeTime }" type="both" pattern="MM/dd HH:mm" /></td>
+				<td><a href="#">编辑</a> <a href="#">删除</a> <a href="#">冻结</a> <a href="#">改密码</a> <a href="#">充值</a> <a href="#">消费历史</a> <a href="#">解绑</a> <a href="#">强制下线</a></td>
+			</tr>
+		</c:forEach>
 	</tbody>
 </table>
+<c:if test="${not empty script }">
+	<script>
+		document.getElementById('balanceUnder200').innerText = ${pc.totalNum};
+	</script>
+</c:if>

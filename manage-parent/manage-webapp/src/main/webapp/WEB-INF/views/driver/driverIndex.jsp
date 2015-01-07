@@ -20,7 +20,7 @@ div.info {
 				<div class="btn-group">
 					<button type="button" class="btn btn-default">全部</button>
 					<button type="button" class="btn btn-default">
-						余额少于200-<span class="label label-danger">59</span>
+						余额少于200-<span id='balanceUnder200' class="label label-danger">59</span>
 					</button>
 					<button type="button" class="btn btn-default">已冻结</button>
 					<button type="button" class="btn btn-default">通话记录</button>
@@ -41,6 +41,11 @@ div.info {
 		<br>
 		<div style="border: 1px solid #D3D3D3">
 			<!-- 司机信息 -->
+			<c:import url="/drivers">
+			<c:param name="type" value="balance" />
+			<c:param name="pageIndex" value="1" />
+			<c:param name="pageNum" value="10" />
+		</c:import>
 		</div>
 	</div>
 </body>

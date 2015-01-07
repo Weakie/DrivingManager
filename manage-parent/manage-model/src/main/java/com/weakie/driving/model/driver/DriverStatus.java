@@ -1,5 +1,7 @@
 package com.weakie.driving.model.driver;
 
+import org.apache.commons.lang3.StringUtils;
+
 public enum DriverStatus {
 
 	ALL, 		// 全部
@@ -17,6 +19,9 @@ public enum DriverStatus {
 	WORKINGCAR;	// 工作车
 	
 	public static DriverStatus statusMapping(DriverStatus status){
+		if(status == null){
+			return NONE;
+		}
 		switch (status) {
 		case FREE:
 			return FREE;
@@ -30,6 +35,22 @@ public enum DriverStatus {
 			return BUSY;
 		default:
 			return NONE;
+		}
+	}
+	
+	public static String convertToString(DriverStatus state){
+		if(state == null){
+			return StringUtils.EMPTY;
+		}
+		switch (state) {
+		case FREE:
+			return "空闲";
+		case WORKINGCAR:
+			return "工作车";
+		case BUSY:
+			return "忙碌";
+		default:
+			return StringUtils.EMPTY;
 		}
 	}
 }

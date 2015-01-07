@@ -11,7 +11,7 @@ public class DriverProfile {
 	private boolean sex;//true male
 	private String telephone;
 	private Date licenseTime;
-	private String type;
+	private DriverType type;
 	private String companyID;
 	private String companyName;
 	private Date registeTime;
@@ -71,10 +71,13 @@ public class DriverProfile {
 	public void setLicenseTime(Date licenseTime) {
 		this.licenseTime = licenseTime;
 	}
-	public String getType() {
+	public DriverType getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public String getTypeString(){
+		return DriverType.convertToString(this.type);
+	}
+	public void setType(DriverType type) {
 		this.type = type;
 	}
 	public String getCompanyID() {
@@ -133,6 +136,9 @@ public class DriverProfile {
 	}
 	public DriverStatus getState() {
 		return state;
+	}
+	public String getStateString(){
+		return DriverStatus.convertToString(DriverStatus.statusMapping(state));
 	}
 	public void setState(DriverStatus state) {
 		this.state = state;
