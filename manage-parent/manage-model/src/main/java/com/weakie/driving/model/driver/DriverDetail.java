@@ -2,6 +2,8 @@ package com.weakie.driving.model.driver;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class DriverDetail {
 
 	private String driverID;
@@ -10,8 +12,10 @@ public class DriverDetail {
 	private String identity;
 	private boolean sex;//true male
 	private String telephone;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
 	private Date licenseTime;
-	private String type;
+	private DriverType type;
 	private String companyID;
 	private String companyName;
 	
@@ -21,15 +25,14 @@ public class DriverDetail {
 	private String paymentID;//提成ID
 	private String licenseType;
 	private String introducer;
-	private int height;
+	private String height;
 	private String nativePlace;
 	private String address;
 	private String emergPeople;
 	private String emergTel;
 	private String comment;
 	private Date registeTime;
-	
-	
+
 	public DriverDetail() {
 		super();
 	}
@@ -76,10 +79,10 @@ public class DriverDetail {
 	public void setLicenseTime(Date licenseTime) {
 		this.licenseTime = licenseTime;
 	}
-	public String getType() {
+	public DriverType getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(DriverType type) {
 		this.type = type;
 	}
 	public String getCompanyID() {
@@ -130,10 +133,10 @@ public class DriverDetail {
 	public void setIntroducer(String introducer) {
 		this.introducer = introducer;
 	}
-	public int getHeight() {
+	public String getHeight() {
 		return height;
 	}
-	public void setHeight(int height) {
+	public void setHeight(String height) {
 		this.height = height;
 	}
 	public String getNativePlace() {

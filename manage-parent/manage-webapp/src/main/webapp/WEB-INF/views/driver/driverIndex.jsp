@@ -12,6 +12,9 @@ div.info {
 </head>
 <body>
 	<div class="container">
+		<c:set var="nav" value="4" />
+		<%@ include file="../include/navigator.jsp"%>
+
 		<div class="row clearfix">
 			<div class="col-md-5 column">
 				<div class="btn-group">
@@ -32,7 +35,7 @@ div.info {
 			</div>
 			<div class="col-md-2 column"></div>
 			<div class="col-md-1 column">
-				<button type="button" class="btn btn-primary" style="text-align: right">添加新司机</button>
+				<a class="btn btn-primary" href="<c:url value="/driver"/>" role="button">添加新司机</a>
 			</div>
 		</div>
 		<br>

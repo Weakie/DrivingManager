@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page import="com.weakie.driving.model.driver.DriverType"%>
 <html lang="zh-cn">
 <head>
 <%@ include file="../include/resource_link.jsp"%>
-<title>添加司机-代价管理系统</title>
+<title>${title }-代价管理系统</title>
 <style type="text/css">
 div.info {
 	font-size: 12px
@@ -11,12 +14,19 @@ div.info {
 </head>
 <body>
 	<div class="container">
-		<br>
 		<c:set var="nav" value="4" />
 		<%@ include file="../include/navigator.jsp"%>
-
+		<div style="height: 20px;">
+			<ul class="breadcrumb">
+				<li><a href="#">司机管理</a> <span class="divider"></span></li>
+				<li class="active">${title }<span class="divider"></span>
+				</li>
+				<li><a href="#">返回</a> <span class="divider"></span></li>
+			</ul>
+		</div>
+		<br> <br>
 		<div class="row clearfix">
-			<form action="">
+			<form action="<c:url value="/driver"/>" method="POST">
 				<div class="col-md-6 column">
 					<div class="panel panel-default">
 						<div class="panel-heading">填写司机信息(必填)</div>
@@ -24,27 +34,26 @@ div.info {
 							<div class="info">
 								<font color="red">*</font><b>工号：</b>
 							</div>
-							<input type="text" class="form-control" placeholder="">
+							<input type="hidden" name="_method" value="${method }" >
+							<input type="text" name="driverID" required="required" value="${driver.driverID }" <c:if test="${not empty driver.driverID }" >readonly</c:if> class="form-control" placeholder="">
 							<div class="info">请输入手机客户端登录工号</div>
 							<br>
 							<div class="info">
 								<font color="red">*</font><b>昵称：</b>
 							</div>
-							<input type="text" class="form-control" placeholder=""> <br>
+							<input type="text" name="nickName" required="required" value="${driver.nickName }" class="form-control" placeholder=""> <br>
+							<div class="info">
+								<font color="red">*</font><b>真实姓名：</b>
+							</div>
+							<input type="text" name="realName" required="required" value="${driver.realName }" class="form-control" placeholder=""> <br>
 							<div class="info">
 								<font color="red">*</font><b>身份证号：</b>
 							</div>
-							<input type="text" class="form-control" placeholder=""> <br>
+							<input type="text" name="identity" required="required" value="${driver.identity }" pattern="\d{18}|\d{15}" class="form-control" placeholder=""> <br>
 							<div style="font-size: 12px" class="row clearfix">
-								<div class="col-md-2 column" style="padding-right: 0px">
-									<font color="red">*</font><b>性别：</b>
-								</div>
-								<div class="col-md-2 column" style="padding-left: 0px">
-									<label class="checkbox-inline"> <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked> 男
-									</label>
-								</div>
-								<div class="col-md-2 column">
-									<label class="checkbox-inline"> <input type="radio" name="optionsRadiosinline" id="optionsRadios4" value="option2"> 女
+								<div class="col-md-4 column" style="padding-right: 0px">
+									<font color="red">*</font><b>性别：</b> <label class="checkbox-inline"> <input type="radio" name="sex" id="optionsRadios3" value="true" <c:if test="${driver.sex }" >checked</c:if>> 男
+									</label> <label class="checkbox-inline"> <input type="radio" name="sex" id="optionsRadios4" value="false" <c:if test="${not driver.sex }" >checked</c:if>> 女
 									</label>
 								</div>
 							</div>
@@ -52,23 +61,30 @@ div.info {
 							<div class="info">
 								<font color="red">*</font><b>手机号：</b>
 							</div>
-							<input type="text" class="form-control" placeholder=""> <br>
+							<input type="text" name="telephone" required="required" value="${driver.telephone }" pattern="[0-9]{11}" class="form-control" placeholder=""> <br>
 							<div class="info">
 								<font color="red">*</font><b>领证时间：</b>
 							</div>
-							<input type="date" class="form-control" placeholder=""> <br>
+							<input type="date" name="licenseTime" required="required" value="<fmt:formatDate value="${driver.licenseTime }" pattern="yyyy-MM-dd"/>" class="form-control" placeholder=""> <br>
+							<div class="info">
+								<font color="red">*</font><b>所属公司：</b>
+							</div>
+							<select name="companyID" required="required" class="form-control">
+								<c:forEach var="item" items="${company }">
+									<option value="${item.key }" <c:if test="${driver.companyID eq item.key}">selected</c:if>>${item.value }</option>
+								</c:forEach>
+							</select> <br>
 							<div class="info">
 								<font color="red">*</font><b>员工类型：</b>
 							</div>
-							<select class="form-control">
-								<option>兼职</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
+							<select name="type" required="required" class="form-control">
+								<option value="<%=DriverType.PARTTIME%>" <c:if test="${driver.type eq 'PARTTIME'}">selected</c:if>>兼职</option>
+								<option value="<%=DriverType.FULLTIME%>" <c:if test="${driver.type eq 'FULLTIME'}">selected</c:if>>全职</option>
 							</select> <br>
-							<button type="button" class="btn btn-primary">保存</button>
-							<button type="button" class="btn btn-default">返回</button>
+							<div class="info">
+								<b>备注：</b>
+							</div>
+							<textarea name="comment" class="form-control">${driver.comment }</textarea>
 						</div>
 					</div>
 				</div>
@@ -79,54 +95,49 @@ div.info {
 							<div class="info">
 								<b>提成：</b>
 							</div>
-							<select class="form-control">
-								<option>35开</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
+							<select name="paymentID" class="form-control">
+								<c:forEach var="item" items="${payment }">
+									<option value="${item.key }" <c:if test="${driver.paymentID eq item.key}">selected</c:if>>${item.value }</option>
+								</c:forEach>
 							</select> <br>
 							<div class="info">
 								<b>驾照类型：</b>
 							</div>
-							<input type="text" class="form-control" placeholder=""> <br>
+							<input type="text" name="licenseType" value="${driver.licenseType }" class="form-control" placeholder=""> <br>
 							<div class="info">
 								<b>介绍人：</b>
 							</div>
-							<input type="text" class="form-control" placeholder=""> <br>
+							<input type="text" name="introducer" value="${driver.introducer }" class="form-control" placeholder=""> <br>
 							<div class="info">
 								<b>身高(cm)：</b>
 							</div>
-							<input type="text" class="form-control" placeholder=""> <br>
+							<input type="Number" name="height" value="${driver.height }" pattern="[0-9]{3}" class="form-control" placeholder=""> <br>
 							<div class="info">
 								<b>籍贯：</b>
 							</div>
-							<input type="text" class="form-control" placeholder=""> <br>
+							<input type="text" name="nativePlace" value="${driver.nativePlace }" class="form-control" placeholder=""> <br>
 							<div class="info">
 								<b>家庭住址：</b>
 							</div>
-							<input type="text" class="form-control" placeholder=""> <br>
+							<input type="text" name="address" value="${driver.address }" class="form-control" placeholder=""> <br>
 							<div class="info">
 								<b>紧急联系人：</b>
 							</div>
-							<input type="text" class="form-control" placeholder=""> <br>
+							<input type="text" name="emergPeople" value="${driver.emergPeople }" class="form-control" placeholder=""> <br>
 							<div class="info">
 								<b>紧急电话：</b>
 							</div>
-							<input type="text" class="form-control" placeholder=""> <br>
-							<div class="info">
-								<b>备注：</b>
+							<input type="text" name="emergTel" value="${driver.emergTel }" pattern="[0-9]{11}" class="form-control" placeholder=""> <br> <br>
+							
+							<div  class="info">
+								<input type="submit" class="btn btn-primary" value="保存" />
+								<button type="button" class="btn btn-default">返回</button>
 							</div>
-							<textarea class="form-control"></textarea>
-							<br>
-							<button type="button" class="btn btn-primary">保存</button>
-							<button type="button" class="btn btn-default">返回</button>
 						</div>
 					</div>
 				</div>
 			</form>
 		</div>
-		<br>
 		<div class="panel panel-default">
 			<div class="panel-heading">上传照片（可选）</div>
 			<div class="panel-body">
@@ -176,6 +187,7 @@ div.info {
 				</div>
 			</div>
 		</div>
+
 	</div>
 </body>
 </html>
