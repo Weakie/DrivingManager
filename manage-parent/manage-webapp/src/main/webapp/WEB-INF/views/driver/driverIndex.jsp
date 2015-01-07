@@ -14,38 +14,74 @@ div.info {
 	<div class="container">
 		<c:set var="nav" value="4" />
 		<%@ include file="../include/navigator.jsp"%>
-
-		<div class="row clearfix">
-			<div class="col-md-5 column">
-				<div class="btn-group">
-					<button type="button" class="btn btn-default">全部</button>
-					<button type="button" class="btn btn-default">
-						余额少于200-<span id='balanceUnder200' class="label label-danger">59</span>
-					</button>
-					<button type="button" class="btn btn-default">已冻结</button>
-					<button type="button" class="btn btn-default">通话记录</button>
-					<button type="button" class="btn btn-default">司机审核</button>
+		<div class="tabbable" id="tabs-236691">
+			<div class="row clearfix">
+				<div class="col-md-5 column">
+					<div class="btn-group">
+						<a type="button" href="#panel-16699" class="btn btn-default">全部</a> 
+						<a type="button" href="#panel-16700"
+							class="btn btn-default"> 余额少于200-<span id='balanceUnder200' class="label label-danger">59</span>
+						</a> 
+						<a type="button" href="#panel-16701" class="btn btn-default">已冻结</a> 
+						<a type="button" href="#panel-16702" class="btn btn-default">通话记录</a> 
+						<a type="button" href="#panel-16703" class="btn btn-default">司机审核</a>
+					</div>
+				</div>
+				<div class="col-md-3 column">
+					<input type="text" class="form-control" placeholder="输入账号、姓名、手机">
+				</div>
+				<div class="col-md-1 column" style="padding-left: 0px">
+					<button type="button" class="btn btn-default">搜索</button>
+				</div>
+				<div class="col-md-1 column"></div>
+				<div class="col-md-2 column" style="text-align: right">
+					<a class="btn btn-primary" href="<c:url value="/driver"/>" role="button">添加新司机</a>
 				</div>
 			</div>
-			<div class="col-md-3 column">
-				<input type="text" class="form-control" placeholder="输入账号、姓名、手机">
+			<br>
+			<div class="tab-content">
+				<div class="tab-pane active" id="panel-16699">
+					<div style="border: 1px solid #D3D3D3">
+						<c:import url="/drivers">
+							<c:param name="type" value="all" />
+							<c:param name="pageIndex" value="1" />
+							<c:param name="pageNum" value="10" />
+						</c:import>
+					</div>
+				</div>
+
+				<div class="tab-pane" id="panel-16700">
+					<div style="border: 1px solid #D3D3D3">
+						<c:import url="/drivers">
+							<c:param name="type" value="balance" />
+							<c:param name="pageIndex" value="1" />
+							<c:param name="pageNum" value="10" />
+						</c:import>
+					</div>
+				</div>
+
+				<div class="tab-pane" id="panel-16701">
+					<div style="border: 1px solid #D3D3D3">
+						<c:import url="/drivers">
+							<c:param name="type" value="freeze" />
+							<c:param name="pageIndex" value="1" />
+							<c:param name="pageNum" value="10" />
+						</c:import>
+					</div>
+				</div>
+
+				<div class="tab-pane" id="panel-16702"></div>
+
+				<div class="tab-pane" id="panel-16703">
+					<div style="border: 1px solid #D3D3D3">
+						<c:import url="/drivers">
+							<c:param name="type" value="unapproved" />
+							<c:param name="pageIndex" value="1" />
+							<c:param name="pageNum" value="10" />
+						</c:import>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-1 column" style="padding-left: 0px">
-				<button type="button" class="btn btn-default">搜索</button>
-			</div>
-			<div class="col-md-2 column"></div>
-			<div class="col-md-1 column">
-				<a class="btn btn-primary" href="<c:url value="/driver"/>" role="button">添加新司机</a>
-			</div>
-		</div>
-		<br>
-		<div style="border: 1px solid #D3D3D3">
-			<!-- 司机信息 -->
-			<c:import url="/drivers">
-			<c:param name="type" value="balance" />
-			<c:param name="pageIndex" value="1" />
-			<c:param name="pageNum" value="10" />
-		</c:import>
 		</div>
 	</div>
 </body>
