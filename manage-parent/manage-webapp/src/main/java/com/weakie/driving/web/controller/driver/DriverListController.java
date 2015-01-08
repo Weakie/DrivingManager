@@ -63,4 +63,12 @@ public class DriverListController {
 	public ModelAndView searchDrivers(@RequestParam("q") String q, @ModelAttribute("pc") PageControl p) {
 		return null;
 	}
+	
+	@RequestMapping(value="/call",method = RequestMethod.GET)
+	public ModelAndView getDriverCallRecords(@ModelAttribute("pc") PageControl p) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/driver/pages/callRecords");
+		mav.addObject("callRecords", this.driverListService.getDriverCallRecords(p));
+		return mav;
+	}
 }

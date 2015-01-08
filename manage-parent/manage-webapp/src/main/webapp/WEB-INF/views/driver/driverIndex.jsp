@@ -18,13 +18,8 @@ div.info {
 			<div class="row clearfix">
 				<div class="col-md-5 column">
 					<div class="btn-group">
-						<a type="button" href="#panel-16699" class="btn btn-default">全部</a> 
-						<a type="button" href="#panel-16700"
-							class="btn btn-default"> 余额少于200-<span id='balanceUnder200' class="label label-danger">59</span>
-						</a> 
-						<a type="button" href="#panel-16701" class="btn btn-default">已冻结</a> 
-						<a type="button" href="#panel-16702" class="btn btn-default">通话记录</a> 
-						<a type="button" href="#panel-16703" class="btn btn-default">司机审核</a>
+						<a role="button" data-toggle="tab" href="#panel-16699" class="btn btn-default">全部</a> <a role="button" data-toggle="tab" href="#panel-16700" class="btn btn-default"> 余额少于200-<span id='balanceUnder200' class="label label-danger">59</span>
+						</a> <a role="button" data-toggle="tab" href="#panel-16701" class="btn btn-default">已冻结</a> <a role="button" data-toggle="tab" href="#panel-16702" class="btn btn-default">通话记录</a> <a role="button" data-toggle="tab" href="#panel-16703" class="btn btn-default">司机审核</a>
 					</div>
 				</div>
 				<div class="col-md-3 column">
@@ -70,7 +65,14 @@ div.info {
 					</div>
 				</div>
 
-				<div class="tab-pane" id="panel-16702"></div>
+				<div class="tab-pane" id="panel-16702">
+					<div style="border: 1px solid #D3D3D3">
+						<c:import url="/drivers/call">
+							<c:param name="pageIndex" value="1" />
+							<c:param name="pageNum" value="10" />
+						</c:import>
+					</div>
+				</div>
 
 				<div class="tab-pane" id="panel-16703">
 					<div style="border: 1px solid #D3D3D3">
