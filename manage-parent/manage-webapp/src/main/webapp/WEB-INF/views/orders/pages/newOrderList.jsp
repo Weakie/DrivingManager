@@ -27,7 +27,7 @@
 				<td>${order.customer.name }</td>
 				<td>${order.customer.telephone }</td>
 				<td>${fn:substring(order.comment,0,8) }</td>
-				<td><a href="#">派单</a> <a href="#">销单</a> <a href="#">备注</a></td>
+				<td><a href="#" onclick="">派单</a> <a href="#" onclick="destroyOrder('${order.orderID}')">销单</a> <a href="#">备注</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>

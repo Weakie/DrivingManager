@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.weakie.driving.utils.LogUtil;
 
@@ -16,6 +17,7 @@ import com.weakie.driving.model.Coordinate;
 import com.weakie.driving.model.orders.OrderCreating;
 import com.weakie.driving.service.driver.DriverLocationService;
 import com.weakie.driving.service.order.OrderService;
+import com.weakie.driving.utils.OpeResult;
 import com.weakie.driving.utils.PageControl;
 
 /**
@@ -49,11 +51,6 @@ public class OrderController {
 		return "/order/orderCreate";
 	}
 	
-	/**
-	 * 创建新订单
-	 * @param order
-	 * @return
-	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public String newOrder(OrderCreating order) {
 		System.out.println(order);
@@ -92,5 +89,24 @@ public class OrderController {
 		mav.setViewName("/order/orderDetail");
 		mav.addObject("order", this.orderService.getOrderDetailByOrderID(orderID));
 		return mav;
+	}
+	
+	/**
+	 * 销单,收回
+	 * @param orderID
+	 * @param state
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/{orderID}", method = RequestMethod.PUT, params="state")
+	public OpeResult destroyOrder(@PathVariable("orderID") String orderID,@RequestParam("state") String state){
+		System.out.println(orderID+" "+state);
+		return new OpeResult(OpeResult.RES_SUCCESS, "");
+	}
+	
+	@RequestMapping(value="/{orderID}", method = RequestMethod.PUT, params="comment")
+	public OpeResult commentOrder(@PathVariable("orderID") String orderID,@RequestParam("comment") String comment){
+		System.out.println("comment "+orderID+" ");
+		return new OpeResult(OpeResult.RES_SUCCESS, "");
 	}
 }
