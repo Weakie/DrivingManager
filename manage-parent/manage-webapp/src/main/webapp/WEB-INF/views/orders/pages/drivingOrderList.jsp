@@ -33,3 +33,6 @@
 		</c:forEach>
 	</tbody>
 </table>
+<c:set var="path" value="/orders" />
+<c:set var="data" value="type=driving" />
+<%@ include file="../../include/page_turning.jsp"%>

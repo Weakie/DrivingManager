@@ -32,5 +32,6 @@
 		</c:forEach>
 	</tbody>
 </table>
-${pc.pageIndex } 
-${pc.pageNum }
+<c:set var="path" value="/orders" />
+<c:set var="data" value="type=new" />
+<%@ include file="../../include/page_turning.jsp"%>

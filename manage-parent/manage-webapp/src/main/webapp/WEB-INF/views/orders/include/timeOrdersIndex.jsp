@@ -1,66 +1,110 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script type="text/javascript">
+	$(function() {
+		$('#collapseOne').collapse('hide')
+	});
+</script>
 <!--新工单-->
 <div class="panel panel-info">
-	<div class="panel-heading">新工单</div>
-	<div class="panel-body">
-		<c:import url="/orders">
-			<c:param name="type" value="new" />
-			<c:param name="pageIndex" value="1" />
-			<c:param name="pageNum" value="10" />
-		</c:import>
+	<div class="panel-heading">
+		<div class="row clearfix">
+			<div class="col-md-11 column">新工单</div>
+			<div class="col-md-1 column" style="text-align: right">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> 展开 </a>
+			</div>
+		</div>
+	</div>
+	<div id="collapseOne" class="panel-collapse collapse">
+		<div class="panel-body">
+			<c:import url="/orders">
+				<c:param name="type" value="new" />
+				<c:param name="pageIndex" value="1" />
+				<c:param name="pageNum" value="10" />
+			</c:import>
+		</div>
 	</div>
 </div>
 <!--已派单-->
 <div class="panel panel-warning">
-	<div class="panel-heading">已派单</div>
-	<div class="panel-body">
-		<c:import url="/orders">
-			<c:param name="type" value="dispatched" />
-			<c:param name="pageIndex" value="1" />
-			<c:param name="pageNum" value="10" />
-		</c:import>
+	<div class="panel-heading">
+		<div class="row clearfix">
+			<div class="col-md-11 column">已派单</div>
+			<div class="col-md-1 column" style="text-align: right">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"> 展开 </a>
+			</div>
+		</div>
+	</div>
+	<div id="collapseTwo" class="panel-collapse collapse">
+		<div class="panel-body">
+			<c:import url="/orders">
+				<c:param name="type" value="dispatched" />
+				<c:param name="pageIndex" value="1" />
+				<c:param name="pageNum" value="10" />
+			</c:import>
+		</div>
 	</div>
 </div>
 <!--正在前往预约地-->
 <div class="panel panel-success">
-	<div class="panel-heading">正在前往预约地</div>
-	<div class="panel-body">
-		<c:import url="/orders">
-			<c:param name="type" value="accepted" />
-			<c:param name="pageIndex" value="1" />
-			<c:param name="pageNum" value="10" />
-		</c:import>
+	<div class="panel-heading">
+		<div class="row clearfix">
+			<div class="col-md-11 column">正在前往预约地</div>
+			<div class="col-md-1 column" style="text-align: right">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> 展开 </a>
+			</div>
+		</div>
+	</div>
+	<div id="collapseThree" class="panel-collapse collapse">
+		<div class="panel-body">
+			<c:import url="/orders">
+				<c:param name="type" value="accepted" />
+				<c:param name="pageIndex" value="1" />
+				<c:param name="pageNum" value="10" />
+			</c:import>
+		</div>
 	</div>
 </div>
 <!--即将完成工单-->
 <div class="panel panel-danger">
-	<div class="panel-heading">
+	<div id="collapseFourHead" class="panel-heading">
 		<div class="row clearfix">
-			<div class="col-md-2 column">即将完成工单</div>
-			<div class="col-md-9 column"></div>
-			<div class="col-md-1 column">
-				<a href="#" style="padding-right: 0px">全部刷新</a>
+			<div class="col-md-10 column">即将完成工单</div>
+			<div class="col-md-1 column" style="text-align: right">
+				<a href="#collapseFourHead" style="padding-right: 0px;">全部刷新</a>
+			</div>
+			<div class="col-md-1 column" style="text-align: right">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> 展开 </a>
 			</div>
 		</div>
 	</div>
-	<div class="panel-body">
-		<c:import url="/orders">
-			<c:param name="type" value="driving" />
-			<c:param name="pageIndex" value="1" />
-			<c:param name="pageNum" value="10" />
-		</c:import>
+	<div id="collapseFour" class="panel-collapse collapse">
+		<div class="panel-body">
+			<c:import url="/orders">
+				<c:param name="type" value="driving" />
+				<c:param name="pageIndex" value="1" />
+				<c:param name="pageNum" value="10" />
+			</c:import>
+		</div>
 	</div>
 </div>
 <!--未完成接送-->
 <div class="panel panel-primary">
-	<div class="panel-heading">未完成接送</div>
-	<div class="panel-body">
-		<c:import url="/orders">
-			<c:param name="type" value="driving" />
-			<c:param name="pageIndex" value="1" />
-			<c:param name="pageNum" value="10" />
-		</c:import>
+	<div class="panel-heading">
+		<div class="row clearfix">
+			<div class="col-md-11 column">未完成接送</div>
+			<div class="col-md-1 column" style="text-align: right">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseFive"> 展开 </a>
+			</div>
+		</div>
+	</div>
+	<div id="collapseFive" class="panel-collapse collapse">
+		<div class="panel-body">
+			<c:import url="/orders">
+				<c:param name="type" value="driving" />
+				<c:param name="pageIndex" value="1" />
+				<c:param name="pageNum" value="10" />
+			</c:import>
+		</div>
 	</div>
 </div>

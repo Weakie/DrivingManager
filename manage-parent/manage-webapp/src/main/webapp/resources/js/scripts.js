@@ -16,3 +16,25 @@ function commentOrder(orderid) {
 		alert("Data: " + data + "\nStatus: " + status);
 	});
 }
+
+
+//page control
+function prevPage(self,path,data,curpage) {
+	curpage = curpage - 1;
+	if(curpage<=1){
+		curpage = 1;
+	}
+	$(self).closest("#pageTurning").parent().load(context + path, data+"&pageIndex="+curpage);
+}
+
+function currPage(self,path,data,curpage) {
+	$(self).closest("#pageTurning").parent().load(context + path, data+"&pageIndex="+curpage);
+}
+
+function nextPage(self,path,data,curpage,totalpage) {
+	curpage = curpage + 1;
+	if(curpage>=totalpage){
+		curpage = totalpage;
+	}
+	$(self).closest("#pageTurning").parent().load(context + path, data+"&pageIndex="+curpage);
+}
