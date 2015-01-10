@@ -18,7 +18,12 @@
 	
 	<!-- 配置Spring MVC注解驱动annotation -->
 	<mvc:annotation-driven />
-
+	
+	<!-- 配置spring mvc拦截器 -->
+	<mvc:interceptors>
+		<bean class="com.weakie.driving.web.interceptor.PageControlInterceptor"/>
+	</mvc:interceptors>
+	
 	<!-- 配置处理JSON -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" p:messageConverters-ref="messageConverters" />
 	<util:list id="messageConverters">

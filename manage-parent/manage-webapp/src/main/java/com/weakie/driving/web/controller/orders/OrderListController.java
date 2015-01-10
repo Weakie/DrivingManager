@@ -21,6 +21,11 @@ import com.weakie.driving.utils.PageControl;
 @RequestMapping("/orders")
 public class OrderListController {
 
+	@ModelAttribute("pc")
+	public PageControl getPageControl(){
+		return new PageControl("/orders");
+	}
+	
 	private OrderListService orderListService;
 
 	@Autowired
@@ -86,13 +91,16 @@ public class OrderListController {
 	public ModelAndView getReportedOrders(@ModelAttribute("pc") PageControl p) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/orders/pages/reportedOrderList");
-		mav.addObject("orderList", this.orderListService.getReportedOrder(p));
+		mav.addObject("orderList", this.orderListService.getReportedOrders(p));
 		return mav;
 	}
 
 	@RequestMapping(method = RequestMethod.GET, params = "q")
 	public ModelAndView searchOrders(@RequestParam("q") String q, @ModelAttribute("pc") PageControl p) {
-		return null;
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/orders/pages/reportedOrderList");
+		mav.addObject("orderList", this.orderListService.searchOrders(q, p));
+		return mav;
 	}
 
 	

@@ -46,6 +46,7 @@ public class OrderListServiceImpl implements OrderListService {
 		for (int i = 0; i < 10; i++) {
 			orderList.add(order);
 		}
+		pageControl.setTotalNum(100);
 		return orderList;
 	}
 
@@ -57,6 +58,7 @@ public class OrderListServiceImpl implements OrderListService {
 		for (int i = 0; i < 10; i++) {
 			orderList.add(order);
 		}
+		pageControl.setTotalNum(100);
 		return orderList;
 	}
 
@@ -68,6 +70,7 @@ public class OrderListServiceImpl implements OrderListService {
 		for (int i = 0; i < 10; i++) {
 			orderList.add(order);
 		}
+		pageControl.setTotalNum(100);
 		return orderList;
 	}
 
@@ -80,6 +83,7 @@ public class OrderListServiceImpl implements OrderListService {
 		for (int i = 0; i < 10; i++) {
 			orderList.add(order);
 		}
+		pageControl.setTotalNum(100);
 		return orderList;
 	}
 
@@ -92,11 +96,12 @@ public class OrderListServiceImpl implements OrderListService {
 		for (int i = 0; i < 10; i++) {
 			orderList.add(order);
 		}
+		pageControl.setTotalNum(100);
 		return orderList;
 	}
 
 	@Override
-	public  List<ReportedOrder> getReportedOrder(PageControl pageControl) {
+	public  List<ReportedOrder> getReportedOrders(PageControl pageControl) {
 		List<ReportedOrder> orderList = new ArrayList<ReportedOrder>();
 		ReportedOrder order = new ReportedOrder("0099000","一键下单",
 				this.Customer,this.driver,"shanghai",
@@ -104,6 +109,20 @@ public class OrderListServiceImpl implements OrderListService {
 		for (int i = 0; i < 10; i++) {
 			orderList.add(order);
 		}
+		pageControl.setTotalNum(100);
+		return orderList;
+	}
+
+	@Override
+	public List<ReportedOrder> searchOrders(String queryString, PageControl pageControl) {
+		List<ReportedOrder> orderList = new ArrayList<ReportedOrder>();
+		ReportedOrder order = new ReportedOrder("0099000","一键下单",
+				this.Customer,this.driver,"shanghai",
+				new Date(),20,20,"沪A1231");
+		for (int i = 0; i < 10; i++) {
+			orderList.add(order);
+		}
+		pageControl.setTotalNum(100);
 		return orderList;
 	}
 

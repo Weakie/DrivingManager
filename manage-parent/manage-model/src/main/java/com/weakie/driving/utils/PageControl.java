@@ -11,17 +11,16 @@ public class PageControl {
 	private int pageNum = 10;
 	private int totalNum = -1;
 	
-	private String path;//请求的URL路径
-	private String data;//请求的参数信息
+	private String pagePath;//请求的URL路径
+	private String pageData;//请求的参数信息
 	
 	public PageControl() {
 		super();
 	}
 	
-	public PageControl(String path, String data) {
+	public PageControl(String path) {
 		super();
-		this.path = path;
-		this.data = data;
+		this.pagePath = path;
 	}
 
 	public PageControl(int pageIndex, int pageNum, int totalNum) {
@@ -48,20 +47,27 @@ public class PageControl {
 	public void setTotalNum(int totalNum) {
 		this.totalNum = totalNum;
 	}
-	public String getPath() {
-		return path;
+	public String getPagePath() {
+		return pagePath;
 	}
-	public void setPath(String path) {
-		this.path = path;
+	public void setPagePath(String pagePath) {
+		this.pagePath = pagePath;
 	}
-	public String getData() {
-		return data;
+	public String getPageData() {
+		return pageData;
 	}
-	public void setData(String data) {
-		this.data = data;
+	public void setPageData(String pageData) {
+		this.pageData = pageData;
 	}
 
 	public int getTotalPage(){
 		return totalNum/pageNum;
 	}
+
+	@Override
+	public String toString() {
+		return "PageControl [pageIndex=" + pageIndex + ", pageNum=" + pageNum + ", totalNum=" + totalNum
+				+ ", pagePath=" + pagePath + ", pageData=" + pageData + "]";
+	}
+	
 }

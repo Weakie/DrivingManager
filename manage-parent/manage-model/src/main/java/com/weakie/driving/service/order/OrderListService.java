@@ -30,6 +30,7 @@ public interface OrderListService {
 	
 	public List<PayedOrder> getPayedOrders(PageControl pageControl);
 	
-	public List<ReportedOrder> getReportedOrder(PageControl pageControl);
+	public List<ReportedOrder> getReportedOrders(PageControl pageControl);
 
+	public List<ReportedOrder> searchOrders(String queryString, PageControl pageControl);
 }
