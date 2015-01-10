@@ -23,7 +23,7 @@
 	<tbody>
 		<c:forEach items="${orderList }" var="order">
 			<tr>
-				<td><a href="#">***${fn:substring(order.orderID,5,fn:length(order.orderID)) }</a></td>
+				<td><a href="<c:url value="/order/${order.orderID }"/>">***${fn:substring(order.orderID,5,fn:length(order.orderID)) }</a></td>
 				<td>${order.driver.company }</td>
 				<td>${order.orderType }</td>
 				<td>${order.orderSource }</td>

@@ -27,11 +27,12 @@ public class OrderListServiceImpl implements OrderListService {
 	
 	@Override
 	public List<NewOrder> getNewOrders(PageControl pageControl) {
-		NewOrder order = new NewOrder.Builder("09001920290").customer(new Customer("", "haha", "1231"))
-				.orderSource("一键下单").orderType("一键下单").aptmtPlace("shanghai").aptmtTime(new Date())
-				.aptmtCoordt(new Coordinate(100, 200)).build();
+		
 		List<NewOrder> orderList = new ArrayList<NewOrder>();
 		for (int i = 0; i < 10; i++) {
+			NewOrder order = new NewOrder.Builder("09001920290"+i).customer(new Customer("", "haha", "1231"))
+					.orderSource("一键下单").orderType("一键下单").aptmtPlace("shanghai").aptmtTime(new Date())
+					.aptmtCoordt(new Coordinate(100, 200)).build();
 			orderList.add(order);
 		}
 		pageControl.setTotalNum(100);
@@ -41,9 +42,10 @@ public class OrderListServiceImpl implements OrderListService {
 	@Override
 	public  List<AcceptedOrder> getAcceptedOrders(PageControl pageControl) {
 		List<AcceptedOrder> orderList = new ArrayList<AcceptedOrder>();
-		AcceptedOrder order = new AcceptedOrder("0099000","一键下单","客户端",new Date(),
-				"shanghai",this.Customer,"无",this.driver,new Date());
+		
 		for (int i = 0; i < 10; i++) {
+			AcceptedOrder order = new AcceptedOrder("0099000"+i,"一键下单","客户端",new Date(),
+					"shanghai",this.Customer,"无",this.driver,new Date());
 			orderList.add(order);
 		}
 		pageControl.setTotalNum(100);
@@ -53,9 +55,10 @@ public class OrderListServiceImpl implements OrderListService {
 	@Override
 	public  List<DispatchedOrder> getDispatchedOrders(PageControl pageControl) {
 		List<DispatchedOrder> orderList = new ArrayList<DispatchedOrder>();
-		DispatchedOrder order = new DispatchedOrder("00992310000998","一键下单","客户端",new Date(),
-				"shanghai",this.Customer,"无",this.driver);
+		
 		for (int i = 0; i < 10; i++) {
+			DispatchedOrder order = new DispatchedOrder("00992310000998"+i,"一键下单","客户端",new Date(),
+					"shanghai",this.Customer,"无",this.driver);
 			orderList.add(order);
 		}
 		pageControl.setTotalNum(100);
@@ -65,9 +68,9 @@ public class OrderListServiceImpl implements OrderListService {
 	@Override
 	public  List<DrivingOrder> getDrivingOrders(PageControl pageControl) {
 		List<DrivingOrder> orderList = new ArrayList<DrivingOrder>();
-		DrivingOrder order = new DrivingOrder("0099000",this.Customer,this.driver,
-				new Date(),"shanghai","09-02 12:57 行程27.7公里");
 		for (int i = 0; i < 10; i++) {
+			DrivingOrder order = new DrivingOrder("0099000"+i,this.Customer,this.driver,
+					new Date(),"shanghai","09-02 12:57 行程27.7公里");
 			orderList.add(order);
 		}
 		pageControl.setTotalNum(100);
@@ -77,10 +80,11 @@ public class OrderListServiceImpl implements OrderListService {
 	@Override
 	public  List<DestroyedOrder> getDestroyedOrders(PageControl pageControl) {
 		List<DestroyedOrder> orderList = new ArrayList<DestroyedOrder>();
-		DestroyedOrder order = new DestroyedOrder("0099000","一键下单","客户端",new Date(),
-				"shanghai",this.Customer,"无",this.driver,
-				new Date(),new Date());
+		
 		for (int i = 0; i < 10; i++) {
+			DestroyedOrder order = new DestroyedOrder("0099000"+i,"一键下单","客户端",new Date(),
+					"shanghai",this.Customer,"无",this.driver,
+					new Date(),new Date());
 			orderList.add(order);
 		}
 		pageControl.setTotalNum(100);
@@ -90,10 +94,11 @@ public class OrderListServiceImpl implements OrderListService {
 	@Override
 	public  List<PayedOrder> getPayedOrders(PageControl pageControl) {
 		List<PayedOrder> orderList = new ArrayList<PayedOrder>();
-		PayedOrder order = new PayedOrder("0099000","一键下单",
-				this.Customer,this.driver,"shanghai",
-				new Date(),20,20,"沪A1231");
+		
 		for (int i = 0; i < 10; i++) {
+			PayedOrder order = new PayedOrder("0099000"+i,"一键下单",
+					this.Customer,this.driver,"shanghai",
+					new Date(),20,20,"沪A1231");
 			orderList.add(order);
 		}
 		pageControl.setTotalNum(100);
@@ -103,10 +108,11 @@ public class OrderListServiceImpl implements OrderListService {
 	@Override
 	public  List<ReportedOrder> getReportedOrders(PageControl pageControl) {
 		List<ReportedOrder> orderList = new ArrayList<ReportedOrder>();
-		ReportedOrder order = new ReportedOrder("0099000","一键下单",
-				this.Customer,this.driver,"shanghai",
-				new Date(),20,20,"沪A1231");
+		
 		for (int i = 0; i < 10; i++) {
+			ReportedOrder order = new ReportedOrder("0099000"+i,"一键下单",
+					this.Customer,this.driver,"shanghai",
+					new Date(),20,20,"沪A1231");
 			orderList.add(order);
 		}
 		pageControl.setTotalNum(100);
@@ -116,10 +122,11 @@ public class OrderListServiceImpl implements OrderListService {
 	@Override
 	public List<ReportedOrder> searchOrders(String queryString, PageControl pageControl) {
 		List<ReportedOrder> orderList = new ArrayList<ReportedOrder>();
-		ReportedOrder order = new ReportedOrder("0099000","一键下单",
-				this.Customer,this.driver,"shanghai",
-				new Date(),20,20,"沪A1231");
+		
 		for (int i = 0; i < 10; i++) {
+			ReportedOrder order = new ReportedOrder("0099000"+i,"一键下单",
+					this.Customer,this.driver,"shanghai",
+					new Date(),20,20,"沪A1231");
 			orderList.add(order);
 		}
 		pageControl.setTotalNum(100);

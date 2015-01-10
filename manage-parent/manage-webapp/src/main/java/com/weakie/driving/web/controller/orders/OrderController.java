@@ -46,6 +46,10 @@ public class OrderController {
 		return new Date();
 	}
 	
+	/**
+	 * 创建新订单
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String newOrder() {
 		return "/order/orderCreate";
@@ -57,6 +61,7 @@ public class OrderController {
 		return "/order/orderCreate";
 	}
 	
+	//获取客户未完成订单
 	@RequestMapping(value="/customer/{customerID}", method = RequestMethod.GET)
 	public ModelAndView showIncompleteOrder(@PathVariable("customerID") String customerID) {
 		ModelAndView mav = new ModelAndView();
@@ -69,6 +74,7 @@ public class OrderController {
 		return mav;
 	}
 	
+	//获取可以派单的司机
 	@RequestMapping(value="/drivers", method = RequestMethod.GET)
 	public ModelAndView getAvailableDriven(@RequestParam("coordinate") Coordinate c, @ModelAttribute PageControl p) {
 		LogUtil.debug("Invoke OrderController.getAvailableDriven():"+c);
@@ -104,6 +110,12 @@ public class OrderController {
 		return new OpeResult(OpeResult.RES_SUCCESS, "");
 	}
 	
+	/**
+	 * 添加备注信息
+	 * @param orderID
+	 * @param comment
+	 * @return
+	 */
 	@RequestMapping(value="/{orderID}", method = RequestMethod.PUT, params="comment")
 	public OpeResult commentOrder(@PathVariable("orderID") String orderID,@RequestParam("comment") String comment){
 		System.out.println("comment "+orderID+" ");

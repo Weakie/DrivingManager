@@ -5,6 +5,7 @@ function destroyOrder(orderid) {
 		state : "destroy"
 	}, function(data, status) {
 		alert("Data: " + data.res + data.com + "\nStatus: " + status);
+		$("tr#"+orderid).hide();
 	});
 }
 function commentOrder(orderid) {
@@ -16,6 +17,11 @@ function commentOrder(orderid) {
 		alert("Data: " + data + "\nStatus: " + status);
 	});
 }
+
+
+
+
+
 
 
 //page control

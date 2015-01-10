@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <table class="table">
 	<thead>
@@ -19,15 +19,16 @@
 	<tbody>
 		<c:forEach items="${orderList }" var="order">
 			<tr>
-				<td><a href="#">***${fn:substring(order.orderID,5,fn:length(order.orderID)) }</a></td>
+				<td><a href="<c:url value="/order/${order.orderID }"/>">***${fn:substring(order.orderID,5,fn:length(order.orderID)) }</a></td>
 				<td>${order.driver.company }</td>
 				<td>${order.customer.name }</td>
 				<td>${order.customer.telephone }</td>
 				<td>${order.driver.name }</td>
 				<td>${order.driver.telephone }</td>
-				<td><fmt:formatDate value="${order.departTime }"  type="both" pattern="MM/dd HH:mm"/></td>
+				<td><fmt:formatDate value="${order.departTime }" type="both" pattern="MM/dd HH:mm" /></td>
 				<td>${order.destination }</td>
-				<td>${order.predictInfo } <a href="#">刷新</a>
+				<td>${order.predictInfo }
+					<button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;">刷新</button>
 				</td>
 			</tr>
 		</c:forEach>
