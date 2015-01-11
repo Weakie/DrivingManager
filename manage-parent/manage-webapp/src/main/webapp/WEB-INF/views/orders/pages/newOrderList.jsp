@@ -32,9 +32,11 @@
 						onclick="">派单</button>
 					<button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;"
 						onclick="destroyOrder('${order.orderID}')">销单</button>
-					<button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;">备注</button>
+					<button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;"
+						onclick="commentDialog('${order.orderID}')">备注</button>
 				</td>
 			</tr>
+			<input type="hidden" id="comment-${order.orderID }" value="${order.comment }">
 		</c:forEach>
 	</tbody>
 </table>

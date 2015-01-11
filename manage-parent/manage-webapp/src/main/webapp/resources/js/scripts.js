@@ -1,18 +1,45 @@
-function destroyOrder(orderid) {
-	$.post(context + "/order/" + orderid, 
-	{
+function commentDialog(orderid) {
+	var comment = $('#comment-'+orderid).val();
+	bootbox.confirm({
+		buttons : {
+			confirm : {
+				label : '确定',
+				className : 'btn btn-primary'
+			},
+			cancel : {
+				label : '取消',
+				className : 'btn btn-default'
+			}
+		},
+		message : "<textarea id='commentContent' rows='3' class='form-control'>"+comment+"</textarea>",
+		callback : function(result) {
+			if(result){
+				var data = $('#commentContent').val();
+				commentOrder(orderid,data);
+			}
+		},
+		title : "填写备注信息",
+	});
+}
+
+
+
+
+
+function destroyOrder(orderid,comment) {
+	$.post(context + "/order/" + orderid, {
 		_method : "PUT",
 		state : "destroy"
 	}, function(data, status) {
 		alert("Data: " + data.res + data.com + "\nStatus: " + status);
-		$("tr#"+orderid).hide();
+		$("tr#" + orderid).hide();
 	});
 }
-function commentOrder(orderid) {
-	$.post(context + "/order/" + orderid, 
-	{
+
+function commentOrder(orderid,cmtData) {
+	$.post(context + "/order/" + orderid, {
 		_method : "PUT",
-		state : "destroy"
+		comment : cmtData
 	}, function(data, status) {
 		alert("Data: " + data + "\nStatus: " + status);
 	});
@@ -22,25 +49,26 @@ function commentOrder(orderid) {
 
 
 
-
-
-//page control
-function prevPage(self,path,data,curpage,pageNum) {
+// page control
+function prevPage(self, path, data, curpage, pageNum) {
 	curpage = curpage - 1;
-	if(curpage<=1){
+	if (curpage <= 1) {
 		curpage = 1;
 	}
-	$(self).closest("#pageTurning").parent().load(context + path, data+"&pageIndex="+curpage+"&pageNum="+pageNum);
+	$(self).closest("#pageTurning").parent().load(context + path,
+			data + "&pageIndex=" + curpage + "&pageNum=" + pageNum);
 }
 
-function currPage(self,path,data,curpage,pageNum) {
-	$(self).closest("#pageTurning").parent().load(context + path, data+"&pageIndex="+curpage+"&pageNum="+pageNum);
+function currPage(self, path, data, curpage, pageNum) {
+	$(self).closest("#pageTurning").parent().load(context + path,
+			data + "&pageIndex=" + curpage + "&pageNum=" + pageNum);
 }
 
-function nextPage(self,path,data,curpage,pageNum,totalpage) {
+function nextPage(self, path, data, curpage, pageNum, totalpage) {
 	curpage = curpage + 1;
-	if(curpage>=totalpage){
+	if (curpage >= totalpage) {
 		curpage = totalpage;
 	}
-	$(self).closest("#pageTurning").parent().load(context + path, data+"&pageIndex="+curpage+"&pageNum="+pageNum);
+	$(self).closest("#pageTurning").parent().load(context + path,
+			data + "&pageIndex=" + curpage + "&pageNum=" + pageNum);
 }

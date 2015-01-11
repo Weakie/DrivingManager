@@ -30,9 +30,10 @@ public class OrderListServiceImpl implements OrderListService {
 		
 		List<NewOrder> orderList = new ArrayList<NewOrder>();
 		for (int i = 0; i < 10; i++) {
-			NewOrder order = new NewOrder.Builder("09001920290"+i).customer(new Customer("", "haha", "1231"))
+			NewOrder order = new NewOrder.Builder("12409001920290"+i).customer(new Customer("", "haha", "1231"))
 					.orderSource("一键下单").orderType("一键下单").aptmtPlace("shanghai").aptmtTime(new Date())
 					.aptmtCoordt(new Coordinate(100, 200)).build();
+			order.setComment("我是备注信息");
 			orderList.add(order);
 		}
 		pageControl.setTotalNum(100);

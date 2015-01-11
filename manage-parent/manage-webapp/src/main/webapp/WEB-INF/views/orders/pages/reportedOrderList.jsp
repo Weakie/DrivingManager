@@ -17,6 +17,7 @@
 			<th>应收金额</th>
 			<th>实收金额</th>
 			<th>车牌号</th>
+			<th>操作</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -34,7 +35,10 @@
 				<td>${order.shouldPay }</td>
 				<td>${order.actualPay }</td>
 				<td>${order.carNumber }</td>
+				<td><button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;"
+						onclick="commentDialog('${order.orderID}')">备注</button></td>
 			</tr>
+			<input type="hidden" id="comment-${order.orderID }" value="${order.comment }">
 		</c:forEach>
 	</tbody>
 </table>

@@ -118,7 +118,7 @@ public class OrderController {
 	 */
 	@RequestMapping(value="/{orderID}", method = RequestMethod.PUT, params="comment")
 	public OpeResult commentOrder(@PathVariable("orderID") String orderID,@RequestParam("comment") String comment){
-		System.out.println("comment "+orderID+" ");
+		System.out.println("comment "+orderID+" c:"+comment);
 		return new OpeResult(OpeResult.RES_SUCCESS, "");
 	}
 }

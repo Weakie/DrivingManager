@@ -5,6 +5,7 @@
 <link href="${resourceRoot}/css/bootstrap.min.css" rel="stylesheet">
 <script src="${resourceRoot}/js/jquery.min.js"></script>
 <script src="${resourceRoot}/js/bootstrap.min.js"></script>
+<script src="${resourceRoot}/js/bootbox.min.js"></script>
 <link href="${resourceRoot}/css/global.css" rel="stylesheet">
 <script type="text/javascript">
 var context='${pageContext.request.contextPath}';

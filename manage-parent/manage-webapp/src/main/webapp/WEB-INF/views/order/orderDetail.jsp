@@ -125,10 +125,10 @@
 							<td>应收金额：${order.shouldPay }</td>
 						</tr>
 						<tr>
-							<td>实收金额：${actualPay }</td>
+							<td>实收金额：<input type="text" style="width:50px" value="${actualPay }">&nbsp;<button type="button" class="btn btn-default btn-xs">修改</button></td>
 						</tr>
 						<tr>
-							<td>报销金额：${reimburse }</td>
+							<td>报销金额：${order.reimburse }(备注：${order.reimburseNotes })</td>
 						</tr>
 						<tr>
 							<td>付款方式：${order.payMethod }</td>
