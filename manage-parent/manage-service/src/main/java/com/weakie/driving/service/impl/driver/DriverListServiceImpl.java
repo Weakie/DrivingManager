@@ -1,4 +1,4 @@
-package com.weakie.driving.service.impl;
+package com.weakie.driving.service.impl.driver;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,9 +8,6 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.weakie.driving.model.Customer;
-import com.weakie.driving.model.Driver;
-import com.weakie.driving.model.driver.DriverCallRecord;
 import com.weakie.driving.model.driver.DriverProfile;
 import com.weakie.driving.model.driver.DriverStatus;
 import com.weakie.driving.model.driver.DriverType;
@@ -70,20 +67,6 @@ public class DriverListServiceImpl implements DriverListService {
 	@Override
 	public Map<String, String> getDriverIDNameMapping() {
 		return Collections.emptyMap();
-	}
-	
-	@Override
-	public List<DriverCallRecord> getDriverCallRecords(PageControl p) {
-		DriverCallRecord r = new DriverCallRecord();
-		r.setCustomer(new Customer("111","小明","18729023910"));
-		r.setDriver(new Driver("111","小红","18729023910","易米"));
-		r.setSeconds(120);
-		r.setTime(new Date());
-		List<DriverCallRecord> profile= new ArrayList<DriverCallRecord>();
-		for(int i=0;i<10;i++){
-			profile.add(r);
-		}
-		return profile;
 	}
 
 }

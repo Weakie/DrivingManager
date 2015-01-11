@@ -15,7 +15,13 @@ import com.weakie.driving.utils.PageControl;
 @RequestMapping("/drivers")
 public class DriverListController {
 
+	@ModelAttribute("pc")
+	public PageControl getPageControl(){
+		return new PageControl("/drivers");
+	}
+	
 	private DriverListService driverListService;
+	
 	@Autowired
 	public void setDriverListService(DriverListService driverListService) {
 		this.driverListService = driverListService;
@@ -31,6 +37,7 @@ public class DriverListController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/driver/pages/driverList");
 		mav.addObject("driverList", this.driverListService.getAllApprovedDrivers(p));
+		p.setTotalNum(100);
 		return mav;
 	}
 	
@@ -40,6 +47,7 @@ public class DriverListController {
 		mav.setViewName("/driver/pages/driverList");
 		mav.addObject("script", "script");
 		mav.addObject("driverList", this.driverListService.getBalanceUnderDrivers(p, 200));
+		p.setTotalNum(100);
 		return mav;
 	}
 	
@@ -48,6 +56,7 @@ public class DriverListController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/driver/pages/driverList");
 		mav.addObject("driverList", this.driverListService.getFreezedDrivers(p));
+		p.setTotalNum(100);
 		return mav;
 	}
 	
@@ -56,19 +65,16 @@ public class DriverListController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/driver/pages/driverList");
 		mav.addObject("driverList", this.driverListService.getUnApprovedDrivers(p));
+		p.setTotalNum(100);
 		return mav;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, params = "q")
 	public ModelAndView searchDrivers(@RequestParam("q") String q, @ModelAttribute("pc") PageControl p) {
-		return null;
-	}
-	
-	@RequestMapping(value="/call",method = RequestMethod.GET)
-	public ModelAndView getDriverCallRecords(@ModelAttribute("pc") PageControl p) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/driver/pages/callRecords");
-		mav.addObject("callRecords", this.driverListService.getDriverCallRecords(p));
+		mav.setViewName("/driver/pages/driverList");
+		mav.addObject("driverList", this.driverListService.searchDrivers(p, q));
+		p.setTotalNum(100);
 		return mav;
 	}
 }

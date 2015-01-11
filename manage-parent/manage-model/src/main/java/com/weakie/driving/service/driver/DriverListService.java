@@ -3,7 +3,6 @@ package com.weakie.driving.service.driver;
 import java.util.List;
 import java.util.Map;
 
-import com.weakie.driving.model.driver.DriverCallRecord;
 import com.weakie.driving.model.driver.DriverProfile;
 import com.weakie.driving.utils.PageControl;
 
@@ -21,5 +20,4 @@ public interface DriverListService {
 	
 	public Map<String,String> getDriverIDNameMapping();
 	
-	public List<DriverCallRecord> getDriverCallRecords(PageControl p);
 }

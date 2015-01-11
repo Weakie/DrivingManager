@@ -1,23 +1,20 @@
-package com.weakie.driving.model.driver;
+package com.weakie.driving.model;
 
 import java.util.Date;
-
-import com.weakie.driving.model.Customer;
-import com.weakie.driving.model.Driver;
 
 /**
  * 司机通话记录
  * @author weakie,lin
  *
  */
-public class DriverCallRecord {
+public class CallRecord {
 
 	private Driver driver;
 	private Customer customer;
 	private Date time;
 	private int seconds;
 	
-	public DriverCallRecord() {
+	public CallRecord() {
 		super();
 	}
 	public Driver getDriver() {

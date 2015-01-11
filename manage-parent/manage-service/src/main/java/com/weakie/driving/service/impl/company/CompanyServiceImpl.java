@@ -1,4 +1,4 @@
-package com.weakie.driving.service.impl;
+package com.weakie.driving.service.impl.company;
 
 import java.util.HashMap;
 import java.util.Map;

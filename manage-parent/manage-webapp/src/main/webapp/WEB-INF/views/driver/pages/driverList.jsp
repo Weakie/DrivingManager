@@ -36,6 +36,8 @@
 		</c:forEach>
 	</tbody>
 </table>
+<%@ include file="../../include/page_turning.jsp"%>
+
 <c:if test="${not empty script }">
 	<script>
 		document.getElementById('balanceUnder200').innerText = ${pc.totalNum};

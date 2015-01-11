@@ -67,7 +67,7 @@ div.info {
 
 				<div class="tab-pane" id="panel-16702">
 					<div style="border: 1px solid #D3D3D3">
-						<c:import url="/drivers/call">
+						<c:import url="/call">
 							<c:param name="pageIndex" value="1" />
 							<c:param name="pageNum" value="10" />
 						</c:import>
