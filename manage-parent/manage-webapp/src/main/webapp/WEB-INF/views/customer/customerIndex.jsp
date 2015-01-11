@@ -25,7 +25,7 @@
 				</div>
 				<div class="col-md-1 column"></div>
 				<div class="col-md-2 column" style="text-align: right">
-					<button type="button" class="btn btn-primary">添加新客户</button>
+					<a role="button" class="btn btn-primary" href="<c:url value="/customer"/>" >添加新客户</a>
 				</div>
 			</div>
 			<br>
