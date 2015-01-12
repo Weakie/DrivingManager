@@ -2,7 +2,8 @@ package com.weakie.driving.model;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
-import org.weakie.driving.utils.LogUtil;
+
+import com.weakie.driving.utils.LogUtil;
 
 public class Coordinate {
 

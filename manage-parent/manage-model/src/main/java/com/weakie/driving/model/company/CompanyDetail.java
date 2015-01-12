@@ -139,5 +139,13 @@ public class CompanyDetail {
 	public void setLogoURL(String logoURL) {
 		this.logoURL = logoURL;
 	}
+
+	@Override
+	public String toString() {
+		return "CompanyDetail [id=" + id + ", city=" + city + ", addr=" + addr + ", coord=" + coord + ", name=" + name
+				+ ", shortName=" + shortName + ", telephone=" + telephone + ", principle=" + principle + ", mobileNum="
+				+ mobileNum + ", faxNumber=" + faxNumber + ", email=" + email + ", scale=" + scale + ", tel400="
+				+ tel400 + ", comment=" + comment + ", logoURL=" + logoURL + "]";
+	}
 	
 }

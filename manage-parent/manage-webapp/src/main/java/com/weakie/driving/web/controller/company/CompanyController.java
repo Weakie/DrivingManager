@@ -8,9 +8,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.weakie.driving.utils.LogUtil;
 
 import com.weakie.driving.model.company.CompanyDetail;
+import com.weakie.driving.utils.LogUtil;
 
 @Controller
 @RequestMapping("/company")

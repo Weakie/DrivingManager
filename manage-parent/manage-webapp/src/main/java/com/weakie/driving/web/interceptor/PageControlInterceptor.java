@@ -6,8 +6,8 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.context.request.WebRequestInterceptor;
-import org.weakie.driving.utils.LogUtil;
 
+import com.weakie.driving.utils.LogUtil;
 import com.weakie.driving.utils.PageControl;
 
 public class PageControlInterceptor implements WebRequestInterceptor {

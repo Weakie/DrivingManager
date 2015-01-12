@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.weakie.driving.utils.LogUtil;
 
 import com.weakie.driving.model.Coordinate;
 import com.weakie.driving.model.driver.DriverLocationInfo;
@@ -18,6 +17,7 @@ import com.weakie.driving.model.driver.DriverStatus;
 import com.weakie.driving.service.driver.DriverLocationService;
 import com.weakie.driving.service.order.OrderService;
 import com.weakie.driving.service.order.OrderListService;
+import com.weakie.driving.utils.LogUtil;
 import com.weakie.driving.utils.PageControl;
 
 /**
