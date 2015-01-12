@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.weakie.driving.utils.LogUtil;
 
 import com.weakie.driving.model.driver.DriverDetail;
-import com.weakie.driving.service.company.CompanyService;
+import com.weakie.driving.service.company.CompanyListService;
 import com.weakie.driving.service.system.PaymentService;
 
 @Controller
 @RequestMapping("/driver")
 public class DriverController {
 
-	private CompanyService companyService;
+	private CompanyListService companyService;
 	private PaymentService paymentService;
 	
 	@Autowired
-	public void setCompanyService(CompanyService companyService) {
+	public void setCompanyService(CompanyListService companyService) {
 		this.companyService = companyService;
 	}
 	@Autowired

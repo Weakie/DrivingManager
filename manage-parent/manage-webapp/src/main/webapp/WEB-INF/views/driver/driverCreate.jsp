@@ -24,7 +24,7 @@ div.info {
 				<li><a href="#">返回</a> <span class="divider"></span></li>
 			</ul>
 		</div>
-		<br> <br>
+		<br>
 		<div class="row clearfix">
 			<form action="<c:url value="/driver"/>" method="POST">
 				<div class="col-md-6 column">

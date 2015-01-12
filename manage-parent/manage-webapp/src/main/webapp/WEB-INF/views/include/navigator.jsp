@@ -12,7 +12,7 @@
 			<li <c:if test="${nav == 4 }">class="active"</c:if>><a href="<c:url value="/drivers"/>">司机</a></li>
 			<li <c:if test="${nav == 5 }">class="active"</c:if>><a href="<c:url value="/customers"/>">客户</a></li>
 			<!-- <li <c:if test="${nav == 6 }">class="active"</c:if>><a href="#">统计</a></li> -->
-			<li <c:if test="${nav == 7 }">class="active"</c:if>><a href="#">公司</a></li>
+			<li <c:if test="${nav == 7 }">class="active"</c:if>><a href="<c:url value="/companys"/>">公司</a></li>
 			<li <c:if test="${nav == 8 }">class="active"</c:if>><a href="#">工作车</a></li>
 			<!--<li <c:if test="${nav == 9 }">class="active"</c:if>><a href="#">APP</a></li>
 			<li <c:if test="${nav == 10}">class="active"</c:if>><a href="#">通知</a></li>

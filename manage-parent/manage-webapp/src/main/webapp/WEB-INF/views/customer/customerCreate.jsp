@@ -11,6 +11,15 @@
 	<div class="container">
 		<c:set var="nav" value="5" />
 		<%@ include file="../include/navigator.jsp"%>
+		<div style="height: 20px;">
+			<ul class="breadcrumb">
+				<li><a href="#">客户管理</a> <span class="divider"></span></li>
+				<li class="active">${title }<span class="divider"></span>
+				</li>
+				<li><a href="#">返回</a> <span class="divider"></span></li>
+			</ul>
+		</div>
+		<br>
 		<div class="panel panel-default">
 			<div class="panel-heading">填写用户信息</div>
 			<div class="panel-body">
@@ -35,6 +44,7 @@
 							</select> 
 							<br> 
 							<input type="hidden" name="_method" value="${method }"> 
+							<input type="hidden" name="id" value="${cus.id }"> 
 							<b>联系人：</b> 
 							<br> 
 							<input type="text" name="name" value="${cus.name }" required="required" class="form-control" placeholder=""> 

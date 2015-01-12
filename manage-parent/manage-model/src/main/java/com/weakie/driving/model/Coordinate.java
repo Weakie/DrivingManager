@@ -20,8 +20,8 @@ public class Coordinate {
 		}
 		String body = StringUtils.substringBetween(s, "(", ")");
 		String[] numbers = StringUtils.split(body, ',');
-		lat = NumberUtils.toDouble(numbers[0]);
-		lng = NumberUtils.toDouble(numbers[1]);
+		lng = NumberUtils.toDouble(numbers[0]);
+		lat = NumberUtils.toDouble(numbers[1]);	
 	}
 	
 	public Coordinate(double lat, double lng) {
@@ -43,6 +43,9 @@ public class Coordinate {
 		this.lng = lng;
 	}
 
+	public String getValue(){
+		return "("+lng+","+lat+")";
+	}
 	@Override
 	public String toString() {
 		return "Coordinate [lat=" + lat + ", lng=" + lng + "]";
