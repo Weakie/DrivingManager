@@ -70,7 +70,7 @@ public class OrderListServiceImpl implements OrderListService {
 	public  List<DrivingOrder> getDrivingOrders(PageControl pageControl) {
 		List<DrivingOrder> orderList = new ArrayList<DrivingOrder>();
 		for (int i = 0; i < 10; i++) {
-			DrivingOrder order = new DrivingOrder("0099000"+i,this.Customer,this.driver,
+			DrivingOrder order = new DrivingOrder("121440099000"+i,this.Customer,this.driver,
 					new Date(),"shanghai","09-02 12:57 行程27.7公里");
 			orderList.add(order);
 		}
@@ -83,7 +83,7 @@ public class OrderListServiceImpl implements OrderListService {
 		List<DestroyedOrder> orderList = new ArrayList<DestroyedOrder>();
 		
 		for (int i = 0; i < 10; i++) {
-			DestroyedOrder order = new DestroyedOrder("0099000"+i,"一键下单","客户端",new Date(),
+			DestroyedOrder order = new DestroyedOrder("46440099000"+i,"一键下单","客户端",new Date(),
 					"shanghai",this.Customer,"无",this.driver,
 					new Date(),new Date());
 			orderList.add(order);
@@ -97,7 +97,7 @@ public class OrderListServiceImpl implements OrderListService {
 		List<PayedOrder> orderList = new ArrayList<PayedOrder>();
 		
 		for (int i = 0; i < 10; i++) {
-			PayedOrder order = new PayedOrder("0099000"+i,"一键下单",
+			PayedOrder order = new PayedOrder("56430099000"+i,"一键下单",
 					this.Customer,this.driver,"shanghai",
 					new Date(),20,20,"沪A1231");
 			orderList.add(order);
@@ -111,8 +111,8 @@ public class OrderListServiceImpl implements OrderListService {
 		List<ReportedOrder> orderList = new ArrayList<ReportedOrder>();
 		
 		for (int i = 0; i < 10; i++) {
-			ReportedOrder order = new ReportedOrder("0099000"+i,"一键下单",
-					this.Customer,this.driver,"shanghai",
+			ReportedOrder order = new ReportedOrder("12450099000"+i,"一键下单",
+					this.Customer,this.driver,"备注信息","shanghai",
 					new Date(),20,20,"沪A1231");
 			orderList.add(order);
 		}
@@ -125,8 +125,8 @@ public class OrderListServiceImpl implements OrderListService {
 		List<ReportedOrder> orderList = new ArrayList<ReportedOrder>();
 		
 		for (int i = 0; i < 10; i++) {
-			ReportedOrder order = new ReportedOrder("0099000"+i,"一键下单",
-					this.Customer,this.driver,"shanghai",
+			ReportedOrder order = new ReportedOrder("22130099000"+i,"一键下单",
+					this.Customer,this.driver,"备注信息","shanghai",
 					new Date(),20,20,"沪A1231");
 			orderList.add(order);
 		}

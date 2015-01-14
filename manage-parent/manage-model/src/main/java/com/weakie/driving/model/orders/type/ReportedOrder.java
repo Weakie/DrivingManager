@@ -6,11 +6,13 @@ import com.weakie.driving.model.Customer;
 import com.weakie.driving.model.Driver;
 
 public class ReportedOrder {
+	
 	private String orderID;
 	private String orderType;
 	
 	private Customer customer;
 	private Driver driver;
+	private String comment;
 	
 	private String destination;	//18 目的地
 	private Date payedTime;		//20 结算时间
@@ -22,13 +24,14 @@ public class ReportedOrder {
 	public ReportedOrder() {
 		super();
 	}
-	public ReportedOrder(String orderID, String orderType, Customer customer, Driver driver, String destination,
-			Date payedTime, int shouldPay, int actualPay, String carNumber) {
+	public ReportedOrder(String orderID, String orderType, Customer customer, Driver driver, String comment,
+			String destination, Date payedTime, int shouldPay, int actualPay, String carNumber) {
 		super();
 		this.orderID = orderID;
 		this.orderType = orderType;
 		this.customer = customer;
 		this.driver = driver;
+		this.comment = comment;
 		this.destination = destination;
 		this.payedTime = payedTime;
 		this.shouldPay = shouldPay;
@@ -88,6 +91,20 @@ public class ReportedOrder {
 	}
 	public void setCarNumber(String carNumber) {
 		this.carNumber = carNumber;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+	
+	@Override
+	public String toString() {
+		return "ReportedOrder [orderID=" + orderID + ", orderType=" + orderType + ", customer=" + customer
+				+ ", driver=" + driver + ", comment=" + comment + ", destination=" + destination + ", payedTime="
+				+ payedTime + ", shouldPay=" + shouldPay + ", actualPay=" + actualPay + ", carNumber=" + carNumber
+				+ "]";
 	}
 	
 	
