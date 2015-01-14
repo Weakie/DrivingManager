@@ -36,7 +36,7 @@ div.info {
 			<br>
 			<div class="tab-content">
 				<div class="tab-pane active" id="panel-16699">
-					<div style="border: 1px solid #D3D3D3">
+					<div class="page_turning">
 						<c:import url="/drivers">
 							<c:param name="type" value="all" />
 							<c:param name="pageIndex" value="1" />
@@ -46,7 +46,7 @@ div.info {
 				</div>
 
 				<div class="tab-pane" id="panel-16700">
-					<div style="border: 1px solid #D3D3D3">
+					<div class="page_turning">
 						<c:import url="/drivers">
 							<c:param name="type" value="balance" />
 							<c:param name="pageIndex" value="1" />
@@ -56,7 +56,7 @@ div.info {
 				</div>
 
 				<div class="tab-pane" id="panel-16701">
-					<div style="border: 1px solid #D3D3D3">
+					<div class="page_turning">
 						<c:import url="/drivers">
 							<c:param name="type" value="freeze" />
 							<c:param name="pageIndex" value="1" />
@@ -66,7 +66,7 @@ div.info {
 				</div>
 
 				<div class="tab-pane" id="panel-16702">
-					<div style="border: 1px solid #D3D3D3">
+					<div class="page_turning">
 						<c:import url="/call">
 							<c:param name="pageIndex" value="1" />
 							<c:param name="pageNum" value="10" />
@@ -75,7 +75,7 @@ div.info {
 				</div>
 
 				<div class="tab-pane" id="panel-16703">
-					<div style="border: 1px solid #D3D3D3">
+					<div class="page_turning">
 						<c:import url="/drivers">
 							<c:param name="type" value="unapproved" />
 							<c:param name="pageIndex" value="1" />

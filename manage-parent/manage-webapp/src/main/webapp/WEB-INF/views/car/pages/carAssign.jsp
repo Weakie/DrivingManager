@@ -29,7 +29,7 @@
 		</div>
 	</div>
 </div>
-<div style="border: 1px solid #D3D3D3">
+<div class="page_turning">
 	<c:import url="/car/assign">
 		<c:param name="type" value="none" />
 		<c:param name="pageIndex" value="1" />

@@ -25,13 +25,13 @@
 				</div>
 				<div class="col-md-1 column"></div>
 				<div class="col-md-2 column" style="text-align: right">
-					<a role="button" class="btn btn-primary" href="<c:url value="/customer"/>" >添加新客户</a>
+					<a role="button" class="btn btn-primary" href="<c:url value="/customer"/>">添加新客户</a>
 				</div>
 			</div>
 			<br>
 			<div class="tab-content">
 				<div class="tab-pane active" id="panel-16699">
-					<div style="border: 1px solid #D3D3D3">
+					<div class="page_turning">
 						<c:import url="/customers">
 							<c:param name="type" value="individual" />
 							<c:param name="pageIndex" value="1" />
@@ -40,7 +40,7 @@
 					</div>
 				</div>
 				<div class="tab-pane" id="panel-16700">
-					<div style="border: 1px solid #D3D3D3">
+					<div class="page_turning">
 						<c:import url="/customers">
 							<c:param name="type" value="enterprise" />
 							<c:param name="pageIndex" value="1" />
@@ -49,7 +49,7 @@
 					</div>
 				</div>
 				<div class="tab-pane" id="panel-16701">
-					<div style="border: 1px solid #D3D3D3">
+					<div class="page_turning">
 						<c:import url="/customers">
 							<c:param name="type" value="vip" />
 							<c:param name="pageIndex" value="1" />

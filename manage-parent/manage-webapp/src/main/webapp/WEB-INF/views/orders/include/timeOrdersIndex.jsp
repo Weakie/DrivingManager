@@ -17,11 +17,13 @@
 	</div>
 	<div id="collapseOne" class="panel-collapse collapse">
 		<div class="panel-body">
-			<c:import url="/orders">
-				<c:param name="type" value="new" />
-				<c:param name="pageIndex" value="1" />
-				<c:param name="pageNum" value="10" />
-			</c:import>
+			<div class="page_turning">
+				<c:import url="/orders">
+					<c:param name="type" value="new" />
+					<c:param name="pageIndex" value="1" />
+					<c:param name="pageNum" value="10" />
+				</c:import>
+			</div>
 		</div>
 	</div>
 </div>
@@ -37,11 +39,13 @@
 	</div>
 	<div id="collapseTwo" class="panel-collapse collapse">
 		<div class="panel-body">
-			<c:import url="/orders">
-				<c:param name="type" value="dispatched" />
-				<c:param name="pageIndex" value="1" />
-				<c:param name="pageNum" value="10" />
-			</c:import>
+			<div class="page_turning">
+				<c:import url="/orders">
+					<c:param name="type" value="dispatched" />
+					<c:param name="pageIndex" value="1" />
+					<c:param name="pageNum" value="10" />
+				</c:import>
+			</div>
 		</div>
 	</div>
 </div>
@@ -57,11 +61,13 @@
 	</div>
 	<div id="collapseThree" class="panel-collapse collapse">
 		<div class="panel-body">
-			<c:import url="/orders">
-				<c:param name="type" value="accepted" />
-				<c:param name="pageIndex" value="1" />
-				<c:param name="pageNum" value="10" />
-			</c:import>
+			<div class="page_turning">
+				<c:import url="/orders">
+					<c:param name="type" value="accepted" />
+					<c:param name="pageIndex" value="1" />
+					<c:param name="pageNum" value="10" />
+				</c:import>
+			</div>
 		</div>
 	</div>
 </div>
@@ -80,11 +86,13 @@
 	</div>
 	<div id="collapseFour" class="panel-collapse collapse">
 		<div class="panel-body">
-			<c:import url="/orders">
-				<c:param name="type" value="driving" />
-				<c:param name="pageIndex" value="1" />
-				<c:param name="pageNum" value="10" />
-			</c:import>
+			<div class="page_turning">
+				<c:import url="/orders">
+					<c:param name="type" value="driving" />
+					<c:param name="pageIndex" value="1" />
+					<c:param name="pageNum" value="10" />
+				</c:import>
+			</div>
 		</div>
 	</div>
 </div>
@@ -100,11 +108,13 @@
 	</div>
 	<div id="collapseFive" class="panel-collapse collapse">
 		<div class="panel-body">
-			<c:import url="/orders">
-				<c:param name="type" value="driving" />
-				<c:param name="pageIndex" value="1" />
-				<c:param name="pageNum" value="10" />
-			</c:import>
+			<div class="page_turning">
+				<c:import url="/orders">
+					<c:param name="type" value="driving" />
+					<c:param name="pageIndex" value="1" />
+					<c:param name="pageNum" value="10" />
+				</c:import>
+			</div>
 		</div>
 	</div>
 </div>

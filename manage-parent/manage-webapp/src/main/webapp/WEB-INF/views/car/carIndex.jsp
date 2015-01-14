@@ -39,7 +39,7 @@
 			</div>
 		</div>
 		<br>
-		<div id="table_area" style="border: 1px solid #D3D3D3"></div>
+		<div id="table_area" class="page_turning"></div>
 	</div>
 </body>
 <script type="text/javascript">
