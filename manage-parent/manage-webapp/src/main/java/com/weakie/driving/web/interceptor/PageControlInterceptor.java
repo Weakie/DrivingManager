@@ -36,8 +36,8 @@ public class PageControlInterceptor implements WebRequestInterceptor {
 			if (sb.length() > 0) {
 				PageControl pc = (PageControl) model.get("pc");
 				pc.setPageData(sb.toString());
-				LogUtil.debug("After handle PageData:" + pc);
 			}
+			LogUtil.debug("After handle PageData:" + model.get("pc"));
 		}
 	}
 

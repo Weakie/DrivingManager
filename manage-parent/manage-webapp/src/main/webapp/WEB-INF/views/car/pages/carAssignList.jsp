@@ -7,7 +7,7 @@
 				<th style="width:">日期</th>
 				<th style="width:">司机名称</th>
 			</tr>
-		</thead>    
+		</thead>
 		<tbody>
 			<c:forEach items="${assignList }" var="assign">
 				<tr>

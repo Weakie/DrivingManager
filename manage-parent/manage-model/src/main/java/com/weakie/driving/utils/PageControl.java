@@ -67,7 +67,7 @@ public class PageControl {
 	@Override
 	public String toString() {
 		return "PageControl [pageIndex=" + pageIndex + ", pageNum=" + pageNum + ", totalNum=" + totalNum
-				+ ", pagePath=" + pagePath + ", pageData=" + pageData + "]";
+				+ ", pagePath=" + pagePath + ", pageData={" + pageData + "}]";
 	}
 	
 }

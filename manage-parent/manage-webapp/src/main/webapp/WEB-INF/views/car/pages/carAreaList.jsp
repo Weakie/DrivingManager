@@ -12,8 +12,8 @@
 		<tbody>
 			<c:forEach items="${areaList }" var="area">
 				<tr>
-					<td>重庆</td>
-					<td>重庆</td>
+					<td>${area.city }</td>
+					<td>${area.district }</td>
 					<td><a href="#">编辑</a> <a href="#">删除</a></td>
 				</tr>
 			</c:forEach>

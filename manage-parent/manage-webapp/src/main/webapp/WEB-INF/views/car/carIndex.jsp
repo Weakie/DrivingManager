@@ -28,13 +28,13 @@
 			<div id="workarea_btn" class="col-md-8 column" style="padding-right: 0px; text-align: right">
 				<div class="col-md-9 column"></div>
 				<div class="col-md-3 column">
-					<button type="button" class="btn btn-primary">添加新工作区域</button>
+					<a role="button" class="btn btn-primary" href="<c:url value="/car/area"/>">添加新工作区域</a>
 				</div>
 			</div>
 			<div id="workcars_btn" class="col-md-8 column" style="padding-right: 0px; text-align: right">
 				<div class="col-md-9 column"></div>
 				<div class="col-md-3 column">
-					<button type="button" class="btn btn-primary">添加新工作车</button>
+					<a role="button" class="btn btn-primary" href="<c:url value="/car/detail"/>">添加新工作车</a>
 				</div>
 			</div>
 		</div>
@@ -48,7 +48,7 @@
 		hideAll();
 		$("#transfer_btn").show();
 		loadCarShuttleList();
-		
+
 		//init button 
 		$("#transfer").click(function() {
 			hideAll();
@@ -71,20 +71,20 @@
 		$("#workarea_btn").hide();
 		$("#workcars_btn").hide();
 	}
-	
-	function loadCarShuttleList(){
-		$("#table_area").load('<c:url value="/cars"/>','type=shuttle');
+
+	function loadCarShuttleList() {
+		$("#table_area").load('<c:url value="/cars"/>', 'type=shuttle');
 	}
-	function loadCarAreaList(){
-		$("#table_area").load('<c:url value="/cars"/>','type=area');
+	function loadCarAreaList() {
+		$("#table_area").load('<c:url value="/cars"/>', 'type=area');
 	}
-	function loadCarDetailList(){
-		$("#table_area").load('<c:url value="/cars"/>','type=detail');
+	function loadCarDetailList() {
+		$("#table_area").load('<c:url value="/cars"/>', 'type=detail');
 	}
-	
-	function searchCarShuttleList(){
+
+	function searchCarShuttleList() {
 		var data;
-		$("#table_area").load('<c:url value="/cars"/>','q='+data);
+		$("#table_area").load('<c:url value="/cars"/>', 'q=' + data);
 	}
 </script>
 </html>

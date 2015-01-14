@@ -60,6 +60,10 @@ public class CarArea {
 	public void setP2(Coordinate p2) {
 		this.p2 = p2;
 	}
+	
+	public String getValue(){
+		return this.city+"-"+this.district;
+	}
 
 	@Override
 	public String toString() {

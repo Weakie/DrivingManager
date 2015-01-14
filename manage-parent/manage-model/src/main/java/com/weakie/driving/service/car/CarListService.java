@@ -13,6 +13,8 @@ public interface CarListService {
 
 	public List<CarShuttle> searchCarShuttleList(PageControl p, String q);
 
+	public List<CarArea> getCarAreaList();
+	
 	public List<CarArea> getCarAreaList(PageControl p);
 
 	public List<CarDetail> getCarDetailList(PageControl p);
