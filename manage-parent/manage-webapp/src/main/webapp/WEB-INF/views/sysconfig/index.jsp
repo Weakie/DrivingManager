@@ -10,40 +10,37 @@
 	<div class="container">
 		<c:set var="nav" value="12" />
 		<%@ include file="../include/navigator.jsp"%>
-		<ul class="nav nav-tabs">
-			<li class="active"><a href="#" id="basic">基础配置</a></li>
-			<li><a href="#" id="app">APP设置</a></li>
-			<li><a href="#" id="protocol">代驾协议</a></li>
-			<li><a href="#" id="invest">招商内容</a></li>
-			<li><a href="#" id="pay">支付配置</a></li>
-			<li><a href="#" id="distribution">派单设置</a></li>
-		</ul>
-		<br>
-		<div id="main_body"></div>
+		<div class="tabbable" id="tabs-236691">
+			<ul class="nav nav-tabs">
+				<li><a href="#panel-16699" data-toggle="tab" role="button">基础配置</a></li>
+				<li><a href="#panel-16700" data-toggle="tab" role="button">APP设置</a></li>
+				<li><a href="#panel-16701" data-toggle="tab" role="button">代驾协议</a></li>
+				<li><a href="#panel-16702" data-toggle="tab" role="button">招商内容</a></li>
+				<li><a href="#panel-16703" data-toggle="tab" role="button">支付配置</a></li>
+				<li><a href="#panel-16704" data-toggle="tab" role="button">派单设置</a></li>
+			</ul>
+			<br>
+			<div class="tab-content">
+				<div class="tab-pane active" id="panel-16699">
+					<c:import url="/sysconfig/basic" />
+				</div>
+				<div class="tab-pane" id="panel-16700">
+					<c:import url="/sysconfig/app" />
+				</div>
+				<div class="tab-pane" id="panel-16701">
+					<c:import url="/sysconfig/protocol" />
+				</div>
+				<div class="tab-pane" id="panel-16702">
+					<c:import url="/sysconfig/invest" />
+				</div>
+				<div class="tab-pane" id="panel-16703">
+					<c:import url="/sysconfig/pay" />
+				</div>
+				<div class="tab-pane" id="panel-16704">
+					<c:import url="/sysconfig/distribution" />
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#main_body").load('<c:url value="/sysconfig/basic"/>');
-		
-		$("#basic").click(function() {
-			$("#main_body").load('<c:url value="/sysconfig/basic"/>');
-		});
-		$("#app").click(function() {
-			$("#main_body").load('<c:url value="/sysconfig/app"/>');
-		});
-		$("#protocol").click(function() {
-			$("#main_body").load('<c:url value="/sysconfig/protocol"/>');
-		});
-		$("#invest").click(function() {
-			$("#main_body").load('<c:url value="/sysconfig/invest"/>');
-		});
-		$("#pay").click(function() {
-			$("#main_body").load('<c:url value="/sysconfig/pay"/>');
-		});
-		$("#distribution").click(function() {
-			$("#main_body").load('<c:url value="/sysconfig/distribution"/>');
-		});
-	});
-</script>
 </html>
