@@ -23,10 +23,10 @@
 			</a></li>
 			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> 微信 <b class="caret"></b>
 			</a></li> -->
-			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> 系统<b class="caret"></b>
+			<li class="<c:if test="${nav == 12 }">active</c:if> dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> 系统<b class="caret"></b>
 			</a>
 				<ul class="dropdown-menu">
-					<li><a href="#">系统配置</a></li>
+					<li><a href="<c:url value="/sysconfig"/>">系统配置</a></li>
 					<li class="divider"></li>
 					<li><a href="#">角色设置</a></li>
 					<li><a href="#">用户管理</a></li>
