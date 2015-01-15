@@ -22,7 +22,9 @@
 					<td>无</td>
 					<td>全部</td>
 					<td>成都易米网络科技有限公司</td>
-					<td><a href="#">编辑</a> <a href="#">删除</a> <a href="#">指派司机</a></td>
+					<td><a href="#">编辑</a> <a href="#">删除</a>
+						<button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;"
+							onclick="assignDriver('111')">指派司机</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -35,7 +37,9 @@
 	<div id="carAssign" class="col-md-8 column"></div>
 	<div class="col-md-2 column"></div>
 	<script>
-		$("#carAssign").load('<c:url value="/car/assign"/>');
+		function assignDriver(carid) {
+			$("#carAssign").load('<c:url value="/car/assign"/>' + '/' + carid);
+		}
 	</script>
 </div>
 
