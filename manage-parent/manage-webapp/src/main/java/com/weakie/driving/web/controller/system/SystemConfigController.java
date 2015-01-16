@@ -5,6 +5,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.weakie.driving.model.system.sysconfig.BasicConfig;
 import com.weakie.driving.utils.LogUtil;
 
 @Controller
@@ -20,6 +21,13 @@ public class SystemConfigController {
 	public String basicConfig(ModelMap model) {
 		model.addAttribute("area", null);
 		LogUtil.debug("CarAreaController create area:"+null);
+		return "/sysconfig/pages/basic";
+	}
+	
+	@RequestMapping(value="basic",method = RequestMethod.PUT)
+	public String basicConfig(BasicConfig basicConfig) {
+		
+		LogUtil.debug("CarAreaController create area:"+basicConfig);
 		return "/sysconfig/pages/basic";
 	}
 	
