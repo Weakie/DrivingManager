@@ -1,10 +1,9 @@
 package com.weakie.driving.model.system.sysconfig;
 
-import java.util.Date;
 
 public class BasicConfig {
 
-	private Date startTime;
+	private String startTime;//15:20
 	private DebitedPeriod debPeriod;
 	private double debAmount;
 	private int recoveryTime;
@@ -15,7 +14,7 @@ public class BasicConfig {
 		super();
 	}
 	
-	public BasicConfig(Date startTime, DebitedPeriod debPeriod, double debAmount, int recoveryTime,
+	public BasicConfig(String startTime, DebitedPeriod debPeriod, double debAmount, int recoveryTime,
 			boolean callDriverDirectly, String companyURL) {
 		super();
 		this.startTime = startTime;
@@ -26,10 +25,10 @@ public class BasicConfig {
 		this.companyURL = companyURL;
 	}
 
-	public Date getStartTime() {
+	public String getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(Date startTime) {
+	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
 	public DebitedPeriod getDebPeriod() {

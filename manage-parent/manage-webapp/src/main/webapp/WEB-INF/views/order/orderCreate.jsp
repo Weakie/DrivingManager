@@ -112,7 +112,7 @@
 						</label>
 					</div>
 					<div>
-						<label><font font-weight="400">订单备注：</font></label>
+						<label><font style="font-weight:400">订单备注：</font></label>
 					</div>
 					<div>
 						<textarea rows="3" name="comment" class="form-control"></textarea>

@@ -10,7 +10,7 @@ import org.springframework.core.io.Resource;
 import com.weakie.driving.model.system.sysconfig.DebitedPeriod;
 import com.weakie.driving.utils.LogUtil;
 
-class DebitedPeroidMappingLoader extends StaticResourceLoader {
+class DebitedPeroidMappingLoader extends StaticResourceLoader<DebitedPeriod> {
 
 	private static final String MAPPING_DEBITED_PERIOD = "debitedPeriodMapping.properties";
 	public DebitedPeroidMappingLoader() {
@@ -27,7 +27,7 @@ class DebitedPeroidMappingLoader extends StaticResourceLoader {
 				LogUtil.info("load DebitedPeriodMapping,key="+key, new Exception("key not exist!"));
 				continue;
 			}
-			mapping.put(key.toString(), prop.getProperty(key.toString()));
+			mapping.put(key, prop.getProperty(key.toString()));
 		}
 	}
 

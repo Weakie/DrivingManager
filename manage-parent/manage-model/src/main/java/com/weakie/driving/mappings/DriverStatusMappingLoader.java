@@ -10,7 +10,7 @@ import org.springframework.core.io.Resource;
 import com.weakie.driving.model.driver.DriverStatus;
 import com.weakie.driving.utils.LogUtil;
 
-class DriverStatusMappingLoader extends StaticResourceLoader {
+class DriverStatusMappingLoader extends StaticResourceLoader<DriverStatus> {
 
 	private static final String MAPPING_DRIVER_STATUS = "driverStatusMapping.properties";
 	public DriverStatusMappingLoader() {
@@ -28,7 +28,7 @@ class DriverStatusMappingLoader extends StaticResourceLoader {
 				LogUtil.info("load driverStatusMapping,key="+key, new Exception("key not exist!"));
 				continue;
 			}
-			mapping.put(key.toString(), prop.getProperty(key.toString()));
+			mapping.put(key, prop.getProperty(key.toString()));
 		}
 	}
 

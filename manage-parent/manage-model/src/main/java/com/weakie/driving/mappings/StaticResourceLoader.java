@@ -6,11 +6,11 @@ import java.util.Map;
 
 import com.weakie.driving.utils.LogUtil;
 
-abstract class StaticResourceLoader {
+abstract class StaticResourceLoader<T extends Enum<?>> {
 
 	private static final String PREFIX = "com/weakie/driving/mappings/";
 	private String resourceFileName;
-	protected Map<String,String> mapping = new HashMap<String, String>();
+	protected Map<T,String> mapping = new HashMap<T, String>();
 	public StaticResourceLoader(String fileName){
 		this.resourceFileName = fileName;
 	}
@@ -23,11 +23,11 @@ abstract class StaticResourceLoader {
 		this.resourceFileName = resourceFileName;
 	}
 
-	public String getMapping(String key){
-		return this.mapping.getOrDefault(key, key);
+	public String getMapping(T key){
+		return this.mapping.getOrDefault(key, key.toString());
 	}
 	
-	public Map<String, String> getMapping() {
+	public Map<T, String> getMapping() {
 		return mapping;
 	}
 

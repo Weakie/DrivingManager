@@ -77,7 +77,7 @@ public class DriverProfile {
 		return type;
 	}
 	public String getTypeString(){
-		return StaticMappingCollections.getInstance().getDriverTypeMapping(String.valueOf(this.type));
+		return StaticMappingCollections.getInstance().getDriverTypeMapping(this.type);
 	}
 	public void setType(DriverType type) {
 		this.type = type;
@@ -140,8 +140,7 @@ public class DriverProfile {
 		return state;
 	}
 	public String getStateString(){
-		String s = String.valueOf(DriverStatus.reduceStatus(state));
-		return StaticMappingCollections.getInstance().getDriverStatusMapping(s);
+		return StaticMappingCollections.getInstance().getDriverStatusMapping(DriverStatus.reduceStatus(state));
 	}
 	public void setState(DriverStatus state) {
 		this.state = state;

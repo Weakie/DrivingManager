@@ -10,7 +10,7 @@ import org.springframework.core.io.Resource;
 import com.weakie.driving.model.driver.DriverType;
 import com.weakie.driving.utils.LogUtil;
 
-class DriverTypeMappingLoader extends StaticResourceLoader {
+class DriverTypeMappingLoader extends StaticResourceLoader<DriverType> {
 
 	private static final String MAPPING_DRIVER_TYPE = "driverTypeMapping.properties";
 	public DriverTypeMappingLoader() {
@@ -27,7 +27,7 @@ class DriverTypeMappingLoader extends StaticResourceLoader {
 				LogUtil.info("load driverTypeMapping,key="+key, new Exception("key not exist!"));
 				continue;
 			}
-			mapping.put(key.toString(), prop.getProperty(key.toString()));
+			mapping.put(key, prop.getProperty(key.toString()));
 		}
 	}
 
