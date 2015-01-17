@@ -6,6 +6,7 @@ public enum DriverType {
 
 	PARTTIME, FULLTIME;
 
+	@Deprecated
 	public static String convertToString(DriverType type) {
 		if (type != null) {
 			switch (type) {

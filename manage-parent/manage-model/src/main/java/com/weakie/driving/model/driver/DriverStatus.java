@@ -18,7 +18,7 @@ public enum DriverStatus {
 	OFF, 		// 未上班
 	WORKINGCAR;	// 工作车
 	
-	public static DriverStatus statusMapping(DriverStatus status){
+	public static DriverStatus reduceStatus(DriverStatus status){
 		if(status == null){
 			return NONE;
 		}
@@ -38,6 +38,7 @@ public enum DriverStatus {
 		}
 	}
 	
+	@Deprecated
 	public static String convertToString(DriverStatus state){
 		if(state == null){
 			return StringUtils.EMPTY;

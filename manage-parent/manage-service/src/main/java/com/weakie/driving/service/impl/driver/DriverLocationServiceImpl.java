@@ -49,7 +49,7 @@ public class DriverLocationServiceImpl implements DriverLocationService {
 		while(iter.hasNext()){
 			DriverLocationInfo info = iter.next();
 			//转换状态，并且判断是否为none,若为none则不必显示
-			DriverStatus state = DriverStatus.statusMapping(info.getCurrentState());
+			DriverStatus state = DriverStatus.reduceStatus(info.getCurrentState());
 			if(state != DriverStatus.NONE){
 				info.setCurrentState(state);
 			}else{

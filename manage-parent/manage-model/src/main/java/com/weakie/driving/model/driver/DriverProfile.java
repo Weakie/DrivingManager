@@ -2,6 +2,8 @@ package com.weakie.driving.model.driver;
 
 import java.util.Date;
 
+import com.weakie.driving.mappings.StaticMappingCollections;
+
 public class DriverProfile {
 
 	private String driverID;
@@ -75,7 +77,7 @@ public class DriverProfile {
 		return type;
 	}
 	public String getTypeString(){
-		return DriverType.convertToString(this.type);
+		return StaticMappingCollections.getInstance().getDriverTypeMapping(String.valueOf(this.type));
 	}
 	public void setType(DriverType type) {
 		this.type = type;
@@ -138,7 +140,8 @@ public class DriverProfile {
 		return state;
 	}
 	public String getStateString(){
-		return DriverStatus.convertToString(DriverStatus.statusMapping(state));
+		String s = String.valueOf(DriverStatus.reduceStatus(state));
+		return StaticMappingCollections.getInstance().getDriverStatusMapping(s);
 	}
 	public void setState(DriverStatus state) {
 		this.state = state;
