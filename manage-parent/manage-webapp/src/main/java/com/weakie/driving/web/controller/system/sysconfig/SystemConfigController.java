@@ -1,4 +1,4 @@
-package com.weakie.driving.web.controller.system;
+package com.weakie.driving.web.controller.system.sysconfig;
 
 import java.util.ArrayList;
 import java.util.List;
