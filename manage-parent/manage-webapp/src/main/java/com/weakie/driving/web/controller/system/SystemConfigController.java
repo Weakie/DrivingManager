@@ -6,10 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.weakie.driving.mappings.StaticMappingCollections;
+import com.weakie.driving.model.system.sysconfig.APPConfig;
 import com.weakie.driving.model.system.sysconfig.BasicConfig;
 import com.weakie.driving.service.system.SysConfigService;
 import com.weakie.driving.utils.LogUtil;
@@ -25,15 +27,18 @@ public class SystemConfigController {
 		this.sysConfigService = sysConfigService;
 	}
 
+	//index
+	@ModelAttribute("panel")
+	private int getShowedPanel(){
+		return 0;
+	}
+	
 	@RequestMapping(method = RequestMethod.GET)
-	public String sysConfigIndex(ModelMap model,Integer panel) {
-		if(panel == null){
-			panel = new Integer(0);
-		}
-		model.addAttribute("panel", panel);
+	public String sysConfigIndex(ModelMap model) {
 		return "/sysconfig/index";
 	}
 	
+	//basic
 	@RequestMapping(value="basic",method = RequestMethod.GET)
 	public String basicConfig(ModelMap model) {
 		model.addAttribute("basic", this.sysConfigService.getBasicConfig());
@@ -46,31 +51,60 @@ public class SystemConfigController {
 	@RequestMapping(value="basic",method = RequestMethod.PUT)
 	public String basicConfig(ModelMap model,BasicConfig basicConfig) {
 		this.sysConfigService.putBasicConfig(basicConfig);
+		model.addAttribute("panel", 0);
 		LogUtil.debug("SystemConfigController update basic:"+basicConfig);
-		return "redirect:/sysconfig?panel=0";
+		return "/sysconfig/index";
 	}
 	
+	//app
 	@RequestMapping(value="app",method = RequestMethod.GET)
 	public String appConfig(ModelMap model) {
-		model.addAttribute("area", null);
-		LogUtil.debug("SystemConfigController create area:"+null);
+		model.addAttribute("app", this.sysConfigService.getAPPConfig());
+		LogUtil.debug("SystemConfigController return app.");
 		return "/sysconfig/pages/app";
 	}
 	
+	@RequestMapping(value="app",method = RequestMethod.PUT)
+	public String appConfig(ModelMap model,APPConfig appConfig) {
+		this.sysConfigService.putAPPConfig(appConfig);
+		model.addAttribute("panel", 1);
+		LogUtil.debug("SystemConfigController update app:"+appConfig);
+		return "/sysconfig/index";
+	}
+	
+	//protocol
 	@RequestMapping(value="protocol",method = RequestMethod.GET)
 	public String protocolConfig(ModelMap model) {
-		model.addAttribute("area", null);
-		LogUtil.debug("SystemConfigController create area:"+null);
+		model.addAttribute("protocol", this.sysConfigService.getProtocol());
+		LogUtil.debug("SystemConfigController return protocol.");
 		return "/sysconfig/pages/protocol";
 	}
 	
+	@RequestMapping(value="protocol",method = RequestMethod.PUT)
+	public String protocolConfig(ModelMap model,String protocol) {
+		this.sysConfigService.putProtocol(protocol);
+		model.addAttribute("panel", 2);
+		LogUtil.debug("SystemConfigController update protocol:"+protocol);
+		return "/sysconfig/index";
+	}
+	
+	//invest
 	@RequestMapping(value="invest",method = RequestMethod.GET)
 	public String investConfig(ModelMap model) {
-		model.addAttribute("area", null);
-		LogUtil.debug("SystemConfigController create area:"+null);
+		model.addAttribute("invest", this.sysConfigService.getInvest());
+		LogUtil.debug("SystemConfigController return invest.");
 		return "/sysconfig/pages/invest";
 	}
 	
+	@RequestMapping(value="invest",method = RequestMethod.PUT)
+	public String investConfig(ModelMap model,String invest) {
+		this.sysConfigService.putInvest(invest);
+		model.addAttribute("panel", 3);
+		LogUtil.debug("SystemConfigController update invest:"+invest);
+		return "/sysconfig/index";
+	}
+	
+	//pay
 	@RequestMapping(value="pay",method = RequestMethod.GET)
 	public String payConfig(ModelMap model) {
 		model.addAttribute("area", null);

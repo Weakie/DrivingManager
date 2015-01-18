@@ -21,26 +21,39 @@
 			</ul>
 			<br>
 			<div class="tab-content">
-				<div id="panel-16699" class="tab-pane <c:if test="${panel==0 }">active</c:if>">
-					<c:import url="/sysconfig/basic" />
-				</div>
-				<div id="panel-16700" class="tab-pane <c:if test="${panel==1 }">active</c:if>">
-					<c:import url="/sysconfig/app" />
-				</div>
-				<div id="panel-16701" class="tab-pane <c:if test="${panel==2 }">active</c:if>">
-					<c:import url="/sysconfig/protocol" />
-				</div>
-				<div id="panel-16702" class="tab-pane <c:if test="${panel==3 }">active</c:if>">
-					<c:import url="/sysconfig/invest" />
-				</div>
-				<div id="panel-16703" class="tab-pane <c:if test="${panel==4 }">active</c:if>">
-					<c:import url="/sysconfig/pay" />
-				</div>
-				<div id="panel-16704" class="tab-pane <c:if test="${panel==5 }">active</c:if>">
-					<c:import url="/sysconfig/distribution" />
-				</div>
+				<div id="panel-16699" class="tab-pane <c:if test="${panel==0 }">active</c:if>"></div>
+				<div id="panel-16700" class="tab-pane <c:if test="${panel==1 }">active</c:if>"></div>
+				<div id="panel-16701" class="tab-pane <c:if test="${panel==2 }">active</c:if>"></div>
+				<div id="panel-16702" class="tab-pane <c:if test="${panel==3 }">active</c:if>"></div>
+				<div id="panel-16703" class="tab-pane <c:if test="${panel==4 }">active</c:if>"></div>
+				<div id="panel-16704" class="tab-pane <c:if test="${panel==5 }">active</c:if>"></div>
 			</div>
 		</div>
 	</div>
 </body>
+<script>
+	$(document).ready(function() {
+		$("a[href=#panel-16699]").click(function() {
+			$("#panel-16699").load('<c:url value="/sysconfig/basic" />');
+		});
+		$("a[href=#panel-16700]").click(function() {
+			$("#panel-16700").load('<c:url value="/sysconfig/app" />');
+		});
+		$("a[href=#panel-16701]").click(function() {
+			$("#panel-16701").load('<c:url value="/sysconfig/protocol" />');
+		});
+		$("a[href=#panel-16702]").click(function() {
+			$("#panel-16702").load('<c:url value="/sysconfig/invest" />');
+		});
+		$("a[href=#panel-16703]").click(function() {
+			$("#panel-16703").load('<c:url value="/sysconfig/pay" />');
+		});
+		$("a[href=#panel-16704]").click(function() {
+			$("#panel-16704").load('<c:url value="/sysconfig/distribution" />');
+		});
+		//trigger event
+		var e = jQuery.Event("click");
+		$("a[href=#panel-${16699+panel}]").trigger(e);
+	});	
+</script>
 </html>

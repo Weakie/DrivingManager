@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script src="${resourceRoot}/js/main.js"></script>
 <div class="panel panel-default">
 	<div class="panel-heading">基础配置</div>
 	<div class="panel-body">
@@ -48,8 +49,7 @@
 				</div>
 				<div class="col-md-5 column" style="padding-left: 0px">
 					<div class="input-group">
-						<input type="text" name="debAmount" value="${basic.debAmount }" required="required" class="form-control">
-						<span class="input-group-addon">元</span>
+						<input type="text" name="debAmount" value="${basic.debAmount }" required="required" class="form-control"> <span class="input-group-addon">元</span>
 					</div>
 				</div>
 			</div>
@@ -65,8 +65,7 @@
 				</div>
 				<div class="col-md-5 column" style="padding-left: 0px">
 					<div class="input-group">
-						<input type="text" name="recoveryTime" value="${basic.recoveryTime }" required="required" class="form-control"> <span
-							class="input-group-addon">分钟</span>
+						<input type="text" name="recoveryTime" value="${basic.recoveryTime }" required="required" class="form-control"> <span class="input-group-addon">分钟</span>
 					</div>
 				</div>
 			</div>
@@ -81,9 +80,7 @@
 					<font color="red">*</font><b>是否允许直接呼叫司机：</b>
 				</div>
 				<div class="col-md-5 column" style="padding-left: 0px">
-					<input id="switch-onText" name="callDriverDirectly" type="checkbox"
-						<c:if test="${basic.callDriverDirectly }">checked</c:if> data-on-text="允许" data-off-text="不允许"
-						data-on-color="info">
+					<input id="switch-onText" name="callDriverDirectly" type="checkbox" <c:if test="${basic.callDriverDirectly }">checked</c:if> data-on-text="允许" data-off-text="不允许" data-on-color="info">
 				</div>
 			</div>
 			<div class="row clearfix">
