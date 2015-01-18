@@ -3,22 +3,22 @@ package com.weakie.driving.model.system.sysconfig;
 public class APPConfig {
 
 	private boolean allowPeemptiveOrder;
-	private int peemptiveDistance;
+	private double peemptiveDistance;
 	private boolean openWorkingCar;
 	private boolean transOrderWorkingCar;
 	private boolean transOrderDriver;
 	private boolean targetRequired;
 	private boolean cusInfoRequired;
 	
-	private int nearbyDriverDistance;
+	private double nearbyDriverDistance;
 	private String shareContents;
 
 	public APPConfig() {
 		super();
 	}
-	public APPConfig(boolean allowPeemptiveOrder, int peemptiveDistance, boolean openWorkingCar,
+	public APPConfig(boolean allowPeemptiveOrder, double peemptiveDistance, boolean openWorkingCar,
 			boolean transOrderWorkingCar, boolean transOrderDriver, boolean targetRequired, boolean cusInfoRequired,
-			int nearbyDriverDistance, String shareContents) {
+			double nearbyDriverDistance, String shareContents) {
 		super();
 		this.allowPeemptiveOrder = allowPeemptiveOrder;
 		this.peemptiveDistance = peemptiveDistance;
@@ -36,10 +36,10 @@ public class APPConfig {
 	public void setAllowPeemptiveOrder(boolean allowPeemptiveOrder) {
 		this.allowPeemptiveOrder = allowPeemptiveOrder;
 	}
-	public int getPeemptiveDistance() {
+	public double getPeemptiveDistance() {
 		return peemptiveDistance;
 	}
-	public void setPeemptiveDistance(int peemptiveDistance) {
+	public void setPeemptiveDistance(double peemptiveDistance) {
 		this.peemptiveDistance = peemptiveDistance;
 	}
 	public boolean isOpenWorkingCar() {
@@ -72,10 +72,10 @@ public class APPConfig {
 	public void setCusInfoRequired(boolean cusInfoRequired) {
 		this.cusInfoRequired = cusInfoRequired;
 	}
-	public int getNearbyDriverDistance() {
+	public double getNearbyDriverDistance() {
 		return nearbyDriverDistance;
 	}
-	public void setNearbyDriverDistance(int nearbyDriverDistance) {
+	public void setNearbyDriverDistance(double nearbyDriverDistance) {
 		this.nearbyDriverDistance = nearbyDriverDistance;
 	}
 	public String getShareContents() {

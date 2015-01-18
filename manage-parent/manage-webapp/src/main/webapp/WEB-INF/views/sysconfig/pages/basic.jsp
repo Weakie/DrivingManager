@@ -49,7 +49,7 @@
 				</div>
 				<div class="col-md-5 column" style="padding-left: 0px">
 					<div class="input-group">
-						<input type="text" name="debAmount" value="${basic.debAmount }" required="required" class="form-control"> <span class="input-group-addon">元</span>
+						<input type="text" name="debAmount" value="${basic.debAmount }" required="required" pattern="^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$" class="form-control"> <span class="input-group-addon">元</span>
 					</div>
 				</div>
 			</div>
@@ -65,7 +65,7 @@
 				</div>
 				<div class="col-md-5 column" style="padding-left: 0px">
 					<div class="input-group">
-						<input type="text" name="recoveryTime" value="${basic.recoveryTime }" required="required" class="form-control"> <span class="input-group-addon">分钟</span>
+						<input type="Number" name="recoveryTime" value="${basic.recoveryTime }" required="required" class="form-control"> <span class="input-group-addon">分钟</span>
 					</div>
 				</div>
 			</div>

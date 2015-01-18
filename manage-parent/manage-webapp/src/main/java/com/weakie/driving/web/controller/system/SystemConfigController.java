@@ -112,11 +112,25 @@ public class SystemConfigController {
 		return "/sysconfig/pages/pay";
 	}
 	
+	//distribution
 	@RequestMapping(value="distribution",method = RequestMethod.GET)
 	public String distributionConfig(ModelMap model) {
-		model.addAttribute("area", null);
-		LogUtil.debug("SystemConfigController create area:"+null);
+		model.addAttribute("distance", this.sysConfigService.getDistance());
+		LogUtil.debug("SystemConfigController return distance.");
 		return "/sysconfig/pages/distribution";
+	}
+	
+	@RequestMapping(value="distribution",method = RequestMethod.PUT)
+	public String distributionConfig(ModelMap model,String distance) {
+		try{
+			double d = Double.parseDouble(distance);
+			this.sysConfigService.putDistance(d);
+		}catch(Exception e){
+			LogUtil.error("SystemConfigController update distance.",e);
+		}
+		model.addAttribute("panel", 5);
+		LogUtil.debug("SystemConfigController update distance:"+distance);
+		return "/sysconfig/index";
 	}
 	
 	private List<String> generateStartTime(){

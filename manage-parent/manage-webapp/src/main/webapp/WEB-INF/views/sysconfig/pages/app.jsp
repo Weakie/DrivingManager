@@ -29,7 +29,7 @@
 						</div>
 						<div class="col-md-9 column" style="padding-left: 0px">
 							<div class="input-group">
-								<input type="text" name="peemptiveDistance" value="${app.peemptiveDistance }" required="required" class="form-control"> <span class="input-group-addon">公里</span>
+								<input type="text" name="peemptiveDistance" value="${app.peemptiveDistance }" required="required" pattern="^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$" class="form-control"> <span class="input-group-addon">公里</span>
 							</div>
 						</div>
 					</div>
@@ -112,7 +112,7 @@
 						</div>
 						<div class="col-md-8 column" style="padding-left: 0px">
 							<div class="input-group">
-								<input type="text" name="nearbyDriverDistance" value="${app.nearbyDriverDistance }" required="required" class="form-control"> <span class="input-group-addon">公里</span>
+								<input type="text" name="nearbyDriverDistance" value="${app.nearbyDriverDistance }" required="required" pattern="^[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$" class="form-control"> <span class="input-group-addon">公里</span>
 							</div>
 						</div>
 					</div>

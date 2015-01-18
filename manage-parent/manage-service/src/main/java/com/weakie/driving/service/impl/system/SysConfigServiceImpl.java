@@ -51,4 +51,14 @@ public class SysConfigServiceImpl implements SysConfigService {
 		LogUtil.debug(invest);
 	}
 
+	@Override
+	public double getDistance() {
+		return 2.6;
+	}
+
+	@Override
+	public void putDistance(double d) {
+		LogUtil.debug(d);
+	}
+
 }

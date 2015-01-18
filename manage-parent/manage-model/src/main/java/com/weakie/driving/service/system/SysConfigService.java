@@ -16,4 +16,7 @@ public interface SysConfigService {
 	
 	public String getInvest();
 	public void putInvest(String invest);
+	
+	public double getDistance();
+	public void putDistance(double d);
 }
