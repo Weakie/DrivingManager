@@ -116,6 +116,7 @@ public class OrderController {
 	 * @param comment
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping(value="/{orderID}", method = RequestMethod.PUT, params="comment")
 	public OpeResult commentOrder(@PathVariable("orderID") String orderID,@RequestParam("comment") String comment){
 		System.out.println("comment "+orderID+" c:"+comment);

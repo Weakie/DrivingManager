@@ -21,7 +21,7 @@
 	</thead>
 	<tbody>
 		<c:forEach items="${orderList }" var="order">
-			<tr>
+			<tr id="${order.orderID }">
 				<td><a href="<c:url value="/order/${order.orderID }"/>">***${fn:substring(order.orderID,5,fn:length(order.orderID)) }</a></td>
 				<td>${order.driver.company }</td>
 				<td>${order.orderType }</td>
@@ -35,9 +35,9 @@
 				<td><fmt:formatDate value="${order.acceptTime }" type="both" pattern="MM/dd HH:mm" /></td>
 				<td>
 					<button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;"
-						onclick="destroyOrder('${order.orderID}')">强制销单</button>
+						onclick="destroyForceDialog('${order.orderID}')">强制销单</button>
 					<button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;"
-						onclick="">强制收回</button>
+						onclick="retrieveForceDialog('${order.orderID}')">强制收回</button>
 					<button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;"
 						onclick="commentDialog('${order.orderID}')">备注</button>
 				</td>

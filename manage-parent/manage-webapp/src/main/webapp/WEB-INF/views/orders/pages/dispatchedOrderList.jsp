@@ -20,7 +20,7 @@
 	</thead>
 	<tbody>
 		<c:forEach items="${orderList }" var="order">
-			<tr>
+			<tr id="${order.orderID }">
 				<td><a href="<c:url value="/order/${order.orderID }"/>">***${fn:substring(order.orderID,5,fn:length(order.orderID)) }</a></td>
 				<td>${order.driver.company }</td>
 				<td>${order.orderType }</td>
@@ -33,7 +33,7 @@
 				<td>${order.driver.telephone }</td>
 				<td>
 					<button type="button" class="btn btn-link btn-xs" style="line-height: 1;font-size: 8px;padding:0px 0px;vertical-align: top;" onclick="destroyOrder('${order.orderID}')">销单</button>
-					<button type="button" class="btn btn-link btn-xs" style="line-height: 1;font-size: 8px;padding:0px 0px;vertical-align: top;" onclick="">收回</button>
+					<button type="button" class="btn btn-link btn-xs" style="line-height: 1;font-size: 8px;padding:0px 0px;vertical-align: top;" onclick="retrieveOrder('${order.orderID}')">收回</button>
 					<button type="button" class="btn btn-link btn-xs" style="line-height: 1;font-size: 8px;padding:0px 0px;vertical-align: top;"
 						onclick="commentDialog('${order.orderID}')">备注</button>
 				</td>

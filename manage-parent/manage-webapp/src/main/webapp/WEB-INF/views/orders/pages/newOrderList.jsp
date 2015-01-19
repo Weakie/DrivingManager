@@ -26,7 +26,7 @@
 				<td>${order.aptmtPlace }</td>
 				<td>${order.customer.name }</td>
 				<td>${order.customer.telephone }</td>
-				<td>${fn:substring(order.comment,0,8) }</td>
+				<td id="cmt-${order.orderID }">${fn:substring(order.comment,0,8) }</td>
 				<td>
 					<button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;"
 						onclick="">派单</button>
