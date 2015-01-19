@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head>
 <%@ include file="../include/resource_link.jsp"%>
-<title>${title }-代价管理系统</title>
+<title>${title }-代驾管理系统</title>
 </head>
 <body>
 	<br>

@@ -3,7 +3,7 @@
 <html lang="zh-cn">
 <head>
 <%@ include file="../../include/resource_link.jsp"%>
-<title>地区收费-代价管理系统</title>
+<title>地区收费-代驾管理系统</title>
 </head>
 <body>
 	<div class="container">

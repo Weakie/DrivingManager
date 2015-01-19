@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <%@ include file="./include/resource_link_sysconfig.jsp"%>
-<title>系统配置-代价管理系统</title>
+<title>系统配置-代驾管理系统</title>
 </head>
 <body>
 	<div class="container">

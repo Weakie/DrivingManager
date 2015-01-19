@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <%@ include file="../include/resource_link.jsp"%>
-<title>派单-代价管理系统</title>
+<title>派单-代驾管理系统</title>
 </head>
 <body>
 	<div class="container">
