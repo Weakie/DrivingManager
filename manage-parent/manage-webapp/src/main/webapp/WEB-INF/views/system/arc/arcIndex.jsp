@@ -7,7 +7,8 @@
 </head>
 <body>
 	<div class="container">
-		<br>
+		<c:set var="nav" value="12" />
+		<%@ include file="../../include/navigator.jsp"%>
 		<div class="row clearfix">
 			<div class="col-md-10 column"></div>
 			<div class="col-md-2 column" style="text-align: right">

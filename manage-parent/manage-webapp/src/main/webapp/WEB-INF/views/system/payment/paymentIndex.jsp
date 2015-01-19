@@ -3,11 +3,12 @@
 <html lang="zh-cn">
 <head>
 <%@ include file="../../include/resource_link.jsp"%>
-<title>提成-代价管理系统</title>
+<title>提成-代驾管理系统</title>
 </head>
 <body>
 	<div class="container">
-		<br>
+		<c:set var="nav" value="12" />
+		<%@ include file="../../include/navigator.jsp"%>
 		<div class="row clearfix">
 			<div class="col-md-10 column"></div>
 			<div class="col-md-2 column" style="text-align: right">

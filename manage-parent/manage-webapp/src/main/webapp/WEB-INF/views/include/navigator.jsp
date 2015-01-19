@@ -32,7 +32,7 @@
 					<li><a href="<c:url value="/users"/>">用户管理</a></li>
 					<li class="divider"></li>
 					<li><a href="<c:url value="/arcs"/>">地区收费</a></li>
-					<li><a href="#">提成设置</a></li>
+					<li><a href="<c:url value="/payments"/>">提成设置</a></li>
 				</ul></li>
 		</ul>
 	</div>
