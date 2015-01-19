@@ -10,12 +10,18 @@
 		<br>
 		<div class="row clearfix">
 			<div class="col-md-10 column"></div>
-			<div class="col-md-2 column">
-				<button type="button" class="btn btn-primary">添加新提成</button>
+			<div class="col-md-2 column" style="text-align: right">
+				<a role="button" class="btn btn-primary" href="<c:url value="/payment"/>">添加新提成</a>
 			</div>
 		</div>
 		<br>
-		
+		<div class="page_turning">
+			<c:import url="/payments">
+				<c:param name="type" value="none" />
+				<c:param name="pageIndex" value="1" />
+				<c:param name="pageNum" value="10" />
+			</c:import>
+		</div>
 	</div>
 </body>
 </html>
