@@ -29,7 +29,7 @@
 					<li><a href="<c:url value="/sysconfig"/>">系统配置</a></li>
 					<li class="divider"></li>
 					<li><a href="<c:url value="/roles"/>">角色设置</a></li>
-					<li><a href="#">用户管理</a></li>
+					<li><a href="<c:url value="/users"/>">用户管理</a></li>
 					<li class="divider"></li>
 					<li><a href="#">地区收费</a></li>
 					<li><a href="#">提成设置</a></li>

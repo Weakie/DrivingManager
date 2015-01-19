@@ -1,4 +1,4 @@
-package com.weakie.driving.web.controller.system.role;
+package com.weakie.driving.web.controller.system.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,42 +8,42 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.weakie.driving.service.system.RoleListService;
+import com.weakie.driving.service.system.UserListService;
 import com.weakie.driving.utils.PageControl;
 
 @Controller
-@RequestMapping("/roles")
-public class RoleListController {
-	
+@RequestMapping("/users")
+public class UserListController {
+
 	@ModelAttribute("pc")
 	public PageControl getPageControl(){
-		return new PageControl("/roles");
+		return new PageControl("/users");
 	}
 	
-	private RoleListService roleListService;
+	private UserListService userListService;
 	@Autowired
-	public void setRoleListService(RoleListService roleListService) {
-		this.roleListService = roleListService;
+	public void setUserListService(UserListService userListService) {
+		this.userListService = userListService;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, params = { "!type", "!q" })
-	public String roleIndex() {
-		return "/system/role/roleIndex";
+	public String userIndex() {
+		return "/system/user/userIndex";
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, params = "type")
-	public ModelAndView getRoles(@ModelAttribute("pc") PageControl p) {
+	public ModelAndView getUsers(@ModelAttribute("pc") PageControl p) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/system/role/pages/roleList");
-		mav.addObject("roleList", this.roleListService.getRoleList(p));
+		mav.setViewName("/system/user/pages/userList");
+		mav.addObject("userList", this.userListService.getUserList(p));
 		return mav;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, params = "q")
-	public ModelAndView searchRoles(@ModelAttribute("pc") PageControl p,@RequestParam("q") String q) {
+	public ModelAndView searchUsers(@ModelAttribute("pc") PageControl p,@RequestParam("q") String q) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/system/role/pages/roleList");
-		mav.addObject("roleList", this.roleListService.searchRoleList(p, q));
+		mav.setViewName("/system/user/pages/userList");
+		mav.addObject("userList", this.userListService.searchUserList(p, q));
 		return mav;
 	}
 }
