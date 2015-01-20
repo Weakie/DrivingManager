@@ -66,6 +66,7 @@
 	$(document).ready(function(){
 		$("a.btn-danger").click(function(){
 			$("#timeRefreshPanel").show();
+			timeRemain = 60;
 			refreshTimedOrders();
 		});
 		$("a.btn-default").click(function(){

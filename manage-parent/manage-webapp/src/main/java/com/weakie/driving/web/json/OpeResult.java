@@ -1,11 +1,19 @@
-package com.weakie.driving.utils;
+package com.weakie.driving.web.json;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.weakie.driving.utils.InvokeResult;
+
+/**
+ * 用户操作结果
+ * 用于以json的格式返回给前端使用
+ * @author weakie,lin
+ *
+ */
 public class OpeResult {
 
-	public static final String RES_SUCCESS = "SUCCESS";
+	public static final String RES_SUCC = "SUCCESS";
 	public static final String RES_FAIL = "FAIL";
 	private static final SimpleDateFormat sf = new SimpleDateFormat("(MM-dd a hh:mm:ss) ");
 	private String res;
@@ -17,6 +25,13 @@ public class OpeResult {
 		super();
 		this.res = res;
 		this.com = com;
+		this.time = sf.format(new Date());
+	}
+
+	public OpeResult(InvokeResult ir, String com){
+		this.res = (ir.isSuccess() ? RES_SUCC:RES_FAIL);
+		this.com = com;
+		this.additional = ir.getMsg();
 		this.time = sf.format(new Date());
 	}
 	
@@ -49,7 +64,9 @@ public class OpeResult {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "OpeResult [res=" + res + ", com=" + com + ", additional=" + additional + ", time=" + time + "]";
+	}
 }

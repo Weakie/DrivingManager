@@ -17,9 +17,10 @@ import com.weakie.driving.model.Coordinate;
 import com.weakie.driving.model.orders.OrderCreating;
 import com.weakie.driving.service.driver.DriverLocationService;
 import com.weakie.driving.service.order.OrderService;
+import com.weakie.driving.utils.InvokeResult;
 import com.weakie.driving.utils.LogUtil;
-import com.weakie.driving.utils.OpeResult;
 import com.weakie.driving.utils.PageControl;
+import com.weakie.driving.web.json.OpeResult;
 
 /**
  * 订单详细操作
@@ -62,6 +63,8 @@ public class OrderController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String newOrder(OrderCreating order) {
 		LogUtil.info("OrderController create new Order:" + order);
+		//InvokeResult ir = this.orderService.createNewOrder(order);
+		//TODO 确定操作成功之后返回到那个页面
 		return "/order/orderCreate";
 	}
 
@@ -69,6 +72,7 @@ public class OrderController {
 	@RequestMapping(value = "/customer/{customerID}", method = RequestMethod.GET)
 	public ModelAndView showIncompleteOrder(@PathVariable("customerID") String customerID) {
 		ModelAndView mav = new ModelAndView();
+		//TODO
 		/**
 		 * 获取客户未完成订单ID列表
 		 * 获取相应的订单Profile信息
@@ -114,9 +118,11 @@ public class OrderController {
 	public OpeResult updateOrderState(@PathVariable("orderID") String orderID, @RequestParam("state") String state) {
 		LogUtil.info("updateOrderState " + orderID + ", "+state);
 		if(StringUtils.equals("destroy", state)){
-			return new OpeResult(OpeResult.RES_SUCCESS, "订单号:" + orderID, "销单");
+			InvokeResult ir = this.orderService.destroyOrder(orderID);
+			return new OpeResult(ir, "销单-订单号:" + orderID);
 		}else if(StringUtils.equals("retrieve", state)){
-			return new OpeResult(OpeResult.RES_SUCCESS, "订单号:" + orderID, "收回");
+			InvokeResult ir = this.orderService.retrieveOrder(orderID);
+			return new OpeResult(ir, "收回-订单号:" + orderID);
 		}
 		return new OpeResult(OpeResult.RES_FAIL, "订单号:" + orderID, "不支持此操作");
 	}
@@ -131,7 +137,29 @@ public class OrderController {
 	@ResponseBody
 	@RequestMapping(value = "/{orderID}", method = RequestMethod.PUT, params = "comment")
 	public OpeResult commentOrder(@PathVariable("orderID") String orderID, @RequestParam("comment") String comment) {
-		System.out.println("comment " + orderID + " c:" + comment);
-		return new OpeResult(OpeResult.RES_SUCCESS, "订单号:" + orderID, "备注修改");
+		LogUtil.info("commentOrder :" + orderID + " ,cmt:" + comment);
+		InvokeResult ir = this.orderService.commentOrder(orderID, comment);
+		return new OpeResult(ir, "备注修改-订单号:" + orderID);
+	}
+	
+	/**
+	 * 实收金额修改
+	 * 
+	 * @param orderID
+	 * @param comment
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/{orderID}", method = RequestMethod.PUT, params = "amount")
+	public OpeResult updateOrderRealAmount(@PathVariable("orderID") String orderID, @RequestParam("amount") String amount) {
+		LogUtil.info("updateOrderRealAmount :" + orderID + " ,amt:" + amount);
+		try{
+			double amt = Double.parseDouble(amount);
+			InvokeResult ir = this.orderService.updateRealAmount(orderID, amt);
+			return new OpeResult(ir, "实收金额修改-订单号:" + orderID);
+		}catch(NumberFormatException e){
+			return new OpeResult(OpeResult.RES_FAIL, "订单号:" + orderID, "请输入一个数字");
+		}
+		
 	}
 }
