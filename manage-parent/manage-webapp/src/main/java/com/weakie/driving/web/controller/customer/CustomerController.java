@@ -27,4 +27,5 @@ public class CustomerController {
 		LogUtil.debug("CustomerController create Customer:"+customer);
 		return "/customer/customerCreate";
 	}
+	
 }

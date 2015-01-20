@@ -18,7 +18,6 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public OrderDetail getOrderDetailByOrderID(String orderID) {
-		// TODO Auto-generated method stub
 		return new OrderDetail();
 	}
 
@@ -38,37 +37,31 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public InvokeResult createNewOrder(OrderCreating newOrder) {
-		// TODO Auto-generated method stub
 		return new InvokeResult();
 	}
 
 	@Override
 	public InvokeResult distributeOrder(String orderID, String driverID) {
-		// TODO Auto-generated method stub
 		return new InvokeResult();
 	}
 
 	@Override
 	public InvokeResult destroyOrder(String orderID) {
-		// TODO Auto-generated method stub
 		return new InvokeResult();
 	}
 
 	@Override
 	public InvokeResult retrieveOrder(String orderID) {
-		// TODO Auto-generated method stub
 		return new InvokeResult();
 	}
 
 	@Override
 	public InvokeResult commentOrder(String orderID, String comment) {
-		// TODO Auto-generated method stub
 		return new InvokeResult();
 	}
 
 	@Override
 	public InvokeResult updateRealAmount(String orderID, double amount) {
-		// TODO Auto-generated method stub
 		return new InvokeResult();
 	}
 

@@ -27,6 +27,7 @@ public interface OrderService {
 	 * @return
 	 */
 	public InvokeResult createNewOrder(OrderCreating newOrder);
+	
 	/**
 	 * 派单
 	 * @param orderID

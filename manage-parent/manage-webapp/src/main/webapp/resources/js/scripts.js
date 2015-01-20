@@ -133,21 +133,25 @@ function sendOrder(){
 function alertData(type, data) {
 	if(type=='success'){
 		if(data.res=="SUCCESS"){
-			$("#alert").html('<div class="alert alert-success alert-dismissable">'
+			$("#alert").html('<div class="alert alert-success alert-dismissable fade in">'
 					+ '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
 					+ '[操作成功] '+data.time +' '+ data.com +'. '+ data.additional + '</div>');
+			setTimeout("autoCloseAlert()" ,6000);
 		}else{
-			$("#alert").html('<div class="alert alert-warn alert-dismissable">'
+			$("#alert").html('<div class="alert alert-warn alert-dismissable fade in">'
 					+ '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
 					+ '[操作失败] '+data.time +' '+ data.com +'. '+ data.additional + '</div>');
 		}
 	}else{
-		$("#alert").html('<div class="alert alert-danger  alert-dismissable">'
+		$("#alert").html('<div class="alert alert-danger alert-dismissable fade in">'
 				+ '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
 				+ '[请求失败] '+data.time +' '+ data.res +'. '+ data.com +'. '+ data.additional + '</div>');
 	}
 }
 
+function autoCloseAlert(){
+	$("#alert").children("div.alert-success").alert('close');
+}
 
 
 

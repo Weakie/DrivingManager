@@ -1,11 +1,8 @@
 package com.weakie.driving.web.controller.orders;
 
-import java.util.Date;
-
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,18 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.weakie.driving.model.Coordinate;
-import com.weakie.driving.model.orders.OrderCreating;
-import com.weakie.driving.service.driver.DriverLocationService;
 import com.weakie.driving.service.order.OrderService;
 import com.weakie.driving.utils.InvokeResult;
 import com.weakie.driving.utils.LogUtil;
-import com.weakie.driving.utils.PageControl;
 import com.weakie.driving.web.json.OpeResult;
 
 /**
  * 订单详细操作
- * 
  * @author weakie,lin
  *
  */
@@ -33,63 +25,10 @@ import com.weakie.driving.web.json.OpeResult;
 public class OrderController {
 
 	private OrderService orderService;
-	private DriverLocationService driverLocationService;
 
 	@Autowired
 	public void setOrderService(OrderService orderService) {
 		this.orderService = orderService;
-	}
-
-	@Autowired
-	public void setDriverLocationService(DriverLocationService driverLocationService) {
-		this.driverLocationService = driverLocationService;
-	}
-
-	@ModelAttribute("date")
-	public Date getDate() {
-		return new Date();
-	}
-
-	/**
-	 * 创建新订单
-	 * 
-	 * @return
-	 */
-	@RequestMapping(method = RequestMethod.GET)
-	public String newOrder() {
-		return "/order/orderCreate";
-	}
-
-	@RequestMapping(method = RequestMethod.POST)
-	public String newOrder(OrderCreating order) {
-		LogUtil.info("OrderController create new Order:" + order);
-		//InvokeResult ir = this.orderService.createNewOrder(order);
-		//TODO 确定操作成功之后返回到那个页面
-		return "/order/orderCreate";
-	}
-
-	// 获取客户未完成订单
-	@RequestMapping(value = "/customer/{customerID}", method = RequestMethod.GET)
-	public ModelAndView showIncompleteOrder(@PathVariable("customerID") String customerID) {
-		ModelAndView mav = new ModelAndView();
-		//TODO
-		/**
-		 * 获取客户未完成订单ID列表
-		 * 获取相应的订单Profile信息
-		 * 组成Lst返回，用于创建新订单时客户未完成订单显示
-		 */
-		mav.setViewName("/order/pages/incompletedOrderList");
-		return mav;
-	}
-
-	// 获取可以派单的司机
-	@RequestMapping(value = "/drivers", method = RequestMethod.GET)
-	public ModelAndView getAvailableDriven(@RequestParam("coordinate") Coordinate c, @ModelAttribute PageControl p) {
-		LogUtil.debug("Invoke OrderController.getAvailableDriven():" + c);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/order/pages/availableDriverList");
-		mav.addObject("driverList", this.driverLocationService.getDriverLocationInfosByPosition(c, p));
-		return mav;
 	}
 
 	/**
@@ -160,6 +99,5 @@ public class OrderController {
 		}catch(NumberFormatException e){
 			return new OpeResult(OpeResult.RES_FAIL, "订单号:" + orderID, "请输入一个数字");
 		}
-		
 	}
 }

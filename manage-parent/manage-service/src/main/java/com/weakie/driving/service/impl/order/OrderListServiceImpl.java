@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.weakie.driving.model.Coordinate;
 import com.weakie.driving.model.Customer;
 import com.weakie.driving.model.Driver;
+import com.weakie.driving.model.orders.OrderProfile;
+import com.weakie.driving.model.orders.OrderStatus;
 import com.weakie.driving.model.orders.type.AcceptedOrder;
 import com.weakie.driving.model.orders.type.DestroyedOrder;
 import com.weakie.driving.model.orders.type.DispatchedOrder;
@@ -132,6 +134,24 @@ public class OrderListServiceImpl implements OrderListService {
 		}
 		pageControl.setTotalNum(100);
 		return orderList;
+	}
+
+	@Override
+	public List<OrderProfile> getOrderProfileByOrderID(List<String> orderIds) {
+		List<OrderProfile> orders = new ArrayList<OrderProfile>();
+		for(String id:orderIds){
+			OrderProfile p = new OrderProfile();
+			p.setOrderID(id);
+			p.setOrderSource("客户下单");
+			p.setOrderType("一键下单");
+			p.setOrderStatus(OrderStatus.NEW);
+			p.setCustomer(new Customer("111","222","221213121"));
+			p.setAptmtTime(new Date());
+			p.setAptmtPlace("上海市");
+			p.setAptmtCoordt(new Coordinate(123,344));
+			orders.add(p);
+		}
+		return orders;
 	}
 
 }
