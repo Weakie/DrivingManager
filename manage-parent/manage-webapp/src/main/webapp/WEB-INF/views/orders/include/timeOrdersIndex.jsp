@@ -75,10 +75,7 @@
 <div class="panel panel-danger">
 	<div id="collapseFourHead" class="panel-heading">
 		<div class="row clearfix">
-			<div class="col-md-10 column">即将完成工单</div>
-			<div class="col-md-1 column" style="text-align: right">
-				<a href="#collapseFourHead" style="padding-right: 0px;">全部刷新</a>
-			</div>
+			<div class="col-md-11 column">即将完成工单</div>
 			<div class="col-md-1 column" style="text-align: right">
 				<a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> 展开 </a>
 			</div>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,10 +39,12 @@ public class SendController {
 	public void setOrderService(OrderService orderService) {
 		this.orderService = orderService;
 	}
+
 	@Autowired
 	public void setOrderListService(OrderListService orderListService) {
 		this.orderListService = orderListService;
 	}
+
 	@Autowired
 	public void setDriverLocationService(DriverLocationService driverLocationService) {
 		this.driverLocationService = driverLocationService;
@@ -56,14 +59,28 @@ public class SendController {
 	public String orderIndex() {
 		return "/sendOrder/sendIndex";
 	}
-	
+
 	/**
 	 * 派单主页
 	 * 带有订单号的派单
+	 * 
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.GET, params = "orderID")
-	public String orderIndexWithSelected(@RequestParam("orderID") String orderID, ModelMap modelMap){
+	@RequestMapping(value = "{orderID}", method = RequestMethod.GET)
+	public String orderIndexWithSelected(@PathVariable("orderID") String orderID, ModelMap modelMap) {
+		modelMap.addAttribute("order", this.orderService.getOrderProfileByOrderID(orderID));
+		return "/sendOrder/sendIndexWithSelected";
+	}
+
+	/**
+	 * 派单主页
+	 * 带有订单号的派单
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "{orderID}", method = RequestMethod.PUT, params = "driverID")
+	public String sendOrder(@PathVariable("orderID") String orderID, @RequestParam("driverID") String driverID,
+			ModelMap modelMap) {
 		modelMap.addAttribute("order", this.orderService.getOrderProfileByOrderID(orderID));
 		return "/sendOrder/sendIndexWithSelected";
 	}
@@ -107,7 +124,7 @@ public class SendController {
 	 */
 	@RequestMapping(value = "/drivers", method = RequestMethod.GET, params = "coordinate")
 	public ModelAndView getAvailableDriven(@RequestParam("coordinate") Coordinate c, @ModelAttribute PageControl p) {
-		LogUtil.debug("Invoke SendOrderControl.getAvailableDriven():"+c);
+		LogUtil.debug("Invoke SendOrderControl.getAvailableDriven():" + c);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/sendOrder/pages/availableDriverList");
 		mav.addObject("driverList", this.driverLocationService.getDriverLocationInfosByPosition(c, p));

@@ -117,6 +117,12 @@ function refreshTimedOrders(){
 	$("#shuttle").load(context+'/cars','type=shuttle');
 }
 
+/**
+ * ajax request for send order
+ */
+function sendOrder(){
+	
+}
 
 
 /**

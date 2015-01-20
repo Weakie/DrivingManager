@@ -28,8 +28,8 @@
 				<td>${order.customer.telephone }</td>
 				<td id="cmt-${order.orderID }">${fn:substring(order.comment,0,8) }</td>
 				<td>
-					<button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;"
-						onclick="">派单</button>
+					<a      type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;"
+						href="<c:url value="/send/${order.orderID }"/>">派单</a>
 					<button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;"
 						onclick="destroyOrder('${order.orderID}')">销单</button>
 					<button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;"
