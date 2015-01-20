@@ -27,7 +27,7 @@
 				</div>
 				<div class="col-md-3 column" style="text-align: right">
 					<a class="btn btn-primary" href="<c:url value="/orders"/>" role="button">刷新</a> 
-					<a class="btn btn-primary" href="<c:url value="/order"/>" role="button">添加新订单</a>
+					<a class="btn btn-primary" href="<c:url value="/orderCreate"/>" role="button">添加新订单</a>
 				</div>
 			</div>
 			<br>

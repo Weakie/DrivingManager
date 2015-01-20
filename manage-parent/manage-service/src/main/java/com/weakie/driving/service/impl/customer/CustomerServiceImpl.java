@@ -3,11 +3,14 @@ package com.weakie.driving.service.impl.customer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.weakie.driving.model.customer.CustomerDetail;
 import com.weakie.driving.model.customer.CustomerType;
 import com.weakie.driving.service.customer.CustomerService;
 import com.weakie.driving.utils.PageControl;
 
+@Service
 public class CustomerServiceImpl implements CustomerService {
 
 	@Override
