@@ -20,10 +20,12 @@
 						<a class="btn btn-default" href="#panel-16703" role="button" data-toggle="tab">已报单</a>
 					</div>
 				</div>
-				<div class="col-md-6 column">
-					<p>距离下次刷新还有： 秒</p>
+				<div class="col-md-5 column">
+					<div id="timeRefreshPanel" class="col-md-12 column">
+						<p>距离下次刷新还有：<b id="timeSeconds"></b> 秒</p>
+					</div>
 				</div>
-				<div class="col-md-2 column">
+				<div class="col-md-3 column" style="text-align: right">
 					<a class="btn btn-primary" href="<c:url value="/orders"/>" role="button">刷新</a> 
 					<a class="btn btn-primary" href="<c:url value="/order"/>" role="button">添加新订单</a>
 				</div>
@@ -60,4 +62,29 @@
 		</div>
 	</div>
 </body>
+<script>
+	$(document).ready(function(){
+		$("a.btn-danger").click(function(){
+			$("#timeRefreshPanel").show();
+			refreshTimedOrders();
+		});
+		$("a.btn-default").click(function(){
+			$("#timeRefreshPanel").hide();
+		});
+		//invoke timer start
+		myTimer();
+	});
+	
+	var t;
+	var timeRemain = 60;
+	function myTimer(){
+		$("#timeSeconds").text(timeRemain);
+		timeRemain = timeRemain - 1;
+		if(timeRemain == 0){
+			timeRemain = 60;
+			refreshTimedOrders();
+		}
+		t = setTimeout("myTimer()" ,1000);
+	}
+</script>
 </html>

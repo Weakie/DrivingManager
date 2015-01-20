@@ -17,7 +17,7 @@
 	</div>
 	<div id="collapseOne" class="panel-collapse collapse">
 		<div class="panel-body">
-			<div class="page_turning">
+			<div id="newOrders" class="page_turning">
 				<c:import url="/orders">
 					<c:param name="type" value="new" />
 					<c:param name="pageIndex" value="1" />
@@ -39,7 +39,7 @@
 	</div>
 	<div id="collapseTwo" class="panel-collapse collapse">
 		<div class="panel-body">
-			<div class="page_turning">
+			<div id="dispatchedOrders" class="page_turning">
 				<c:import url="/orders">
 					<c:param name="type" value="dispatched" />
 					<c:param name="pageIndex" value="1" />
@@ -61,7 +61,7 @@
 	</div>
 	<div id="collapseThree" class="panel-collapse collapse">
 		<div class="panel-body">
-			<div class="page_turning">
+			<div id="acceptedOrders" class="page_turning">
 				<c:import url="/orders">
 					<c:param name="type" value="accepted" />
 					<c:param name="pageIndex" value="1" />
@@ -86,7 +86,7 @@
 	</div>
 	<div id="collapseFour" class="panel-collapse collapse">
 		<div class="panel-body">
-			<div class="page_turning">
+			<div id="drivingOrders" class="page_turning">
 				<c:import url="/orders">
 					<c:param name="type" value="driving" />
 					<c:param name="pageIndex" value="1" />
@@ -108,9 +108,9 @@
 	</div>
 	<div id="collapseFive" class="panel-collapse collapse">
 		<div class="panel-body">
-			<div class="page_turning">
-				<c:import url="/orders">
-					<c:param name="type" value="driving" />
+			<div id="shuttle" class="page_turning">
+				<c:import url="/cars">
+					<c:param name="type" value="shuttle" />
 					<c:param name="pageIndex" value="1" />
 					<c:param name="pageNum" value="10" />
 				</c:import>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div id="alert"></div>
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="navbar-header">
 		<a class="navbar-brand" href="#">代驾管理系统</a>
 	</div>
@@ -38,3 +37,5 @@
 		</ul>
 	</div>
 </nav>
+<div id="alert" style="position:fixed;top:0;right:-2;left:-2;z-index:1033"></div>
+<div style="padding-top: 60px;"></div>

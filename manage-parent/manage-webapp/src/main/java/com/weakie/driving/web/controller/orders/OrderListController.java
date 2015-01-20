@@ -64,7 +64,6 @@ public class OrderListController {
 
 	@RequestMapping(method = RequestMethod.GET, params = "type=driving")
 	public ModelAndView getDrivingOrders(@ModelAttribute("pc") PageControl p) {
-
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/orders/pages/drivingOrderList");
 		mav.addObject("orderList", this.orderListService.getDrivingOrders(p));

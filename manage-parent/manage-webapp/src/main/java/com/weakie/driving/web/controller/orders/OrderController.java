@@ -2,6 +2,7 @@ package com.weakie.driving.web.controller.orders;
 
 import java.util.Date;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,6 +23,7 @@ import com.weakie.driving.utils.PageControl;
 
 /**
  * 订单详细操作
+ * 
  * @author weakie,lin
  *
  */
@@ -31,38 +33,40 @@ public class OrderController {
 
 	private OrderService orderService;
 	private DriverLocationService driverLocationService;
-	
+
 	@Autowired
 	public void setOrderService(OrderService orderService) {
 		this.orderService = orderService;
 	}
+
 	@Autowired
 	public void setDriverLocationService(DriverLocationService driverLocationService) {
 		this.driverLocationService = driverLocationService;
 	}
-	
+
 	@ModelAttribute("date")
-	public Date getDate(){
+	public Date getDate() {
 		return new Date();
 	}
-	
+
 	/**
 	 * 创建新订单
+	 * 
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String newOrder() {
 		return "/order/orderCreate";
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public String newOrder(OrderCreating order) {
-		System.out.println(order);
+		LogUtil.info("OrderController create new Order:" + order);
 		return "/order/orderCreate";
 	}
-	
-	//获取客户未完成订单
-	@RequestMapping(value="/customer/{customerID}", method = RequestMethod.GET)
+
+	// 获取客户未完成订单
+	@RequestMapping(value = "/customer/{customerID}", method = RequestMethod.GET)
 	public ModelAndView showIncompleteOrder(@PathVariable("customerID") String customerID) {
 		ModelAndView mav = new ModelAndView();
 		/**
@@ -73,53 +77,61 @@ public class OrderController {
 		mav.setViewName("/order/pages/incompletedOrderList");
 		return mav;
 	}
-	
-	//获取可以派单的司机
-	@RequestMapping(value="/drivers", method = RequestMethod.GET)
+
+	// 获取可以派单的司机
+	@RequestMapping(value = "/drivers", method = RequestMethod.GET)
 	public ModelAndView getAvailableDriven(@RequestParam("coordinate") Coordinate c, @ModelAttribute PageControl p) {
-		LogUtil.debug("Invoke OrderController.getAvailableDriven():"+c);
+		LogUtil.debug("Invoke OrderController.getAvailableDriven():" + c);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/order/pages/availableDriverList");
 		mav.addObject("driverList", this.driverLocationService.getDriverLocationInfosByPosition(c, p));
 		return mav;
 	}
-	
+
 	/**
 	 * 查看订单详情
+	 * 
 	 * @param orderID
 	 * @return
 	 */
-	@RequestMapping(value="/{orderID}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{orderID}", method = RequestMethod.GET)
 	public ModelAndView showDetail(@PathVariable("orderID") String orderID) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/order/orderDetail");
 		mav.addObject("order", this.orderService.getOrderDetailByOrderID(orderID));
 		return mav;
 	}
-	
+
 	/**
-	 * 销单,收回
+	 * 销单,收回,强制销单,强制收回
+	 * 
 	 * @param orderID
 	 * @param state
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value="/{orderID}", method = RequestMethod.PUT, params="state")
-	public OpeResult destroyOrder(@PathVariable("orderID") String orderID,@RequestParam("state") String state){
-		System.out.println(orderID+" "+state);
-		return new OpeResult(OpeResult.RES_SUCCESS, "");
+	@RequestMapping(value = "/{orderID}", method = RequestMethod.PUT, params = "state")
+	public OpeResult updateOrderState(@PathVariable("orderID") String orderID, @RequestParam("state") String state) {
+		LogUtil.info("updateOrderState " + orderID + ", "+state);
+		if(StringUtils.equals("destroy", state)){
+			return new OpeResult(OpeResult.RES_SUCCESS, "订单号:" + orderID, "销单");
+		}else if(StringUtils.equals("retrieve", state)){
+			return new OpeResult(OpeResult.RES_SUCCESS, "订单号:" + orderID, "收回");
+		}
+		return new OpeResult(OpeResult.RES_FAIL, "订单号:" + orderID, "不支持此操作");
 	}
-	
+
 	/**
 	 * 添加备注信息
+	 * 
 	 * @param orderID
 	 * @param comment
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value="/{orderID}", method = RequestMethod.PUT, params="comment")
-	public OpeResult commentOrder(@PathVariable("orderID") String orderID,@RequestParam("comment") String comment){
-		System.out.println("comment "+orderID+" c:"+comment);
-		return new OpeResult(OpeResult.RES_SUCCESS, "");
+	@RequestMapping(value = "/{orderID}", method = RequestMethod.PUT, params = "comment")
+	public OpeResult commentOrder(@PathVariable("orderID") String orderID, @RequestParam("comment") String comment) {
+		System.out.println("comment " + orderID + " c:" + comment);
+		return new OpeResult(OpeResult.RES_SUCCESS, "订单号:" + orderID, "备注修改");
 	}
 }

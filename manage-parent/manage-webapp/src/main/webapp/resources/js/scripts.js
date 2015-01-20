@@ -77,13 +77,15 @@ function commentUpdate(orderid, data){
 	}
 }
 
-//ajax
+/**
+ * ajax request for order
+ */
 function destroyOrder(orderid) {
 	$.post(context + "/order/" + orderid, {
 		_method : "PUT",
 		state : "destroy"
 	}, function(data, status) {
-		alert("Data: " + data.res + data.com + "\nStatus: " + status);
+		alertData(status,data);
 		$("tr#" + orderid).hide();
 	});
 }
@@ -93,11 +95,10 @@ function retrieveOrder(orderid) {
 		_method : "PUT",
 		state : "retrieve"
 	}, function(data, status) {
-		alert("Data: " + data.res + data.com + "\nStatus: " + status);
+		alertData(status,data);
 		$("tr#" + orderid).hide();
 	});
 }
-
 
 function commentOrder(orderid, cmtData) {
 	$.post(context + "/order/" + orderid, {
@@ -108,20 +109,45 @@ function commentOrder(orderid, cmtData) {
 	});
 }
 
-// alert
+function refreshTimedOrders(){
+	$("#newOrders").load(context+'/orders','type=new');
+	$("#dispatchedOrders").load(context+'/orders','type=dispatched');
+	$("#acceptedOrders").load(context+'/orders','type=accepted');
+	$("#drivingOrders").load(context+'/orders','type=driving');
+	$("#shuttle").load(context+'/cars','type=shuttle');
+}
+
+
+
+/**
+ * alert
+ * @param type
+ * @param data
+ */
 function alertData(type, data) {
 	if(type=='success'){
-		$("#alert").html('<div class="alert alert-success alert-dismissable">'
-				+ '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
-				+ data.res + data.com + '</div>');
+		if(data.res=="SUCCESS"){
+			$("#alert").html('<div class="alert alert-success alert-dismissable">'
+					+ '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
+					+ '[操作成功] '+data.time +' '+ data.com +'. '+ data.additional + '</div>');
+		}else{
+			$("#alert").html('<div class="alert alert-warn alert-dismissable">'
+					+ '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
+					+ '[操作失败] '+data.time +' '+ data.com +'. '+ data.additional + '</div>');
+		}
 	}else{
 		$("#alert").html('<div class="alert alert-danger  alert-dismissable">'
 				+ '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
-				+ data.res + data.com + '</div>');
+				+ '[请求失败] '+data.time +' '+ data.res +'. '+ data.com +'. '+ data.additional + '</div>');
 	}
 }
 
-// page control
+
+
+
+/**
+ * page control
+ */
 function prevPage(self, path, data, curpage, pageNum) {
 	curpage = curpage - 1;
 	if (curpage <= 1) {
