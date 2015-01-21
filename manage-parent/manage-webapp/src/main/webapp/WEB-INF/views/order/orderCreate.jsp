@@ -27,13 +27,13 @@
 					<img src="../img/map.jpg" width="100%" height="500px">
 				</div>
 				<br>
-				<div id="xxx">
+				<div id="unresolvedOrders" class="page_turning">
 					<!-- 发送ajax请求 -->
 				</div>
 			</div>
 			<div class="col-md-0 column"></div>
 			<div class="col-md-4 column" style="padding-left: 0px;">
-				<form action="<c:url value="/order"/>" method="post">
+				<form action="<c:url value="/orderCreate"/>" method="post">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">输入代驾地点定位，或地图上右击定位</h3>
@@ -42,12 +42,12 @@
 					<div class="row clearfix">
 						<div class="col-md-8 column" style="padding-right: 0px">
 							<div class="input-group">
-								<span class="input-group-addon">地点</span> <input type="text" name="aptmtPlace" class="form-control" placeholder="">
-								<input type="hidden" name="aptmtCoordt" value="(123,123)">
+								<span class="input-group-addon">地点</span> <input id="aptmtPlace" type="text" name="aptmtPlace" class="form-control" placeholder="">
+								<input id="aptmtCoordt" type="hidden" name="aptmtCoordt" value="(123,123)">
 							</div>
 						</div>
 						<div class="col-md-4 column" style="padding-left: 0px">
-							<button type="button" class="btn btn-default">定位</button>
+							<button id="locateBtn" type="button" class="btn btn-default">定位</button>
 						</div>
 					</div>
 					<br>
@@ -75,36 +75,43 @@
 					<div class="row clearfix">
 						<div class="col-md-8 column">
 							<div class="input-group">
-								<span class="input-group-addon">客户手机</span> <input type="text" class="form-control">
-								<input type="hidden" name="customerID" value="kehu">
+								<span class="input-group-addon">客户手机</span> <input id="customerTel" type="text" class="form-control">
+								<input id="customerID" type="hidden" name="customerID" value="">
 							</div>
 						</div>
-						<div class="col-md-4 column" style="vertical-align: middle; position: relative; top: 50%">
-							<span class="label label-info" style="vertical-align: middle">个人用户</span>
+						<div class="col-md-4 column" style="top: 10px">
+							<span id="customerType" class="label label-info">个人用户</span>
 						</div>
 					</div>
 					<br>
 					<div class="row clearfix">
 						<div class="col-md-8 column">
 							<div class="input-group">
-								<span class="input-group-addon">客户姓名</span> <input type="text" class="form-control" placeholder="自动">
+								<span class="input-group-addon">客户姓名</span> <input id="customerName" type="text" class="form-control" placeholder="自动">
 							</div>
 						</div>
-						<div class="col-md-4 column" style="vertical-align: center">
-							<span class="label label-warning" style="vertical-align: middle">0元</span>
+						<div class="col-md-4 column" style="top: 10px">
+							<span class="label label-warning"><span id="customerBalance">0</span>元</span>
 						</div>
 					</div>
 					<br>
 					<div class="row clearfix">
-						<div class="col-md-4 column">
-							<p>总下单量：22</p>
+						<div class="col-md-4 column" style="top: 5px">
+							<p>总下单量：<span id="totalNum">0</span></p>
 						</div>
-						<div class="col-md-6 column">
-							<p>总下单量：22</p>
+						<div class="col-md-4 column" style="top: 5px">
+							<p>总下单量：<span id="monthNum">0</span></p>
+						</div>
+						<div class="col-md-4 column" style="margin-bottom: 12px;" >
+							<button id="createCustomer" type="button" class="btn btn-warning btn-sm">创建客户</button>
 						</div>
 					</div>
-					<div class="input-group">
-						<span class="input-group-addon">订单来源</span> <input type="text" name="orderSource" class="form-control">
+					<div class="row clearfix">
+						<div class="col-md-10 column">
+							<div class="input-group">
+								<span class="input-group-addon">订单来源</span> <input type="text" name="orderSource" class="form-control">
+							</div>
+						</div>
 					</div>
 					<br>
 					<div class="checkbox">
@@ -123,14 +130,14 @@
 						<button type="button" class="btn btn-primary">创建并派单</button>
 					</div>
 					<br>
-					<div id="xxx">
+					<div id="availableDrivers" class="page_turning">
 						<!-- AJAX司机列表 -->
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
+	<script>
 		$('.form_datetime').datetimepicker({
 			//language:  'fr',
 			weekStart : 1,
@@ -141,6 +148,47 @@
 			forceParse : 0,
 			showMeridian : 1
 		});
+		
+		$(document).ready(function() {
+			$("#createCustomer").hide();
+			$("#createCustomer").click(function(){
+				$("#createCustomer").attr("disabled","disabled")
+				//send request
+				var tel = $("#customerTel").val();
+				var name= $("#customerName").val();
+				createCustomer(tel,name);
+			});
+			
+			$("#customerTel").blur(function(){
+				var tel = $("#customerTel").val();
+				getCustomerInfo(tel,updateCustomerInfo);
+			});
+			
+			$("#locateBtn").click(function(){
+				showAvailableDriver();
+			});
+		});
+		
+		function showAvailableDriver(){
+			var coordinate = $("#aptmtCoordt").val();
+			getAvailableDrivers(coordinate);
+		}
+		
+		function updateCustomerInfo(data){
+			if(!data.newCustomer){
+				$("#customerID").val(data.id);
+				$("#createCustomer").hide();
+				getUnresolvedOrders(data.id);
+			}else{
+				$("#createCustomer").show();
+				$("#createCustomer").removeAttr("disabled");
+			}
+			$("#customerType").text(data.type);
+			$("#customerName").val(data.name);
+			$("#customerBalance").text(data.balance);
+			$("#totalNum").text(data.allAmount);
+			$("#monthNum").text(data.monthAmount);
+		}
 	</script>
 </body>
 </html>

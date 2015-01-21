@@ -26,3 +26,4 @@
 		</c:forEach>
 	</tbody>
 </table>
+<%@ include file="../../include/page_turning.jsp"%>

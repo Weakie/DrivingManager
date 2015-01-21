@@ -15,13 +15,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.weakie.driving.model.Coordinate;
 import com.weakie.driving.model.customer.CustomerDetail;
+import com.weakie.driving.model.customer.CustomerProfile;
 import com.weakie.driving.model.orders.OrderCreating;
 import com.weakie.driving.model.orders.OrderProfile;
 import com.weakie.driving.service.customer.CustomerService;
 import com.weakie.driving.service.driver.DriverLocationService;
 import com.weakie.driving.service.order.OrderListService;
+import com.weakie.driving.utils.InvokeResult;
 import com.weakie.driving.utils.LogUtil;
 import com.weakie.driving.utils.PageControl;
+import com.weakie.driving.web.json.OpeResult;
 
 /**
  * 创建新订单一系列流程
@@ -84,96 +87,60 @@ public class OrderCreateController {
 	public CustomerProfile getCustomerByTel(@PathVariable("tel") String tel) {
 		LogUtil.debug("getCustomerByTel :" + tel);
 		CustomerDetail detail = this.customerService.getCustomerInfoByTel(tel);
+		if(detail == null){
+			return new CustomerProfile();
+		}
 		return new CustomerProfile(detail);
 	}
-
+	
+	/**
+	 * 创建订单时添加新的客户信息
+	 * @param name
+	 * @param tel
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/customer", method = RequestMethod.PUT, params = {"name","tel"})
+	public OpeResult createNewCustomer(@RequestParam("name") String name, @RequestParam("tel") String tel) {
+		LogUtil.info("createNewCustomer name:" + name + " ,tel:" + tel);
+		InvokeResult ir = this.customerService.createCustomer(name, tel);
+		return new OpeResult(ir, "创建新客户-姓名:" + name + ",电话:" + tel);
+	}
+	
 	/**
 	 * 获取客户未完成订单
-	 * 
 	 * @param customerID
 	 * @return
 	 */
-	@RequestMapping(value = "/customer/orders/{customerID}", method = RequestMethod.GET)
+	@RequestMapping(value = "/customer/{customerID}/orders", method = RequestMethod.GET)
 	public ModelAndView showUnresolvedOrder(@PathVariable("customerID") String customerID, @ModelAttribute("pc") PageControl pc) {
-		ModelAndView mav = new ModelAndView();
+		LogUtil.debug("Invoke OrderCreateController.showUnresolvedOrder():" + customerID);
 		// TODO
 		/**
 		 * 获取客户未完成订单ID列表,获取相应的订单Profile信息,组成Lst返回,用于创建新订单时客户未完成订单显示
 		 */
+		pc.setPagePath("/orderCreate/customer/"+customerID+"/orders");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/order/pages/incompletedOrderList");
 		List<String> orderID = this.customerService.getUnresolvedOrderID(customerID,pc);
 		List<OrderProfile> orders = this.orderListService.getOrderProfileByOrderID(orderID);
 		mav.addObject("orderList", orders);
-		mav.setViewName("/order/pages/incompletedOrderList");
 		return mav;
 	}
 
 	/**
 	 * 获取可以派单的司机
-	 * 
 	 * @param c
 	 * @param p
 	 * @return
 	 */
 	@RequestMapping(value = "/drivers", method = RequestMethod.GET)
 	public ModelAndView getAvailableDriven(@RequestParam("coordinate") Coordinate c, @ModelAttribute("pc") PageControl pc) {
-		LogUtil.debug("Invoke OrderController.getAvailableDriven():" + c);
+		LogUtil.debug("Invoke OrderCreateController.getAvailableDriven():" + c);
+		pc.setPagePath("/orderCreate/drivers");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/order/pages/availableDriverList");
 		mav.addObject("driverList", this.driverLocationService.getDriverLocationInfosByPosition(c, pc));
 		return mav;
-	}
-
-	/**
-	 * 客户信息,创建订单的时候使用
-	 * 
-	 * @author weakie,lin
-	 */
-	public static class CustomerProfile {
-		private String tel;
-		private String name;
-		private String id;
-		private String type;
-		private double balance;
-		private int allAmount;
-		private int monthAmount;
-
-		public CustomerProfile(CustomerDetail detail) {
-			this.tel = detail.getTel();
-			this.name = detail.getName();
-			this.id = detail.getId();
-			// TODO 修改客户类型为中文
-			this.type = detail.getType().toString();
-			this.balance = detail.getBalance();
-			this.allAmount = detail.getAllAmount();
-			this.monthAmount = detail.getMonthAmount();
-		}
-
-		public String getTel() {
-			return tel;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public String getId() {
-			return id;
-		}
-
-		public String getType() {
-			return type;
-		}
-
-		public double getBalance() {
-			return balance;
-		}
-
-		public int getAllAmount() {
-			return allAmount;
-		}
-
-		public int getMonthAmount() {
-			return monthAmount;
-		}
 	}
 }
