@@ -153,13 +153,65 @@ function getUnresolvedOrders(customerID){
 function getAvailableDrivers(coordinate){
 	$("#availableDrivers").load(context+"/orderCreate/drivers","coordinate=" + coordinate + "&pageNum=3");
 }
+
+/**
+ * UI control for send order
+ */
+function sendOrderDialog(orderid,driverid,orderinfo,driverinfo) {
+	bootbox.confirm({
+		buttons : {
+			confirm : {
+				label : '确定',
+				className : 'btn btn-primary'
+			},
+			cancel : {
+				label : '取消',
+				className : 'btn btn-default'
+			}
+		},
+		message : "订单:"+orderid+". 司机:"+driverinfo,
+		callback : function(result) {
+			if (result) {
+				beforeSendOrder(orderid,driverid);
+				sendOrder(orderid,driverid);
+			}
+		},
+		title : "确定要派单吗？",
+	});
+}
+
+function beforeSendOrder(orderID,driverID){
+	//disable radio button for order
+	$("input#radio-"+orderID).attr("disabled","disabled");
+	$("input#radio-"+orderID).parents("font").attr("color","red");
+	//disable buttons for drivers
+	$("#availableDrivers").find("button").attr("disabled","disabled");
+}
+
+function afterSendOrder(orderID,driverID){
+	//remove radio button for order
+	$("input#radio-"+orderID).parents("li").remove();
+	//empty driver list
+	//$("#availableDrivers").children("ul#"+orderID).parent().empty();
+	$("#availableDrivers").children("ul#"+orderID).parent().html("<div style='text-align: center'><span>选择订单进行派单</span><div>");
+}
+
 /**
  * ajax request for send order
  */
-function sendOrder(){
-	
+function sendOrder(orderID,driverID){
+	$.post(context + "/send/" + orderID, {
+		_method : "PUT",
+		driverID : driverID
+	}, function(data, status) {
+		alertData(status,data);
+		afterSendOrder(orderID,driverID);
+	});
 }
 
+function getAvailableDrivers(coordinate,orderID){
+	$("#availableDrivers").load(context+"/send/drivers","coordinate=" + coordinate + "&orderID=" + orderID + "&pageNum=5");
+}
 
 /**
  * alert

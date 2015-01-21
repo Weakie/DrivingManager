@@ -67,10 +67,10 @@ public class SendController {
 	 * 带有订单号的派单
 	 * @return
 	 */
-	@RequestMapping(value = "{orderID}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{orderID}", method = RequestMethod.GET)
 	public String orderIndexWithSelected(@PathVariable("orderID") String orderID, ModelMap modelMap) {
 		modelMap.addAttribute("order", this.orderService.getOrderProfileByOrderID(orderID));
-		return "/sendOrder/sendIndexWithSelected";
+		return "/sendOrder/sendIndex";
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class SendController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value = "{orderID}", method = RequestMethod.PUT, params = "driverID")
+	@RequestMapping(value = "/{orderID}", method = RequestMethod.PUT, params = "driverID")
 	public OpeResult sendOrder(@PathVariable("orderID") String orderID, @RequestParam("driverID") String driverID) {
 		LogUtil.info("sendOrder :" + orderID + " ,driver:" + driverID);
 		InvokeResult ir = this.orderService.distributeOrder(orderID, driverID);
@@ -92,6 +92,7 @@ public class SendController {
 	 */
 	@RequestMapping(value = "/orders", method = RequestMethod.GET)
 	public ModelAndView getUnSendOrders(@ModelAttribute("pc") PageControl pc) {
+		pc.setPagePath("/send/orders");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/sendOrder/pages/unsendOrderList");
 		mav.addObject("orderList", this.orderListService.getNewOrders(pc));
@@ -105,6 +106,7 @@ public class SendController {
 	 */
 	@RequestMapping(value = "/drivers", method = RequestMethod.GET)
 	public ModelAndView getOnWorkingDrivens(@ModelAttribute("pc") PageControl pc) {
+		pc.setPagePath("/send/drivers");
 		List<DriverLocationInfo> list = this.driverLocationService.getDriverLocationInfosByStatus(DriverStatus.ALL, pc);
 		list = this.driverLocationService.filterWorkingDriverLocationInfos(list);
 		ModelAndView mav = new ModelAndView();
@@ -119,9 +121,10 @@ public class SendController {
 	 * @param p
 	 * @return
 	 */
-	@RequestMapping(value = "/drivers", method = RequestMethod.GET, params = "coordinate")
-	public ModelAndView getAvailableDriven(@RequestParam("coordinate") Coordinate c, @ModelAttribute("pc") PageControl pc) {
+	@RequestMapping(value = "/drivers", method = RequestMethod.GET, params = {"coordinate","orderID"})
+	public ModelAndView getAvailableDriven(@RequestParam("coordinate") Coordinate c, @ModelAttribute("orderID") String id, @ModelAttribute("pc") PageControl pc) {
 		LogUtil.debug("Invoke SendOrderControl.getAvailableDriven():" + c);
+		pc.setPagePath("/send/drivers");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/sendOrder/pages/availableDriverList");
 		mav.addObject("driverList", this.driverLocationService.getDriverLocationInfosByPosition(c, pc));

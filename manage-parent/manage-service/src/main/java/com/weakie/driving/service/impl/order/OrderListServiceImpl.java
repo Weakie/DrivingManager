@@ -29,7 +29,9 @@ public class OrderListServiceImpl implements OrderListService {
 	
 	@Override
 	public List<NewOrder> getNewOrders(PageControl pageControl) {
-		
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {}
 		List<NewOrder> orderList = new ArrayList<NewOrder>();
 		for (int i = 0; i < 10; i++) {
 			NewOrder order = new NewOrder.Builder("12409001920290"+i).customer(new Customer("", "haha", "1231"))

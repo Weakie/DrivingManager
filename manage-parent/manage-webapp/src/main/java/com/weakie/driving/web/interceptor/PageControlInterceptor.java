@@ -20,7 +20,7 @@ public class PageControlInterceptor implements WebRequestInterceptor {
 	@Override
 	public void postHandle(WebRequest request, ModelMap model) throws Exception {
 		if (model != null && model.containsAttribute("pc")) {
-			StringBuilder sb = new StringBuilder("&");
+			StringBuilder sb = new StringBuilder();
 			Iterator<String> iter = request.getParameterNames();
 			while (iter.hasNext()) {
 				String c = iter.next();
@@ -30,10 +30,10 @@ public class PageControlInterceptor implements WebRequestInterceptor {
 				if (StringUtils.equals(c, "pageNum")) {
 					continue;
 				}
-				sb.append(c + "=" + request.getParameter(c));
+				sb.append("&"+ c + "=" + request.getParameter(c));
 			}
-			sb.deleteCharAt(0);
 			if (sb.length() > 0) {
+				sb.deleteCharAt(0);
 				PageControl pc = (PageControl) model.get("pc");
 				pc.setPageData(sb.toString());
 			}

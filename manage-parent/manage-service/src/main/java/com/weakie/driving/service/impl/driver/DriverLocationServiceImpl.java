@@ -32,6 +32,10 @@ public class DriverLocationServiceImpl implements DriverLocationService {
 
 	@Override
 	public List<DriverLocationInfo> getDriverLocationInfosByPosition(Coordinate coordinate, PageControl p) {
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {}
+		
 		DriverLocationInfo info = new DriverLocationInfo("123","haha","冯志远","18795943912","易米",12,90,3.9,DriverStatus.DRIVING,
 				"长白路",c,"龙华大道",c,new Date(),"长江路",c,new Date() );
 		

@@ -18,11 +18,18 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public OrderDetail getOrderDetailByOrderID(String orderID) {
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {}
 		return new OrderDetail();
 	}
 
 	@Override
 	public OrderProfile getOrderProfileByOrderID(String orderID) {
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {}
+		
 		OrderProfile p = new OrderProfile();
 		p.setOrderID("1234208280003");
 		p.setOrderSource("客户下单");
@@ -42,26 +49,41 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public InvokeResult distributeOrder(String orderID, String driverID) {
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {}
 		return new InvokeResult();
 	}
 
 	@Override
 	public InvokeResult destroyOrder(String orderID) {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {}
 		return new InvokeResult();
 	}
 
 	@Override
 	public InvokeResult retrieveOrder(String orderID) {
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {}
 		return new InvokeResult();
 	}
 
 	@Override
 	public InvokeResult commentOrder(String orderID, String comment) {
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {}
 		return new InvokeResult();
 	}
 
 	@Override
 	public InvokeResult updateRealAmount(String orderID, double amount) {
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {}
 		return new InvokeResult();
 	}
 
