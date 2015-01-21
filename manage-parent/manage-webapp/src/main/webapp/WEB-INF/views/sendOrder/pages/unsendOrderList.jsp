@@ -16,6 +16,10 @@
 		</li>
 	</c:forEach>
 </ul>
+<script>
+	//register the radio button in the new page after refresh
+	registerOrderRadioBtnEvent();
+</script>
 <div id="pageTurning" style="text-align: center">
 	<ul class="pagination pagination-sm" style="margin: -10 0">
 		<li><a role="button" class="btn" onclick="prevPage(this, '${pc.pagePath }', '${pc.pageData }', ${pc.pageIndex}, ${pc.pageNum})">前一页</a></li>

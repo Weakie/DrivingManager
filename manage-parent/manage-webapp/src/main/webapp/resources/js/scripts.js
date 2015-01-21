@@ -197,6 +197,18 @@ function afterSendOrder(orderID,driverID){
 }
 
 /**
+ * UI event for send order
+ */
+function registerOrderRadioBtnEvent(){
+	$(":radio[name=radio]").click(function(){
+		var orderID = $(":checked").val();
+		var coordt  = $(":checked").parent("label").children("input[name=coordt]").val();
+		$("#availableDrivers").html("<div style='text-align: center'><span>正在加载司机列表</span><div>");
+		getAvailableDrivers(coordt,orderID);
+	});
+}
+
+/**
  * ajax request for send order
  */
 function sendOrder(orderID,driverID){

@@ -86,14 +86,7 @@
 		if($("#availableDrivers").children().attr("id") == null){
 			$("#availableDrivers").html("<div style='text-align: center'><span>选择订单进行派单</span><div>");
 		}
-		
-		
-		$(":radio[name=radio]").click(function(){
-			var orderID = $(":checked").val();
-			var coordt  = $(":checked").parent("label").children("input[name=coordt]").val();
-			$("#availableDrivers").html("<div style='text-align: center'><span>正在加载司机列表</span><div>");
-			getAvailableDrivers(coordt,orderID);
-		});
+		registerOrderRadioBtnEvent();
 	});
 </script>
 </html>
