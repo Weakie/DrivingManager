@@ -227,6 +227,7 @@
 					var mk = new BMap.Marker(point);
 					map.addOverlay(mk);
 					map.panTo(point);
+					$('#aptmtCoordt').val("(" + e.point.lng + "," + e.point.lat + ")");
 					flag=false;
 					//alert(location);
 				}
