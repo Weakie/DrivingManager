@@ -62,27 +62,19 @@ function commentDialog(orderid) {
 		callback : function(result) {
 			if (result) {
 				var data = $('#commentContent').val();
-				commentUpdate(orderid,data);
+				commentOrder(orderid,data);
 			}
 		},
 		title : "填写备注信息",
 	});
 }
 
-function commentUpdate(orderid, data){
-	$('#comment-' + orderid).val(data);
-	commentOrder(orderid, data);
-	if(data.length > 8){
-		$('#cmt-' + orderid).text(data.substring(0,8)+'...');
-	}else{
-		$('#cmt-' + orderid).text(data);
-	}
-}
-
 /**
  * ajax request for order
  */
 function destroyOrder(orderid) {
+	infoData("正在发送请求-销单:"+orderid);
+	$("tr#" + orderid).children("td").children("[type=button]").attr("disabled","disabled");
 	$.post(context + "/order/" + orderid, {
 		_method : "PUT",
 		state : "destroy"
@@ -93,6 +85,8 @@ function destroyOrder(orderid) {
 }
 
 function retrieveOrder(orderid) {
+	infoData("正在发送请求-收回订单:"+orderid);
+	$("tr#" + orderid).children("td").children("[type=button]").attr("disabled","disabled");
 	$.post(context + "/order/" + orderid, {
 		_method : "PUT",
 		state : "retrieve"
@@ -103,11 +97,14 @@ function retrieveOrder(orderid) {
 }
 
 function commentOrder(orderid, cmtData) {
+	infoData("正在发送请求-备注:"+orderid+", "+cmtData);
+	$('#comment-' + orderid).val(cmtData);
 	$.post(context + "/order/" + orderid, {
 		_method : "PUT",
 		comment : cmtData
 	}, function(data, status) {
 		alertData(status,data);
+		$('#cmt-' + orderid).text((cmtData.length > 8 ? cmtData.substring(0,8)+'...' : cmtData));
 	});
 }
 
@@ -172,7 +169,6 @@ function sendOrderDialog(orderid,driverid,orderinfo,driverinfo) {
 		message : "订单:"+orderid+". 司机:"+driverinfo,
 		callback : function(result) {
 			if (result) {
-				beforeSendOrder(orderid,driverid);
 				sendOrder(orderid,driverid);
 			}
 		},
@@ -212,6 +208,8 @@ function registerOrderRadioBtnEvent(){
  * ajax request for send order
  */
 function sendOrder(orderID,driverID){
+	beforeSendOrder(orderID,driverID);
+	infoData("正在发送请求-派单:"+orderID+", "+driverID);
 	$.post(context + "/send/" + orderID, {
 		_method : "PUT",
 		driverID : driverID
@@ -227,9 +225,14 @@ function getAvailableDrivers(coordinate,orderID){
 
 /**
  * alert
- * @param type
  * @param data
  */
+function infoData(data) {
+	$("#alert").html('<div class="alert alert-warning alert-dismissable fade in">'
+			+ '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
+			+ '    ' + data + '</div>');
+}
+
 function alertData(type, data) {
 	if(type=='success'){
 		if(data.res=="SUCCESS"){
@@ -238,7 +241,7 @@ function alertData(type, data) {
 					+ '[操作成功] '+data.time +' '+ data.com +'. '+ data.additional + '</div>');
 			setTimeout("autoCloseAlert()" ,6000);
 		}else{
-			$("#alert").html('<div class="alert alert-warn alert-dismissable fade in">'
+			$("#alert").html('<div class="alert alert-warning alert-dismissable fade in">'
 					+ '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
 					+ '[操作失败] '+data.time +' '+ data.com +'. '+ data.additional + '</div>');
 		}
