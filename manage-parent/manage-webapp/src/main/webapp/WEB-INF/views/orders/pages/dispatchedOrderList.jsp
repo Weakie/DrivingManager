@@ -32,10 +32,9 @@
 				<td>${order.driver.name }</td>
 				<td>${order.driver.telephone }</td>
 				<td>
-					<button type="button" class="btn btn-link btn-xs" style="line-height: 1;font-size: 8px;padding:0px 0px;vertical-align: top;" onclick="destroyOrder('${order.orderID}')">销单</button>
-					<button type="button" class="btn btn-link btn-xs" style="line-height: 1;font-size: 8px;padding:0px 0px;vertical-align: top;" onclick="retrieveOrder('${order.orderID}')">收回</button>
-					<button type="button" class="btn btn-link btn-xs" style="line-height: 1;font-size: 8px;padding:0px 0px;vertical-align: top;"
-						onclick="commentDialog('${order.orderID}')">备注</button>
+					<button type="button" class="btn btn-link btn-xs mybtn" onclick="destroyOrder('${order.orderID}')">销单</button>
+					<button type="button" class="btn btn-link btn-xs mybtn" onclick="retrieveOrder('${order.orderID}')">收回</button>
+					<button type="button" class="btn btn-link btn-xs mybtn" onclick="commentDialog('${order.orderID}')">备注</button>
 				</td>
 			</tr>
 			<input type="hidden" id="comment-${order.orderID }" value="${order.comment }">

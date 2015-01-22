@@ -28,7 +28,7 @@
 				<td><fmt:formatDate value="${order.departTime }" type="both" pattern="MM/dd HH:mm" /></td>
 				<td>${order.destination }</td>
 				<td>${order.predictInfo }
-					<button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;">刷新</button>
+					<button type="button" class="btn btn-link btn-xs mybtn" >刷新</button>
 				</td>
 			</tr>
 		</c:forEach>

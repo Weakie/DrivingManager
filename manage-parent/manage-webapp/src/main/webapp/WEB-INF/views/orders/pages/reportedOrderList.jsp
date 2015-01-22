@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <table class="table">
 	<thead>
@@ -31,12 +31,11 @@
 				<td>${order.driver.telephone }</td>
 				<td>${order.driver.company }</td>
 				<td>${order.destination }</td>
-				<td><fmt:formatDate value="${order.payedTime }"  type="both" pattern="MM/dd HH:mm"/></td>
+				<td><fmt:formatDate value="${order.payedTime }" type="both" pattern="MM/dd HH:mm" /></td>
 				<td>${order.shouldPay }</td>
 				<td>${order.actualPay }</td>
 				<td>${order.carNumber }</td>
-				<td><button type="button" class="btn btn-link btn-xs" style="line-height: 1; font-size: 8px; vertical-align: top;"
-						onclick="commentDialog('${order.orderID}')">备注</button></td>
+				<td><button type="button" class="btn btn-link btn-xs mybtn" onclick="commentDialog('${order.orderID}')">备注</button></td>
 			</tr>
 			<input type="hidden" id="comment-${order.orderID }" value="${order.comment }">
 		</c:forEach>

@@ -19,9 +19,9 @@
 				<th style="width:">操作</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="drivers">
 			<c:forEach items="${driverList }" var="driver">
-				<tr>
+				<tr id="${driver.driverID }">
 					<td>${driver.nickName }</td>
 					<td>${driver.realName }</td>
 					<td>${driver.driverID }</td>
@@ -32,7 +32,17 @@
 					<td>${driver.version }</td>
 					<td>${driver.companyName }</td>
 					<td><fmt:formatDate value="${driver.registeTime }" type="both" pattern="MM/dd HH:mm" /></td>
-					<td><a href="#">编辑</a> <a href="#">删除</a> <a href="#">冻结</a> <a href="#">改密码</a> <a href="#">充值</a> <a href="#">消费历史</a> <a href="#">解绑</a> <a href="#">强制下线</a></td>
+					<td><a class="btn btn-link btn-xs mybtn" href="<c:url value="/driver/${driver.driverID }"/>">编辑</a>
+						<button class="btn btn-link btn-xs mybtn" onclick="deleteDriverDialog('${driver.driverID }','${driver.realName }')">删除</button>
+						<button class="btn btn-link btn-xs mybtn" onclick="blockDriverDialog('${driver.driverID }','${not driver.blocked }')" id="block">
+							<c:if test="${not driver.blocked }">冻结</c:if>
+							<c:if test="${driver.blocked }">解冻</c:if>
+						</button>
+						<button class="btn btn-link btn-xs mybtn" onclick="changePwdDialog('${driver.driverID }')">改密码</button>
+						<button class="btn btn-link btn-xs mybtn" onclick="chargeDriverDialog('${driver.driverID }')">充值</button>
+						<button class="btn btn-link btn-xs mybtn" onclick="">消费历史</button>
+						<button class="btn btn-link btn-xs mybtn" onclick="">解绑</button>
+						<button class="btn btn-link btn-xs mybtn" onclick="">强制下线</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -41,6 +51,6 @@
 <%@ include file="../../include/page_turning.jsp"%>
 <c:if test="${not empty script }">
 	<script>
-		document.getElementById('balanceUnder200').innerText = ${pc.totalNum};
+		document.getElementById('balanceUnder200').innerText = "${pc.totalNum}";
 	</script>
 </c:if>

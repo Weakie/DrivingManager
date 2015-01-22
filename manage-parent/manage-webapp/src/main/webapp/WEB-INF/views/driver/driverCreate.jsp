@@ -26,7 +26,7 @@ div.info {
 		</div>
 		<br>
 		<div class="row clearfix">
-			<form action="<c:url value="/driver"/>" method="POST">
+			<form action="<c:url value="/driver/${driverID }"/>" method="POST">
 				<div class="col-md-6 column">
 					<div class="panel panel-default">
 						<div class="panel-heading">填写司机信息(必填)</div>
