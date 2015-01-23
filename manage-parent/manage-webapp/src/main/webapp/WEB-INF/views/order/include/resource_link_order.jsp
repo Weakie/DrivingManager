@@ -12,3 +12,4 @@
 	var context = '${pageContext.request.contextPath}';
 </script>
 <script src="${resourceRoot}/js/scripts.js"></script>
+<script src="${resourceRoot}/script/order-create.js"></script>

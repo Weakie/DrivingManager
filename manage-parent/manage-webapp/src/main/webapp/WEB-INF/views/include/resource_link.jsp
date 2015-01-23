@@ -10,3 +10,6 @@
 	var context = '${pageContext.request.contextPath}';
 </script>
 <script src="${resourceRoot}/js/scripts.js"></script>
+<script src="${resourceRoot}/script/order.js"></script>
+<script src="${resourceRoot}/script/order-send.js"></script>
+<script src="${resourceRoot}/script/driver.js"></script>
