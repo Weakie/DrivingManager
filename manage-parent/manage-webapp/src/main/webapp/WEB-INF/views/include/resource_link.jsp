@@ -14,3 +14,4 @@
 <script src="${resourceRoot}/script/order-send.js"></script>
 <script src="${resourceRoot}/script/driver.js"></script>
 <script src="${resourceRoot}/script/customer.js"></script>
+<script src="${resourceRoot}/script/company.js"></script>

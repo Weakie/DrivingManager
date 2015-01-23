@@ -15,16 +15,17 @@
 				<th style="width:">操作</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="companys">
 			<c:forEach items="${companyList }" var="company">
-				<tr>
+				<tr id="${company.id }">
 					<td>${company.name }</td>
 					<td>${company.telephone }</td>
 					<td>${company.principle }</td>
 					<td>${company.mobileNum }</td>
 					<td>${company.addr }</td>
 					<td>${company.city }</td>
-					<td><a href="#">编辑</a> <a href="#">删除</a></td>
+					<td><a class="btn btn-link btn-xs mybtn" href="<c:url value="/company/${company.id }"/>">编辑</a>
+						<button class="btn btn-link btn-xs mybtn" onclick="deleteCompanyDialog('${company.id }','${company.name }')">删除</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>

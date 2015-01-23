@@ -30,9 +30,9 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">填写公司信息</div>
 					<div class="panel-body">
-						<form action="<c:url value="/company"/>" method="POST">
-							<input type="hidden" name="_method" value="${method }"> <input type="hidden" name="id"
-								value="${company.id }">
+						<form action="<c:url value="/company/${companyID }"/>" method="POST">
+							<input type="hidden" name="_method" value="${method }"> 
+							<input type="hidden" name="id" value="${company.id }">
 							<div class="row clearfix">
 								<div class="col-md-4 column" style="text-align: right; padding-top: 8px">
 									<font color="red">*</font><b>地区：</b>
