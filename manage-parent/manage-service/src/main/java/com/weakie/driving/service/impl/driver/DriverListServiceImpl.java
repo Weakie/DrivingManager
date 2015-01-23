@@ -22,7 +22,7 @@ public class DriverListServiceImpl implements DriverListService {
 		List<DriverProfile> list = new ArrayList<DriverProfile>();
 		for (int i = 0; i < 10; i++) {
 			DriverProfile profile = new DriverProfile();
-			profile.setDriverID("easymi_"+i+ (p.getPageIndex() - 1) * p.getPageNum());
+			profile.setDriverID("easymi_0"+i+ (p.getPageIndex() - 1) * p.getPageNum());
 			profile.setNickName("易+"+(i+ (p.getPageIndex() - 1) * p.getPageNum())+"+米");
 			profile.setRealName("易+"+(i+ (p.getPageIndex() - 1) * p.getPageNum())+"+米");
 			profile.setIdentity("330990123402101123");
@@ -35,6 +35,9 @@ public class DriverListServiceImpl implements DriverListService {
 			profile.setBalance(20);
 			profile.setVersion("1.2.1");
 			profile.setState(DriverStatus.ACCEPT);
+			profile.setBinding(true);
+			profile.setOnline(true);
+			profile.setVerify(1);
 			list.add(profile);
 		}
 		p.setTotalNum(200);
@@ -46,7 +49,7 @@ public class DriverListServiceImpl implements DriverListService {
 		List<DriverProfile> list = new ArrayList<DriverProfile>();
 		for (int i = 0; i < 10; i++) {
 			DriverProfile profile = new DriverProfile();
-			profile.setDriverID("easymi_"+i+ (p.getPageIndex() - 1) * p.getPageNum());
+			profile.setDriverID("easymi_1"+i+ (p.getPageIndex() - 1) * p.getPageNum());
 			profile.setNickName("易+"+(i+ (p.getPageIndex() - 1) * p.getPageNum())+"+米");
 			profile.setRealName("易+"+(i+ (p.getPageIndex() - 1) * p.getPageNum())+"+米");
 			profile.setIdentity("330990123402101123");
@@ -59,6 +62,7 @@ public class DriverListServiceImpl implements DriverListService {
 			profile.setBalance(20);
 			profile.setVersion("1.2.1");
 			profile.setState(DriverStatus.ACCEPT);
+			profile.setVerify(1);
 			list.add(profile);
 		}
 		p.setTotalNum(200);
@@ -70,7 +74,7 @@ public class DriverListServiceImpl implements DriverListService {
 		List<DriverProfile> list = new ArrayList<DriverProfile>();
 		for (int i = 0; i < 10; i++) {
 			DriverProfile profile = new DriverProfile();
-			profile.setDriverID("easymi_"+i+ (p.getPageIndex() - 1) * p.getPageNum());
+			profile.setDriverID("easymi_2"+i+ (p.getPageIndex() - 1) * p.getPageNum());
 			profile.setNickName("易+"+(i+ (p.getPageIndex() - 1) * p.getPageNum())+"+米");
 			profile.setRealName("易+"+(i+ (p.getPageIndex() - 1) * p.getPageNum())+"+米");
 			profile.setIdentity("330990123402101123");
@@ -83,6 +87,8 @@ public class DriverListServiceImpl implements DriverListService {
 			profile.setBalance(20);
 			profile.setVersion("1.2.1");
 			profile.setState(DriverStatus.ACCEPT);
+			profile.setVerify(1);
+			profile.setBlocked(true);
 			list.add(profile);
 		}
 		return list;
@@ -93,7 +99,7 @@ public class DriverListServiceImpl implements DriverListService {
 		List<DriverProfile> list = new ArrayList<DriverProfile>();
 		for (int i = 0; i < 10; i++) {
 			DriverProfile profile = new DriverProfile();
-			profile.setDriverID("easymi_"+i+ (p.getPageIndex() - 1) * p.getPageNum());
+			profile.setDriverID("easymi_3"+i+ (p.getPageIndex() - 1) * p.getPageNum());
 			profile.setNickName("易+"+(i+ (p.getPageIndex() - 1) * p.getPageNum())+"+米");
 			profile.setRealName("易+"+(i+ (p.getPageIndex() - 1) * p.getPageNum())+"+米");
 			profile.setIdentity("330990123402101123");
@@ -106,6 +112,7 @@ public class DriverListServiceImpl implements DriverListService {
 			profile.setBalance(20);
 			profile.setVersion("1.2.1");
 			profile.setState(DriverStatus.ACCEPT);
+			profile.setVerify(-1+(i%2));
 			list.add(profile);
 		}
 		return list;
@@ -116,7 +123,7 @@ public class DriverListServiceImpl implements DriverListService {
 		List<DriverProfile> list = new ArrayList<DriverProfile>();
 		for (int i = 0; i < 10; i++) {
 			DriverProfile profile = new DriverProfile();
-			profile.setDriverID("easymi_"+i+ (p.getPageIndex() - 1) * p.getPageNum());
+			profile.setDriverID("easymi_4"+i+ (p.getPageIndex() - 1) * p.getPageNum());
 			profile.setNickName("易+"+(i+ (p.getPageIndex() - 1) * p.getPageNum())+"+米");
 			profile.setRealName("易+"+(i+ (p.getPageIndex() - 1) * p.getPageNum())+"+米");
 			profile.setIdentity("330990123402101123");
