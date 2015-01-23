@@ -24,7 +24,7 @@
 			<div class="panel-heading">填写用户信息</div>
 			<div class="panel-body">
 				<div class="row clearfix">
-					<form action="<c:url value="/customer"/>" method="POST">
+					<form action="<c:url value="/customer/${customerID }"/>" method="POST">
 						<div class="col-md-4 column">
 							<b>客户头像：</b> 
 							<br> <br> 

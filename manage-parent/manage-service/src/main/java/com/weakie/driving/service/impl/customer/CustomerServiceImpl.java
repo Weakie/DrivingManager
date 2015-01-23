@@ -38,4 +38,34 @@ public class CustomerServiceImpl implements CustomerService {
 		return new InvokeResult();
 	}
 
+	@Override
+	public InvokeResult createCustomer(CustomerDetail detail) {
+		
+		return new InvokeResult();
+	}
+
+	@Override
+	public InvokeResult updateCustomer(CustomerDetail customer) {
+		
+		return new InvokeResult();
+	}
+
+	@Override
+	public InvokeResult deleteCustomer(String customerID) {
+		
+		return new InvokeResult();
+	}
+
+	@Override
+	public CustomerDetail getCustomerInfo(String customerID) {
+		
+		return new CustomerDetail("123", "易P米", "补单生成", "13867541234", true, 20, "易米", CustomerType.INDIVIDUAL);
+	}
+
+	@Override
+	public InvokeResult rechargeCustomer(String customerID, double value) {
+		
+		return new InvokeResult();
+	}
+
 }

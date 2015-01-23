@@ -29,4 +29,15 @@ public interface CustomerService {
 	 * @return
 	 */
 	public List<String> getUnresolvedOrderID(String customerID,PageControl pc);
+	
+	
+	public InvokeResult createCustomer(CustomerDetail detail);
+	
+	public InvokeResult updateCustomer(CustomerDetail customer);
+
+	public InvokeResult deleteCustomer(String customerID);
+
+	public CustomerDetail getCustomerInfo(String customerID);
+	
+	public InvokeResult rechargeCustomer(String customerID,double value);
 }

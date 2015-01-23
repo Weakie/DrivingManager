@@ -15,16 +15,20 @@
 				<th style="width:">操作</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="customers">
 			<c:forEach items="${customerList }" var="cus">
-				<tr>
+				<tr id="${cus.id }">
 					<td>${cus.name }</td>
 					<td>${cus.source }</td>
 					<td>${cus.tel }</td>
 					<td><c:if test="${cus.overdraft }">是</c:if> <c:if test="${not cus.overdraft }">否</c:if></td>
 					<td><font color="#FFD700"> <fmt:formatNumber value="${cus.balance }" type="currency" /></font></td>
 					<td>${cus.company }</td>
-					<td><a href="#">编辑</a> <a href="#">删除</a> <a href="#">充值</a> <a href="#">消费历史</a> <a href="#">查看优惠券</a></td>
+					<td><a class="btn btn-link btn-xs mybtn" href="<c:url value="/customer/${cus.id }"/>">编辑</a>
+						<button class="btn btn-link btn-xs mybtn" onclick="deleteCustomerDialog('${cus.id }','${cus.name }')">删除</button>
+						<button class="btn btn-link btn-xs mybtn" onclick="chargeCustomerDialog('${cus.id }')">充值</button>
+						<button class="btn btn-link btn-xs mybtn" onclick="">消费历史</button>
+						<button class="btn btn-link btn-xs mybtn" onclick="">查看优惠券</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>

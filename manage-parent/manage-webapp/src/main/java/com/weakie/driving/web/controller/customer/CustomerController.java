@@ -1,16 +1,30 @@
 package com.weakie.driving.web.controller.customer;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.weakie.driving.model.customer.CustomerDetail;
+import com.weakie.driving.service.customer.CustomerService;
+import com.weakie.driving.utils.InvokeResult;
 import com.weakie.driving.utils.LogUtil;
+import com.weakie.driving.web.json.OpeResult;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
+
+	private CustomerService customerService;
+	
+	@Autowired
+	public void setCustomerService(CustomerService customerService) {
+		this.customerService = customerService;
+	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String newCustomer(ModelMap model) {
@@ -18,14 +32,62 @@ public class CustomerController {
 		model.addAttribute("method", "post");
 		return "/customer/customerCreate";
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
-	public String newCustomer(ModelMap model,CustomerDetail customer) {
+	public String newCustomer(ModelMap model, CustomerDetail customer) {
+		// TODO 跳转到指定页面
+		this.customerService.createCustomer(customer);
+		LogUtil.debug("CustomerController create Customer:" + customer);
+		return "/customer/customerCreate";
+	}
+
+	@RequestMapping(value = "/{customerID}", method = RequestMethod.GET)
+	public String updateCustomer(ModelMap model, @PathVariable("customerID") String customerID) {
 		model.addAttribute("title", "编辑客户信息");
 		model.addAttribute("method", "put");
-		model.addAttribute("cus", customer);
-		LogUtil.debug("CustomerController create Customer:"+customer);
+		model.addAttribute("customerID", customerID);
+		model.addAttribute("cus", this.customerService.getCustomerInfo(customerID));
+		return "/customer/customerCreate";
+	}
+
+	@RequestMapping(value = "/{customerID}", method = RequestMethod.PUT)
+	public String updateCustomer(ModelMap model, @PathVariable("customerID") String customerID, CustomerDetail customer) {
+		// TODO 跳转到指定页面
+		this.customerService.updateCustomer(customer);
+		LogUtil.debug("CustomerController create Customer:" + customer);
 		return "/customer/customerCreate";
 	}
 	
+	/**
+	 * 删除客户信息
+	 * @param customerID
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/{customerID}", method = RequestMethod.DELETE)
+	public OpeResult deleteCustomer(@PathVariable("customerID") String customerID) {
+		LogUtil.info("deleteCustomer :" + customerID);
+		InvokeResult ir = this.customerService.deleteCustomer(customerID);
+		return new OpeResult(ir, "删除-客户号:" + customerID);
+	}
+	
+	/**
+	 * 客户充值
+	 * @param customerID
+	 * @param amount
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/{customerID}", method = RequestMethod.PUT, params = "amount")
+	public OpeResult rechargeCustomerAmount(@PathVariable("customerID") String customerID,
+			@RequestParam("amount") String amount) {
+		LogUtil.info("rechargeCustomerAmount :" + customerID + " ,amt:" + amount);
+		try {
+			double amt = Double.parseDouble(amount);
+			InvokeResult ir = this.customerService.rechargeCustomer(customerID, amt);
+			return new OpeResult(ir, "充值-客户号:" + customerID+",金额"+amount);
+		} catch (NumberFormatException e) {
+			return new OpeResult(OpeResult.RES_FAIL, "客户号:" + customerID, "请输入一个数字");
+		}
+	}
 }
