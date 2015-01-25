@@ -173,8 +173,8 @@
 				}
 			});
 			$("#aptmtPlace").change(function(){
-				errorData("[坐标数据未生效]请点击定位按钮");
-				setTimeout("closeDangerAlert()" ,6000);
+				infoData("[坐标数据未生效]请点击定位按钮");
+				setTimeout("closeWarningAlert()" ,6000);
 				$("#createOrder").attr("disabled", "disabled");
 				$("#aptmtPlace").parent(".input-group").attr("class","input-group has-warning");
 			});
