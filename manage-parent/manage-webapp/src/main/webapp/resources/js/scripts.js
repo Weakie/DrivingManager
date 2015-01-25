@@ -2,6 +2,12 @@
  * alert
  * @param data
  */
+function errorData(data) {
+	$("#alert").html('<div class="alert alert-danger alert-dismissable fade in">'
+			+ '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
+			+ '    ' + data + '</div>');
+}
+
 function infoData(data) {
 	$("#alert").html('<div class="alert alert-warning alert-dismissable fade in">'
 			+ '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
@@ -14,7 +20,7 @@ function alertData(type, data) {
 			$("#alert").html('<div class="alert alert-success alert-dismissable fade in">'
 					+ '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
 					+ '[操作成功] '+data.time +' '+ data.com +'. '+ data.additional + '</div>');
-			setTimeout("autoCloseAlert()" ,6000);
+			setTimeout("closeSuccessAlert()" ,6000);
 		}else{
 			$("#alert").html('<div class="alert alert-warning alert-dismissable fade in">'
 					+ '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'
@@ -27,11 +33,17 @@ function alertData(type, data) {
 	}
 }
 
-function autoCloseAlert(){
+function closeSuccessAlert(){
 	$("#alert").children("div.alert-success").alert('close');
 }
 
+function closeWarningAlert(){
+	$("#alert").children("div.alert-warning").alert('close');
+}
 
+function closeDangerAlert(){
+	$("#alert").children("div.alert-danger").alert('close');
+}
 
 /**
  * page control

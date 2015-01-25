@@ -15,7 +15,7 @@
 	<tbody>
 		<c:forEach items="${driverList }" var="driver">
 			<tr>
-				<td><label> <input name="drivers" value="${driver.driverID }" type="checkbox">
+				<td><label> <input name="drivers" value="${driver.driverID }" type="checkbox" onclick="checkDriverNumber()">
 				</label></td>
 				<td>${driver.realName }</td> 
 				<td>${driver.distance }</td>

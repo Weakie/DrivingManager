@@ -70,8 +70,8 @@ public class OrderCreateController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String newOrder(OrderCreating order) {
-		LogUtil.info("OrderController create new Order:" + order);
+	public String newOrder(OrderCreating order,@RequestParam("withSend")boolean withSend) {
+		LogUtil.info("OrderController create new Order:" + order+", with send " + withSend);
 		// InvokeResult ir = this.orderService.createNewOrder(order);
 		// TODO 确定操作成功之后返回到那个页面
 		return "/order/orderCreate";
