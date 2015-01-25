@@ -137,7 +137,7 @@
 					<br>
 					<div>
 						<button type="button" class="btn btn-primary" onclick="this.form.submit()">创建订单</button>
-						<button id="getNearbyDrivers" type="button" class="btn btn-primary" ">获取附近司机</button>
+						<button id="getNearbyDrivers" type="button" class="btn btn-primary">获取附近司机</button>
 					</div>
 					<br>
 					<div id="availableDrivers" class="page_turning">
