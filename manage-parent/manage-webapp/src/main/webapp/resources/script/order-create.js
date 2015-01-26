@@ -20,12 +20,14 @@ function afterChooseLocation() {
 
 function updateCustomerInfo(data) {
 	if (!data.newCustomer) {
-		$("#customerTel").parent(".input-group").attr("class","input-group has-success");
 		$("#customerID").val(data.id);
+		$("#customerTel").parent(".input-group").attr("class","input-group has-success");
+		$("#customerName").attr("readonly",true);
 		$("#createCustomer").hide();
 		getUnresolvedOrders(data.id);
 	} else {
 		$("#customerTel").parent(".input-group").attr("class","input-group has-warning");
+		$("#customerName").removeAttr("readonly");
 		$("#createCustomer").show();
 		$("#createCustomer").removeAttr("disabled");
 	}
@@ -72,7 +74,7 @@ function createCustomer(tel,name){
 }
 
 function getUnresolvedOrders(customerID){
-	$("#unresolvedOrders").load(context+"/orderCreate/customer/"+customerID+"/orders","pageNum=5");
+	$("#unresolvedOrders").load(context+"/orderCreate/customer/"+customerID+"/orders","pageNum=10");
 }
 
 function getAvailableDrivers(coordinate){

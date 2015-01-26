@@ -2,6 +2,7 @@ package com.weakie.driving.service.customer;
 
 import java.util.List;
 
+import com.weakie.driving.model.ConsumeInfo;
 import com.weakie.driving.model.customer.CustomerDetail;
 import com.weakie.driving.utils.InvokeResult;
 import com.weakie.driving.utils.PageControl;
@@ -40,4 +41,6 @@ public interface CustomerService {
 	public CustomerDetail getCustomerInfo(String customerID);
 	
 	public InvokeResult rechargeCustomer(String customerID,double value);
+	
+	public List<ConsumeInfo> getConsmeHistory(String customerID,PageControl pc);
 }

@@ -1,11 +1,13 @@
 package com.weakie.driving.service.impl.customer;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import com.weakie.driving.model.ConsumeInfo;
 import com.weakie.driving.model.customer.CustomerDetail;
 import com.weakie.driving.model.customer.CustomerType;
 import com.weakie.driving.service.customer.CustomerService;
@@ -66,6 +68,22 @@ public class CustomerServiceImpl implements CustomerService {
 	public InvokeResult rechargeCustomer(String customerID, double value) {
 		
 		return new InvokeResult();
+	}
+
+	@Override
+	public List<ConsumeInfo> getConsmeHistory(String customerID, PageControl pc) {
+		List<ConsumeInfo> infos = new ArrayList<ConsumeInfo>();
+		for(int i=pc.getPageIndex()*pc.getPageNum();i<pc.getPageIndex()*pc.getPageNum()+pc.getPageNum();i++){
+			ConsumeInfo info = new ConsumeInfo();
+			info.setId("id-"+i);
+			info.setAmount(200);
+			info.setOpe("消费");
+			info.setComment("备注信息");
+			info.setTime(new Date());
+			infos.add(info);
+		}
+		pc.setTotalNum(100);
+		return infos;
 	}
 
 }

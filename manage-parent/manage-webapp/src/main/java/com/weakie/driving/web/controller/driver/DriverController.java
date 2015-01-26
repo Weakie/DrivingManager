@@ -5,11 +5,13 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.weakie.driving.model.driver.DriverDetail;
 import com.weakie.driving.service.company.CompanyListService;
@@ -17,6 +19,7 @@ import com.weakie.driving.service.driver.DriverService;
 import com.weakie.driving.service.system.PaymentService;
 import com.weakie.driving.utils.InvokeResult;
 import com.weakie.driving.utils.LogUtil;
+import com.weakie.driving.utils.PageControl;
 import com.weakie.driving.web.json.OpeResult;
 
 @Controller
@@ -88,6 +91,22 @@ public class DriverController {
 		return "/driver/driverCreate";
 	}
 
+	/**
+	 * 获取司机消费记录
+	 * @param driverID
+	 * @param pc
+	 * @return
+	 */
+	@RequestMapping(value = "/{driverID}/consume_history", method = RequestMethod.GET)
+	public ModelAndView getConsumeHistory(@PathVariable("driverID") String driverID, @ModelAttribute("pc") PageControl pc) {
+		pc.setPagePath("/driver/"+driverID+"/consume_history");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/driver/pages/consumeList");
+		mav.addObject("consumeList", this.driverService.getConsmeHistory(driverID, pc));
+		LogUtil.debug("DriverController getConsumeHistory:" + driverID);
+		return mav;
+	}
+	
 	/**
 	 * 删除司机
 	 * @param driverID

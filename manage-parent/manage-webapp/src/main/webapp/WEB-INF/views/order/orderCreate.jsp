@@ -15,10 +15,10 @@
 		<div style="height: 20px;">
 			<div style="padding-left: 15px">
 				<ul class="breadcrumb">
-					<li><a href="#">订单管理</a> <span class="divider"></span></li>
+					<li><a href="<c:url value="/orders"/>">订单管理</a> <span class="divider"></span></li>
 					<li class="active">创建新订单<span class="divider"></span>
 					</li>
-					<li><a href="#">返回</a> <span class="divider"></span></li>
+					<li><a href="<c:url value="/orders"/>">返回</a> <span class="divider"></span></li>
 				</ul>
 			</div>
 		</div>
@@ -195,6 +195,7 @@
 			//check driver number
 			$("[name=aptmtPeople]").change(checkDriverNumber);
 			
+			//create customer
 			$("#createCustomer").hide();
 			$("#createCustomer").click(function() {
 				$("#createCustomer").attr("disabled", "disabled")
@@ -210,6 +211,7 @@
 				}
 			});
 			
+			//create and send order
 			$("#createAndSend").click(function(){
 				//判断客户,判断时间,判断人数
 				if(!$("form")[0].checkValidity())

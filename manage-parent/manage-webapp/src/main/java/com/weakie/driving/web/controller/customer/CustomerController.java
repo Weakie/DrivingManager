@@ -3,16 +3,19 @@ package com.weakie.driving.web.controller.customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.weakie.driving.model.customer.CustomerDetail;
 import com.weakie.driving.service.customer.CustomerService;
 import com.weakie.driving.utils.InvokeResult;
 import com.weakie.driving.utils.LogUtil;
+import com.weakie.driving.utils.PageControl;
 import com.weakie.driving.web.json.OpeResult;
 
 @Controller
@@ -90,4 +93,21 @@ public class CustomerController {
 			return new OpeResult(OpeResult.RES_FAIL, "客户号:" + customerID, "请输入一个数字");
 		}
 	}
+	
+	/**
+	 * 获取客户消费记录
+	 * @param driverID
+	 * @param pc
+	 * @return
+	 */
+	@RequestMapping(value = "/{customerID}/consume_history", method = RequestMethod.GET)
+	public ModelAndView getConsumeHistory(@PathVariable("customerID") String customerID, @ModelAttribute("pc") PageControl pc) {
+		pc.setPagePath("/consumer/"+customerID+"/consume_history");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/driver/pages/consumeList");
+		mav.addObject("consumeList", this.customerService.getConsmeHistory(customerID, pc));
+		LogUtil.debug("CustomerController getConsumeHistory:" + customerID);
+		return mav;
+	}
+	
 }

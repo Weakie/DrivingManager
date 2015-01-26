@@ -1,7 +1,11 @@
 package com.weakie.driving.service.driver;
 
+import java.util.List;
+
+import com.weakie.driving.model.ConsumeInfo;
 import com.weakie.driving.model.driver.DriverDetail;
 import com.weakie.driving.utils.InvokeResult;
+import com.weakie.driving.utils.PageControl;
 
 public interface DriverService {
 
@@ -12,6 +16,14 @@ public interface DriverService {
 	public InvokeResult deleteDriver(String driverID);
 	
 	public DriverDetail getDriverInfo(String driverID);
+	
+	/**
+	 * 获取司机消费历史
+	 * @param driverID
+	 * @param pc
+	 * @return
+	 */
+	public List<ConsumeInfo> getConsmeHistory(String driverID,PageControl pc);
 	
 	/**
 	 * 是否冻结司机

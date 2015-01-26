@@ -21,6 +21,7 @@ import com.weakie.driving.model.orders.OrderProfile;
 import com.weakie.driving.service.customer.CustomerService;
 import com.weakie.driving.service.driver.DriverLocationService;
 import com.weakie.driving.service.order.OrderListService;
+import com.weakie.driving.service.order.OrderService;
 import com.weakie.driving.utils.InvokeResult;
 import com.weakie.driving.utils.LogUtil;
 import com.weakie.driving.utils.PageControl;
@@ -36,9 +37,15 @@ import com.weakie.driving.web.json.OpeResult;
 @RequestMapping("/orderCreate")
 public class OrderCreateController {
 
+	private OrderService orderService;
 	private CustomerService customerService;
 	private OrderListService orderListService;
 	private DriverLocationService driverLocationService;
+
+	@Autowired
+	public void setOrderService(OrderService orderService) {
+		this.orderService = orderService;
+	}
 
 	@Autowired
 	public void setCustomerService(CustomerService customerService) {
@@ -70,11 +77,14 @@ public class OrderCreateController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String newOrder(OrderCreating order,@RequestParam("withSend")boolean withSend) {
+	public ModelAndView newOrder(OrderCreating order,@RequestParam("withSend")boolean withSend) {
 		LogUtil.info("OrderController create new Order:" + order+", with send " + withSend);
-		// InvokeResult ir = this.orderService.createNewOrder(order);
-		// TODO 确定操作成功之后返回到那个页面
-		return "/order/orderCreate";
+		InvokeResult ir = this.orderService.createNewOrder(order);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/utils/result_redirect");
+		mav.addObject("redirect","/orderCreate");
+		mav.addObject("result", ir);
+		return mav;
 	}
 
 	/**
