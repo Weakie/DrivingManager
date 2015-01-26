@@ -3,9 +3,26 @@
 <html lang="zh-cn">
 <head>
 <%@ include file="../include/resource_link.jsp"%>
+<script src="${resourceRoot}/js/jquery.tools.min.js"></script>
 <title>客户-代驾管理系统</title>
+<style type="text/css">
+div.apple_overlay {
+	/* overlay背景图 */
+	background-image: url(${resourceRoot}/img/white.jpg);
+	/* overlay的最终尺寸，可以由此改变overlay大小  */
+	width: 600px;
+	height: 550px;
+	/* overlay默认隐藏 */
+	display: none;
+	/* 设定内嵌元素padding，获得好的视觉效果  */
+	padding: 55px;
+}
+</style>
 </head>
 <body>
+	<div class="apple_overlay" id="consume_history">
+		<div class="page_turning"></div>
+	</div>
 	<div class="container">
 		<c:set var="nav" value="5" />
 		<%@ include file="../include/navigator.jsp"%>

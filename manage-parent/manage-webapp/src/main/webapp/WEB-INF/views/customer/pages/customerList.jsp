@@ -27,7 +27,7 @@
 					<td><a class="btn btn-link btn-xs mybtn" href="<c:url value="/customer/${cus.id }"/>">编辑</a>
 						<button class="btn btn-link btn-xs mybtn" onclick="deleteCustomerDialog('${cus.id }','${cus.name }')">删除</button>
 						<button class="btn btn-link btn-xs mybtn" onclick="chargeCustomerDialog('${cus.id }')">充值</button>
-						<button class="btn btn-link btn-xs mybtn" onclick="">消费历史</button>
+						<a class="btn btn-link btn-xs mybtn" rel="#consume_history" href="<c:url value="/customer"/>/${cus.id }/consume_history">消费历史</a>
 						<button class="btn btn-link btn-xs mybtn" onclick="">查看优惠券</button></td>
 				</tr>
 			</c:forEach>
@@ -35,3 +35,7 @@
 	</table>
 </div>
 <%@ include file="../../include/page_turning.jsp"%>
+<script>
+	//register the overlay event in consumer history
+	registerConsumeHistoryEventForCustomer();
+</script>

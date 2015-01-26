@@ -161,6 +161,29 @@ function verifyDriverDialog(driverID,verify) {
 		title : "司机审核"+(verify?"通过":"未通过")+"？",
 	});
 }
+
+/**
+ * UI event for driver
+ */
+function registerConsumeHistoryEventForDriver(){
+	$("a[rel]").overlay({
+		// 设置参数
+		expose : { //启用expose效果
+			color : '#BAD0DB', //expose颜色
+			opacity : 0.7, //expose透明度
+			closeSpeed : 1000
+		//expose关闭速度
+		},
+		finish : {
+			top : 'center'
+		},
+		onBeforeLoad : function() {
+			var wrap = this.getOverlay().find(".page_turning");
+			wrap.load(this.getTrigger().attr("href"));
+		}//设置消失方向
+	});
+}
+
 /**
  * Ajax for driver
  */

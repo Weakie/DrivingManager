@@ -102,7 +102,7 @@ public class CustomerController {
 	 */
 	@RequestMapping(value = "/{customerID}/consume_history", method = RequestMethod.GET)
 	public ModelAndView getConsumeHistory(@PathVariable("customerID") String customerID, @ModelAttribute("pc") PageControl pc) {
-		pc.setPagePath("/consumer/"+customerID+"/consume_history");
+		pc.setPagePath("/customer/"+customerID+"/consume_history");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/driver/pages/consumeList");
 		mav.addObject("consumeList", this.customerService.getConsmeHistory(customerID, pc));

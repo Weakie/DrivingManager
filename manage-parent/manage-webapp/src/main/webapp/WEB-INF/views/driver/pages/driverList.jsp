@@ -41,7 +41,7 @@
 							</button>
 							<button class="btn btn-link btn-xs mybtn" onclick="changePwdDialog('${driver.driverID }')">改密码</button>
 							<button class="btn btn-link btn-xs mybtn" onclick="chargeDriverDialog('${driver.driverID }')">充值</button>
-							<button class="btn btn-link btn-xs mybtn" onclick="">消费历史</button>
+							<a class="btn btn-link btn-xs mybtn" rel="#consume_history" href="<c:url value="/driver"/>/${driver.driverID }/consume_history">消费历史</a>
 							<button class="btn btn-link btn-xs mybtn" <c:if test="${driver.binding }">onclick="unbindDriverTelDialog('${driver.driverID }','${driver.realName }','${driver.telephone }')"</c:if> id="unbind">
 								<c:if test="${driver.binding }">解绑</c:if>
 								<c:if test="${not driver.binding }">未绑定</c:if>
@@ -70,3 +70,7 @@
 		document.getElementById('balanceUnder200').innerText = "${pc.totalNum}";
 	</script>
 </c:if>
+<script>
+	//register the overlay event in consumer history
+	registerConsumeHistoryEventForDriver();
+</script>
