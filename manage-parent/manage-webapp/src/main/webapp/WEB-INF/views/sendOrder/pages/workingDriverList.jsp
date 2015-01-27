@@ -2,36 +2,41 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
-<div class="row clearfix">
+<c:forEach items="${driverList }" var="driver" varStatus="state">
+	<c:if test="${state.count%2 == 1 || state.first}">
+		<div class="row clearfix">
+	</c:if>
 	<div class="col-md-6 column">
-		<div class="panel panel-success">
+		<c:if test="${driver.currentState eq 'FREE' }"><c:set var="panel_class" value="success"/></c:if>
+		<c:if test="${driver.currentState eq 'WORKINGCAR' }"><c:set var="panel_class" value="danger"/></c:if>
+		<c:if test="${driver.currentState eq 'BUSY' }"><c:set var="panel_class" value="danger"/></c:if>
+		<div class="panel panel-${panel_class }">
 			<div class="panel-heading">
-				<span class="label label-success">002</span><font color="00CEd1">()</font>
+				<c:if test="${driver.currentState eq 'FREE' }"><c:set var="label_class" value="success"/></c:if>
+				<c:if test="${driver.currentState eq 'WORKINGCAR' }"><c:set var="label_class" value="info"/></c:if>
+				<c:if test="${driver.currentState eq 'BUSY' }"><c:set var="label_class" value="danger"/></c:if>
+				<span class="label label-${label_class }">${driver.realName }</span>
+				<font color="00CEd1">(${driver.currentPosition })</font>
+				<c:if test="${not empty driver.beginPosition }">
+					${driver.beginPosition}(<fmt:formatDate value="${driver.beginTime }" type="both" pattern="HH:mm" />)
+				</c:if>
+				<c:if test="${empty driver.beginPosition }">
+					(未知)
+				</c:if>
+				<c:if test="${not empty driver.endPosition || not empty driver.beginPosition}">
+					→
+				</c:if>
+				<c:if test="${not empty driver.endPosition }">
+					${driver.endPosition}(<fmt:formatDate value="${driver.endTime }" type="both" pattern="HH:mm" />)
+				</c:if>
+				<c:if test="${empty driver.endPosition }">
+					(未知)
+				</c:if>
 			</div>
 		</div>
 	</div>
-	<div class="col-md-6 column">
-		<div class="panel panel-danger">
-			<div class="panel-heading">
-				<span class="label label-info">陈总</span><font color="00CEd1">()</font>南岸区学府大道(20:21)→(未知)
-			</div>
+	<c:if test="${state.count%2 == 0 || state.last }">
 		</div>
-	</div>
-</div>
-<div class="row clearfix">
-	<div class="col-md-6 column">
-		<div class="panel panel-success">
-			<div class="panel-heading">
-				<span class="label label-success">002</span><font color="00CEd1">()</font>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-6 column">
-		<div class="panel panel-danger">
-			<div class="panel-heading">
-				<span class="label label-danger">陈总</span><font color="00CEd1">()</font>南岸区学府大道(20:21)→(未知)
-			</div>
-		</div>
-	</div>
-</div>
+	</c:if>
+</c:forEach>
+<%@ include file="../../include/page_turning.jsp"%>

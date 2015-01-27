@@ -19,13 +19,16 @@
 								上班中的司机，查找司机按Ctrl+F <span class="label label-success">空闲</span> <span class="label label-info">工作车</span> <span class="label label-danger">忙碌</span>
 							</div>
 							<div class="col-md-1 column">
-								<button type="button" class="btn btn-default btn-xs">刷新</button>
+								<button type="button" id="refreshOnWorkingDriversBtn" class="btn btn-default btn-xs" onclick="refreshOnWorkingDrivers()">刷新</button>
 							</div>
 						</div>
 					</div>
 					<div class="panel-body">
 						<div id="onWorkingDrivers" class="page_turning">
-							<c:import url="/send/drivers"></c:import>
+							<c:import url="/send/drivers">
+								<c:param name="pageIndex" value="1" />
+								<c:param name="pageNum" value="20" />
+							</c:import>
 						</div>
 					</div>
 				</div>
@@ -51,7 +54,7 @@
 								<div class="row clearfix">
 									<div class="col-md-9 column">未派工单：</div>
 									<div class="col-md-2 column">
-										<button type="button" class="btn btn-default btn-xs">刷新</button>
+										<button type="button" id="refreshUnsendOrdersBtn" class="btn btn-default btn-xs" onclick="refreshUnsendOrders()">刷新</button>
 									</div>
 								</div>
 							</div>
@@ -88,5 +91,21 @@
 		}
 		registerOrderRadioBtnEvent();
 	});
+	
+	function refreshOnWorkingDrivers(){
+		$("#refreshOnWorkingDriversBtn").attr("disabled","disabled");
+		setTimeout(function(){
+			$("#refreshOnWorkingDriversBtn").removeAttr("disabled");
+		},1000);
+		getOnWorkingDrivers();
+	}
+	
+	function refreshUnsendOrders(){
+		$("#refreshUnsendOrdersBtn").attr("disabled","disabled");
+		setTimeout(function(){
+			$("#refreshUnsendOrdersBtn").removeAttr("disabled");
+		},1000);
+		getUnsendOrders();
+	}
 </script>
 </html>

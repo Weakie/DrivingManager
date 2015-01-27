@@ -19,14 +19,21 @@ public class DriverLocationServiceImpl implements DriverLocationService {
 	Coordinate c = new Coordinate(1000,2000);
 	@Override
 	public List<DriverLocationInfo> getDriverLocationInfosByStatus(DriverStatus status, PageControl p) {
-		DriverLocationInfo info = new DriverLocationInfo("123","haha","冯志远","18795943912","易米",12,90,3.9,DriverStatus.DRIVING,
-				"长白路",c,"龙华大道",c,new Date(),"长江路",c,new Date() );
-		
 		List<DriverLocationInfo> list = new ArrayList<DriverLocationInfo>();
 		for(int i=0;i<p.getPageNum();i++){
+			DriverStatus status2 = null;
+			if(i%3 == 0){
+				status2 = DriverStatus.DRIVING;
+			}else if(i%3 == 1){
+				status2 = DriverStatus.WORKINGCAR;
+			}else if(i%3 == 2){
+				status2 = DriverStatus.FREE;
+			}
+			DriverLocationInfo info = new DriverLocationInfo("123"+i,"feng","冯志远","18795943912","易米",12,90,3.9,status2,
+					"长白路",c,"龙华大道",c,new Date(),"长江路",c,new Date() );
 			list.add(info);
 		}
-		p.setTotalNum(100);
+		p.setTotalNum(110);
 		return list;
 	}
 

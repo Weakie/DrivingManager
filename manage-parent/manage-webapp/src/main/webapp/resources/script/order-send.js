@@ -69,3 +69,13 @@ function sendOrder(orderID,driverID){
 function getAvailableDriversForSend(coordinate,orderID){
 	$("#availableDrivers").load(context+"/send/drivers","coordinate=" + coordinate + "&orderID=" + orderID + "&pageNum=5");
 }
+
+function getOnWorkingDrivers(){
+	$("#onWorkingDrivers").html("<div style='text-align: center'><span>正在加载司机列表</span><div>");
+	$("#onWorkingDrivers").load(context+"/send/drivers","pageNum=20");
+}
+
+function getUnsendOrders(){
+	$("#unsendOrders").html("<div style='text-align: center'><span>正在加载新订单列表</span><div>");
+	$("#unsendOrders").load(context+"/send/orders");
+}

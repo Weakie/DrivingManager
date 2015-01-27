@@ -1,5 +1,6 @@
 package com.weakie.driving.utils;
 
+
 /**
  * 定义了翻页信息
  * @author weakie,lin
@@ -61,7 +62,7 @@ public class PageControl {
 	}
 
 	public int getTotalPage(){
-		return totalNum/pageNum;
+		return (totalNum + pageNum - 1) / pageNum;
 	}
 
 	@Override
