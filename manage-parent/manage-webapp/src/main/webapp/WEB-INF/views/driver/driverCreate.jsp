@@ -36,7 +36,7 @@ div.info {
 							</div>
 							<input type="hidden" name="_method" value="${method }" >
 							<input type="text" name="driverID" required="required" value="${driver.driverID }" <c:if test="${not empty driver.driverID }" >readonly</c:if> class="form-control" placeholder="">
-							<div class="info">请输入手机客户端登录工号</div>
+							<div id="id_info" class="info">请输入手机客户端登录工号</div>
 							<br>
 							<div class="info">
 								<font color="red">*</font><b>昵称：</b>
@@ -61,7 +61,7 @@ div.info {
 							<div class="info">
 								<font color="red">*</font><b>手机号：</b>
 							</div>
-							<input type="text" name="telephone" required="required" value="${driver.telephone }" pattern="[0-9]{11}" class="form-control" placeholder=""> <br>
+							<input type="text" name="telephone" required="required" value="${driver.telephone }" <c:if test="${driver.binding }" >readonly</c:if> pattern="[0-9]{11}" class="form-control" placeholder=""> <br>
 							<div class="info">
 								<font color="red">*</font><b>领证时间：</b>
 							</div>
@@ -190,4 +190,25 @@ div.info {
 
 	</div>
 </body>
+<script>
+	$(document).ready(function(){
+		var method = $("input[name=_method]").val();
+		if(method == 'POST' || method == 'post'){
+			$("input[name=driverID]").blur(function(){
+				value = $("input[name=driverID]").val();
+				checkValidate('ID',value,function(data,status){
+					if(data.res=="SUCCESS"){
+						$("id_info").html("");
+					}else{
+						$("id_info").html("");
+						alertData(status,data);
+					}
+				});
+			});
+		}else{
+			
+		}
+		
+	});
+</script>
 </html>

@@ -18,6 +18,14 @@ public interface DriverService {
 	public DriverDetail getDriverInfo(String driverID);
 	
 	/**
+	 * 验证司机注册信息合法性
+	 * @param field
+	 * @param value
+	 * @return
+	 */
+	public InvokeResult checkValidate(String field, String value);
+	
+	/**
 	 * 获取司机消费历史
 	 * @param driverID
 	 * @param pc

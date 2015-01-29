@@ -2,6 +2,7 @@ package com.weakie.driving.web.controller.driver;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -89,6 +90,24 @@ public class DriverController {
 		this.driverService.updateDriver(driver);
 		LogUtil.debug("DriverController create Driver:" + driver);
 		return "/driver/driverCreate";
+	}
+	
+	/**
+	 * 验证注册信息合法性
+	 * @param field=ID,PID,TEL
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/check", method = RequestMethod.GET, params={"field","value"})
+	public OpeResult checkValidate(@RequestParam("field") String field, @RequestParam("value") String value) {
+		LogUtil.info("checkValidate :" + field+", "+value);
+		if(StringUtils.equalsIgnoreCase("ID", field)
+				||StringUtils.equalsIgnoreCase("PID", field)
+				||StringUtils.equalsIgnoreCase("TEL", field)){
+			InvokeResult ir = this.driverService.checkValidate(field, value);
+			return new OpeResult(ir, "验证信息:" + value);
+		}
+		return new OpeResult(OpeResult.RES_FAIL, "错误,请输入正确的查询域");
 	}
 
 	/**

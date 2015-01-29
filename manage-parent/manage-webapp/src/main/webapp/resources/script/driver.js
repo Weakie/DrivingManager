@@ -187,6 +187,13 @@ function registerConsumeHistoryEventForDriver(){
 /**
  * Ajax for driver
  */
+function checkValidate(field,value,callback){
+	$.get(context + "/driver/check", {
+		field 	: field,
+		value 	: value
+	}, callback);
+}
+
 function deleteDriver(driverID){
 	infoData("正在发送请求-删除司机:"+driverID);
 	$(".drivers").children("tr#" + driverID).children("td").children(".btn").attr("disabled","disabled");

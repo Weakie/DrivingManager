@@ -12,6 +12,7 @@ public class DriverDetail {
 	private String identity;
 	private boolean sex;//true male
 	private String telephone;
+	private boolean binding;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd") 
 	private Date licenseTime;
@@ -73,6 +74,13 @@ public class DriverDetail {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
+	public boolean isBinding() {
+		return binding;
+	}
+	public void setBinding(boolean binding) {
+		this.binding = binding;
+	}
+
 	public Date getLicenseTime() {
 		return licenseTime;
 	}
