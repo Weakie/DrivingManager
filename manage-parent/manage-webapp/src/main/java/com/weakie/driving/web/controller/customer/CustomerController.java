@@ -56,6 +56,7 @@ public class CustomerController {
 	@RequestMapping(value = "/{customerID}", method = RequestMethod.PUT)
 	public String updateCustomer(ModelMap model, @PathVariable("customerID") String customerID, CustomerDetail customer) {
 		// TODO 跳转到指定页面
+		customer.setId(customerID);
 		this.customerService.updateCustomer(customer);
 		LogUtil.debug("CustomerController create Customer:" + customer);
 		return "/customer/customerCreate";
