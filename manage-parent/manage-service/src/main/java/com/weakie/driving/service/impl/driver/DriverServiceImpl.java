@@ -100,17 +100,17 @@ public class DriverServiceImpl implements DriverService {
 			if (StringUtils.equalsIgnoreCase("123", value)) {
 				return new InvokeResult(false,"工号已经存在");
 			}
-			return new InvokeResult();
+			return new InvokeResult(true,"工号可以使用");
 		} else if (StringUtils.equalsIgnoreCase("PID", field)) {
 			if (StringUtils.equalsIgnoreCase("123", value)) {
 				return new InvokeResult(false,"身份证号已被使用");
 			}
-			return new InvokeResult();
+			return new InvokeResult(true,"身份证号可以使用");
 		} else if (StringUtils.equalsIgnoreCase("TEL", field)) {
 			if (StringUtils.equalsIgnoreCase("123", value)) {
 				return new InvokeResult(false,"手机号已被注册");
 			}
-			return new InvokeResult();
+			return new InvokeResult(true,"手机号可以使用");
 		}
 		return new InvokeResult();
 	}

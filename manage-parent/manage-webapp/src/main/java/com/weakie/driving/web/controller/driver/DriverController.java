@@ -66,11 +66,15 @@ public class DriverController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String newDriver(ModelMap model, DriverDetail driver) {
-		// TODO 跳转到指定页面
-		this.driverService.createDriver(driver);
+	public ModelAndView newDriver(ModelMap model, DriverDetail driver) {
 		LogUtil.debug("DriverController create Driver:" + driver);
-		return "/driver/driverCreate";
+		// TODO 跳转到指定页面
+		InvokeResult ir = this.driverService.createDriver(driver);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/utils/result_redirect");
+		mav.addObject("redirect","/driver");
+		mav.addObject("result", ir);
+		return mav;
 	}
 
 	@RequestMapping(value = "/{driverID}", method = RequestMethod.GET)
@@ -85,11 +89,15 @@ public class DriverController {
 	}
 
 	@RequestMapping(value = "/{driverID}", method = RequestMethod.PUT)
-	public String updateDriver(ModelMap model, @PathVariable("driverID") String driverID, DriverDetail driver) {
+	public ModelAndView updateDriver(ModelMap model, @PathVariable("driverID") String driverID, DriverDetail driver) {
+		LogUtil.debug("DriverController update Driver:" + driver);
 		// TODO 跳转到指定页面
-		this.driverService.updateDriver(driver);
-		LogUtil.debug("DriverController create Driver:" + driver);
-		return "/driver/driverCreate";
+		InvokeResult ir = this.driverService.updateDriver(driver);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/utils/result_redirect");
+		mav.addObject("redirect","/drivers");
+		mav.addObject("result", ir);
+		return mav;
 	}
 	
 	/**
@@ -101,6 +109,9 @@ public class DriverController {
 	@RequestMapping(value = "/check", method = RequestMethod.GET, params={"field","value"})
 	public OpeResult checkValidate(@RequestParam("field") String field, @RequestParam("value") String value) {
 		LogUtil.info("checkValidate :" + field+", "+value);
+		if(StringUtils.isEmpty(value)){
+			return new OpeResult(OpeResult.RES_FAIL, "错误,输入值不能为空");
+		}
 		if(StringUtils.equalsIgnoreCase("ID", field)
 				||StringUtils.equalsIgnoreCase("PID", field)
 				||StringUtils.equalsIgnoreCase("TEL", field)){
@@ -170,7 +181,6 @@ public class DriverController {
 
 	/**
 	 * 充值
-	 * 
 	 * @param driverID
 	 * @param comment
 	 * @return

@@ -18,10 +18,10 @@ div.info {
 		<%@ include file="../include/navigator.jsp"%>
 		<div style="height: 20px;">
 			<ul class="breadcrumb">
-				<li><a href="#">司机管理</a> <span class="divider"></span></li>
+				<li><a href="<c:url value="/drivers"/>">司机管理</a> <span class="divider"></span></li>
 				<li class="active">${title }<span class="divider"></span>
 				</li>
-				<li><a href="#">返回</a> <span class="divider"></span></li>
+				<li><a href="<c:url value="/drivers"/>">返回</a> <span class="divider"></span></li>
 			</ul>
 		</div>
 		<br>
@@ -61,7 +61,9 @@ div.info {
 							<div class="info">
 								<font color="red">*</font><b>手机号：</b>
 							</div>
-							<input type="text" name="telephone" required="required" value="${driver.telephone }" <c:if test="${driver.binding }" >readonly</c:if> pattern="[0-9]{11}" class="form-control" placeholder=""> <br>
+							<input type="text" name="telephone" required="required" value="${driver.telephone }" <c:if test="${driver.binding }" >readonly</c:if> pattern="[0-9]{11}" class="form-control" placeholder="">
+							<div id="tel_info" class="info">请输入绑定的手机号</div>
+							<br>
 							<div class="info">
 								<font color="red">*</font><b>领证时间：</b>
 							</div>
@@ -192,23 +194,30 @@ div.info {
 </body>
 <script>
 	$(document).ready(function(){
-		var method = $("input[name=_method]").val();
-		if(method == 'POST' || method == 'post'){
-			$("input[name=driverID]").blur(function(){
-				value = $("input[name=driverID]").val();
-				checkValidate('ID',value,function(data,status){
-					if(data.res=="SUCCESS"){
-						$("id_info").html("");
-					}else{
-						$("id_info").html("");
-						alertData(status,data);
-					}
-				});
+		$("input[name=driverID]").blur(function(){
+			value = $("input[name=driverID]").val();
+			checkValidate('ID',value,function(data,status){
+				if(data.res=="SUCCESS"){
+					$("#id_info").html("<font color='green'>*</font>"+data.additional);
+					alertData(status,data);
+				}else{
+					$("#id_info").html("<font color='red'>*</font>"+data.additional);
+					alertData(status,data);
+				}
 			});
-		}else{
-			
-		}
-		
+		});
+		$("input[name=telephone]").blur(function(){
+			value = $("input[name=telephone]").val();
+			checkValidate('TEL',value,function(data,status){
+				if(data.res=="SUCCESS"){
+					$("#tel_info").html("<font color='green'>*</font>"+data.additional);
+					alertData(status,data);
+				}else{
+					$("#tel_info").html("<font color='red'>*</font>"+data.additional);
+					alertData(status,data);
+				}
+			});
+		});
 	});
 </script>
 </html>

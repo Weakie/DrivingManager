@@ -188,6 +188,9 @@ function registerConsumeHistoryEventForDriver(){
  * Ajax for driver
  */
 function checkValidate(field,value,callback){
+	if(value==null || value==undefined || value==''){
+		return;
+	}
 	$.get(context + "/driver/check", {
 		field 	: field,
 		value 	: value
